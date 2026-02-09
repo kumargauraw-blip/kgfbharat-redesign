@@ -38,3 +38,22 @@ export async function chatWithAI(history: any[], message: string) {
         return "The light of knowledge is currently flickering. Please check back in a moment.";
     }
 }
+
+export async function submitCorporateInquiry(formData: FormData) {
+    // Simulate email sending or DB storage
+    // const data = Object.fromEntries(formData.entries());
+    // console.log("Corporate Inquiry Received:", data);
+
+    // In a real app, use Resend/Nodemailer here
+    await new Promise(resolve => setTimeout(resolve, 1000));
+}
+
+export async function saveCourseAction(data: any) {
+    // Simulate DB save
+    // console.log("Saving Course Data:", data);
+
+    // In a real app, validate and save to Postgres/Prisma
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    return { success: true, message: "Course saved successfully" };
+}
