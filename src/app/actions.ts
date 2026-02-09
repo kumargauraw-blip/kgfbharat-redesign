@@ -1,53 +1,40 @@
-'use server'
+"use server";
 
-import { revalidatePath } from 'next/cache';
-import { Course } from '@/lib/types';
-import { getCourses, upsertCourse, deleteCourse, getCourseBySlug } from '@/lib/courseService';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-export async function fetchCourses() {
-    return await getCourses();
-}
+const apiKey = process.env.GEMINI_API_KEY;
 
-export async function fetchCourse(slug: string) {
-    return await getCourseBySlug(slug);
-}
+const SYSTEM_INSTRUCTION = `You are the KGF Bharat AI Advisor. Your goal is to help students bridge the gap between Dharmik wisdom and modern AI technology. 
+You recommend courses from KGF Bharat's catalog (Dharmik Education and AI-Tech). 
+Always be polite, culturally respectful, and insightful. 
+If a student asks about tradition, link it to how technology can preserve it. 
+If they ask about tech, link it to the ethics and values of Sanatana Dharma.`;
 
-export async function saveCourseAction(course: Course) {
-    try {
-        await upsertCourse(course);
-        revalidatePath('/admin/courses');
-        revalidatePath('/ai-courses');
-        return { success: true, message: 'Course saved successfully' };
-    } catch (error) {
-        return { success: false, message: 'Failed to save course' };
+export async function chatWithAI(history: any[], message: string) {
+    if (!apiKey) {
+        console.error("Missing Gemini API Key in server environment.");
+        return "I apologize, my connection to the knowledge source is currently limited. Please try again later.";
     }
-}
 
-export async function deleteCourseAction(id: string) {
     try {
-        await deleteCourse(id);
-        revalidatePath('/admin/courses');
-        revalidatePath('/ai-courses');
-        return { success: true, message: 'Course deleted successfully' };
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const model = genAI.getGenerativeModel({
+            model: "gemini-1.5-flash",
+            systemInstruction: SYSTEM_INSTRUCTION
+        });
+
+        const chat = model.startChat({
+            history: history.map(msg => ({
+                role: msg.role === 'user' ? 'user' : 'model',
+                parts: [{ text: msg.content }],
+            })),
+        });
+
+        const result = await chat.sendMessage(message);
+        const response = await result.response;
+        return response.text();
     } catch (error) {
-        return { success: false, message: 'Failed to delete course' };
+        console.error("Gemini API Error:", error);
+        return "The light of knowledge is currently flickering. Please check back in a moment.";
     }
-}
-
-export async function submitCorporateInquiry(formData: FormData) {
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    const rawData = {
-        companyName: formData.get('companyName'),
-        contactName: formData.get('contactName'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        studentCount: formData.get('studentCount'),
-        message: formData.get('message'),
-        courses: formData.getAll('courses'),
-    };
-
-    console.log("Corporate Inquiry Received:", rawData);
-    return { success: true, message: "Inquiry received! Our team will contact you shortly." };
 }
