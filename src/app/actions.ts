@@ -55,5 +55,53 @@ export async function saveCourseAction(data: any) {
     // In a real app, validate and save to Postgres/Prisma
     await new Promise(resolve => setTimeout(resolve, 500));
 
-    return { success: true, message: "Course saved successfully" };
-}
+
+    export async function fetchCourses() {
+        // Simulate DB fetch
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        // Return dummy empty array or mock data for MVP
+        return [
+            {
+                id: "1",
+                title: "Demo Course",
+                slug: "demo-course",
+                tagline: "A demo course",
+                description: "Description",
+                targetAudience: ["Everyone"],
+                status: "Active",
+                price: "Free",
+                duration: "1 hour",
+                format: "Online",
+                overview: "Overview",
+                curriculum: [],
+                learningOutcomes: [],
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            }
+        ];
+    }
+
+    export async function fetchCourse(slug: string) {
+        // Simulate DB fetch
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        // Return mock data
+        return {
+            id: "1",
+            title: "Demo Course",
+            slug: slug,
+            tagline: "A demo course",
+            description: "Description",
+            targetAudience: ["Everyone"],
+            status: "Active",
+            price: "Free",
+            duration: "1 hour",
+            format: "Online",
+            overview: "Overview",
+            curriculum: [],
+            learningOutcomes: [],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
+    }
