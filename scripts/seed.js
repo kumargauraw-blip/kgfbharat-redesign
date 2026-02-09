@@ -1,0 +1,111 @@
+const fs = require('fs');
+const path = require('path');
+
+const dataDir = path.join(process.cwd(), 'data');
+const DATA_FILE_PATH = path.join(dataDir, 'courses.json');
+
+const initialCourses = [
+    {
+        id: "1",
+        slug: "ai-fundamentals-productivity",
+        title: "AI Fundamentals for 10X Productivity",
+        tagline: "Boost your personal and professional productivity tenfold.",
+        description: "Master the basics of AI tools like ChatGPT, Claude, and Midjourney. Learn prompt engineering, workflow automation, and how to integrate AI into your daily tasks.",
+        targetAudience: ["Everyone"],
+        status: "Active",
+        price: "₹4,999",
+        duration: "4 Weeks",
+        format: "Online",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        curriculum: ["Intro to LLMs", "Prompt Engineering", "AI for Writing", "AI for Images"],
+        learningOutcomes: ["Master ChatGPT", "Automate Emails", "Create Content Faster"]
+    },
+    {
+        id: "2",
+        slug: "advanced-ai-creators",
+        title: "Advanced AI Specialization Mastery for Creators",
+        tagline: "Leverage AI to generate content and grow your audience.",
+        description: "Designed for YouTubers, writers, and designers. Learn to use AI for video editing, scriptwriting, thumbnail generation, and content strategy.",
+        targetAudience: ["Creators"],
+        status: "Planned",
+        price: "Contact for pricing",
+        duration: "6 Weeks",
+        format: "Online",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        curriculum: [],
+        learningOutcomes: []
+    },
+    {
+        id: "3",
+        slug: "advanced-ai-engineering",
+        title: "Advanced AI Engineering Mastery",
+        tagline: "Deep dive into LLMs, RAG, and building AI apps.",
+        description: "For developers and engineers. Build your own AI agents, fine-tune models, and integrate LLMs into production applications.",
+        targetAudience: ["Engineers"],
+        status: "Planned",
+        price: "Contact for pricing",
+        duration: "8 Weeks",
+        format: "Hybrid",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        curriculum: [],
+        learningOutcomes: []
+    },
+    {
+        id: "4",
+        slug: "ai-database-pros",
+        title: "Advanced AI Mastery for Database Professionals",
+        tagline: "Transform database management with AI agents.",
+        description: "Learn how AI can optimize queries, manage schemas, and automate database maintenance tasks.",
+        targetAudience: ["Database Professionals"],
+        status: "Planned",
+        price: "Contact for pricing",
+        duration: "6 Weeks",
+        format: "Online",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        curriculum: [],
+        learningOutcomes: []
+    },
+    {
+        id: "5",
+        slug: "ai-for-marketers",
+        title: "Advanced AI Mastery for Marketers",
+        tagline: "Automate campaigns and personalize experiences.",
+        description: "Use AI for customer segmentation, ad copy generation, predictive analytics, and marketing automation.",
+        targetAudience: ["Marketers"],
+        status: "Planned",
+        price: "Contact for pricing",
+        duration: "5 Weeks",
+        format: "Online",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        curriculum: [],
+        learningOutcomes: []
+    },
+    {
+        id: "6",
+        slug: "ai-business-leaders",
+        title: "Advanced AI Mastery for Business Leaders",
+        tagline: "Strategic AI implementation for growth.",
+        description: "Understand the AI landscape, identify high-value use cases, and lead AI transformation in your organization.",
+        targetAudience: ["Business Leaders"],
+        status: "Planned",
+        price: "Contact for pricing",
+        duration: "2 Days (Workshop)",
+        format: "In-Person",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        curriculum: [],
+        learningOutcomes: []
+    }
+];
+
+if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+}
+
+fs.writeFileSync(DATA_FILE_PATH, JSON.stringify(initialCourses, null, 2), 'utf-8');
+console.log('Database seeded successfully at ' + DATA_FILE_PATH);

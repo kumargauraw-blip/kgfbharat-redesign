@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  /* Typography - Modernised Gurukul Feel */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-heading: var(--font-serif);
+
+  /* New Modernised Palette: Royal Navy and Bright Orange */
+  --color-navy: #1a237e;
+  --color-orange: #FF9933;
+  --color-orange-light: #FFCC33;
+  --color-off-white: #FAF9F6;
+
+  /* Semantic Mappings */
+  --color-background: var(--color-off-white);
+  --color-foreground: var(--color-navy);
+
+  --color-primary: var(--color-navy);
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: var(--color-orange);
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-card: #FFFFFF;
+  --color-card-foreground: var(--color-navy);
+
+  --color-muted: #F3F4F6;
+  --color-muted-foreground: #6B7280;
+
+  --color-border: #E5E7EB;
+  --color-input: #E5E7EB;
+  --color-ring: var(--color-orange);
+
+  /* Accent colors matching the new design */
+  --color-accent: #FFF7ED;
+  /* Orange-50 equivalent */
+  --color-accent-foreground: var(--color-orange);
+}
+
+@utility container-custom {
+  @apply container mx-auto px-6 md:px-12 max-w-[1700px];
+}
+
+@utility glass-nav {
+  @apply bg-navy/95 backdrop-blur-md border-b-2 border-orange-light;
+}
+
+@utility gradient-text {
+  background: linear-gradient(to right, #D97706, #FF9933);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility ai-gradient-text {
+  background: linear-gradient(to right, #2563EB, #4FACFE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    background-color: var(--color-off-white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-black tracking-tight;
+  }
+
+  h1 {
+    @apply text-5xl md:text-7xl leading-[1.1];
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl leading-tight text-navy;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
