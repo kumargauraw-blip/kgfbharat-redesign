@@ -24,7 +24,7 @@ export function Hero() {
                                 धर्मक्षेत्रे कुरुक्षेत्रे...
                             </h2>
                             <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[1.05] tracking-tighter text-[#111827]">
-                                <span className="font-serif">Ancient <span className="gradient-text">Wisdom</span></span><br />
+                                <span className="font-serif">Sanatana <span className="gradient-text">Wisdom</span></span><br />
                                 Meets <span className="ai-gradient-text">Modern Intelligence.</span>
                             </h1>
                         </div>
