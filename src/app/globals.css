@@ -6,24 +6,29 @@
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   --font-heading: var(--font-serif);
 
-  /* New Modernised Palette: Royal Navy and Bright Orange */
-  --color-navy: #1a237e;
+  /* Warm Saffron Gurukul Palette */
+  --color-navy: #5D4037;
   --color-orange: #FF9933;
   --color-orange-light: #FFCC33;
-  --color-off-white: #FAF9F6;
+  --color-orange-dark: #E8870E;
+  --color-off-white: #FFF8E7;
+  --color-saffron: #FF9933;
+  --color-saffron-dark: #E8870E;
+  --color-golden: #FFC107;
+  --color-cream: #FFF8E7;
 
   /* Semantic Mappings */
-  --color-background: var(--color-off-white);
-  --color-foreground: var(--color-navy);
+  --color-background: var(--color-cream);
+  --color-foreground: #3E2723;
 
-  --color-primary: var(--color-navy);
+  --color-primary: var(--color-saffron);
   --color-primary-foreground: #FFFFFF;
 
   --color-secondary: var(--color-orange);
   --color-secondary-foreground: #FFFFFF;
 
   --color-card: #FFFFFF;
-  --color-card-foreground: var(--color-navy);
+  --color-card-foreground: #3E2723;
 
   --color-muted: #F3F4F6;
   --color-muted-foreground: #6B7280;
@@ -34,7 +39,6 @@
 
   /* Accent colors matching the new design */
   --color-accent: #FFF7ED;
-  /* Orange-50 equivalent */
   --color-accent-foreground: var(--color-orange);
 }
 
@@ -45,11 +49,11 @@
 }
 
 @utility glass-nav {
-  @apply bg-navy/95 backdrop-blur-md border-b-2 border-orange-light;
+  @apply bg-[#3E2723]/95 backdrop-blur-md border-b-2 border-orange-light;
 }
 
 @utility gradient-text {
-  background: linear-gradient(to right, #D97706, #FF9933);
+  background: linear-gradient(to right, #E8870E, #FF9933);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -69,15 +73,15 @@
 }
 
 @utility heading-lg {
-  @apply text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-navy leading-[1.1];
+  @apply text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#3E2723] leading-[1.1];
 }
 
 @utility heading-md {
-  @apply text-3xl md:text-4xl font-black tracking-tight text-navy leading-tight;
+  @apply text-3xl md:text-4xl font-black tracking-tight text-[#3E2723] leading-tight;
 }
 
 @utility heading-sm {
-  @apply text-2xl md:text-3xl font-bold tracking-tight text-navy;
+  @apply text-2xl md:text-3xl font-bold tracking-tight text-[#3E2723];
 }
 
 @utility body-lg {
@@ -115,7 +119,7 @@
   }
 
   h2 {
-    @apply text-4xl md:text-5xl leading-tight text-navy;
+    @apply text-4xl md:text-5xl leading-tight text-[#3E2723];
   }
 
   /* Focus visible ring for interactive elements */

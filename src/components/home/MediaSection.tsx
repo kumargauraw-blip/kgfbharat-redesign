@@ -40,7 +40,7 @@ export function MediaSection() {
             <div className="container-custom">
                 <div className="text-center mb-20 relative">
                     <div className="inline-block relative">
-                        <h2 className="text-5xl md:text-6xl font-black text-navy relative z-10">
+                        <h2 className="text-5xl md:text-6xl font-black text-[#3E2723] relative z-10">
                             In The <span className="text-orange">Media</span>
                         </h2>
                         <div className="absolute -bottom-2 left-0 right-0 h-4 bg-orange/20 -rotate-1 -z-0"></div>
@@ -59,7 +59,7 @@ export function MediaSection() {
                                     alt={item.title}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#3E2723]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             </div>
 
                             <div className="p-10 flex flex-col flex-1">
@@ -74,14 +74,14 @@ export function MediaSection() {
                                     </span>
                                 </div>
 
-                                <h3 className="text-2xl font-black text-navy leading-tight mb-8 group-hover:text-orange transition-colors">
+                                <h3 className="text-2xl font-black text-[#3E2723] leading-tight mb-8 group-hover:text-orange transition-colors">
                                     {item.title}
                                 </h3>
 
                                 <div className="mt-auto">
                                     <Link
                                         href={item.url}
-                                        className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-navy group-hover:text-orange"
+                                        className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-[#3E2723] group-hover:text-orange"
                                     >
                                         Read Full Story
                                         <svg className="transition-transform group-hover:translate-x-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>

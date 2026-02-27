@@ -8,7 +8,6 @@ const quickLinks = [
     { name: "AI Courses", href: "/ai-courses" },
     { name: "Events", href: "/events" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Corporate Training", href: "/corporate-training" },
     { name: "Contact", href: "/contact" },
 ]
 
@@ -68,7 +67,7 @@ const socialLinks = [
 
 export function Footer() {
     return (
-        <footer className="pt-24 pb-12 bg-navy text-white">
+        <footer className="pt-24 pb-12 bg-[#3E2723] text-white">
             <div className="container-custom">
                 {/* Main Footer Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12">
@@ -93,7 +92,7 @@ export function Footer() {
                                 </p>
                             </div>
                         </div>
-                        <p className="text-indigo-100/60 text-sm font-medium leading-relaxed">
+                        <p className="text-white/60 text-sm font-medium leading-relaxed">
                             We are not just a foundation; we are an ecosystem
                             for those who refuse to choose between their roots
                             and their potential.
@@ -124,7 +123,7 @@ export function Footer() {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-indigo-100/70 hover:text-orange-light transition-colors text-sm font-semibold"
+                                        className="text-white/70 hover:text-orange-light transition-colors text-sm font-semibold"
                                     >
                                         {link.name}
                                     </Link>
@@ -143,20 +142,20 @@ export function Footer() {
                                 <Mail className="h-4 w-4 text-orange-light mt-0.5 shrink-0" />
                                 <a
                                     href="mailto:info@kgfbharat.org"
-                                    className="text-indigo-100/70 hover:text-orange-light transition-colors text-sm font-semibold"
+                                    className="text-white/70 hover:text-orange-light transition-colors text-sm font-semibold"
                                 >
                                     info@kgfbharat.org
                                 </a>
                             </li>
                             <li className="flex items-start gap-3">
                                 <Phone className="h-4 w-4 text-orange-light mt-0.5 shrink-0" />
-                                <span className="text-indigo-100/70 text-sm font-semibold">
+                                <span className="text-white/70 text-sm font-semibold">
                                     +91 98765 43210
                                 </span>
                             </li>
                             <li className="flex items-start gap-3">
                                 <MapPin className="h-4 w-4 text-orange-light mt-0.5 shrink-0" />
-                                <span className="text-indigo-100/70 text-sm font-semibold">
+                                <span className="text-white/70 text-sm font-semibold">
                                     Bengaluru HQ, Karnataka, Bharat
                                 </span>
                             </li>
@@ -175,7 +174,7 @@ export function Footer() {
                             <p className="text-[9px] font-bold text-orange-light uppercase tracking-widest">
                                 Technology Solutions
                             </p>
-                            <p className="text-indigo-100/50 text-xs leading-relaxed">
+                            <p className="text-white/50 text-xs leading-relaxed">
                                 Powering KGF Bharat's AI curriculum and
                                 technology initiatives. Expert-led courses
                                 designed for the modern workforce.
@@ -186,11 +185,11 @@ export function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-xs text-indigo-200/40 font-bold uppercase tracking-[0.2em] text-center md:text-left">
+                    <p className="text-xs text-white/40 font-bold uppercase tracking-[0.2em] text-center md:text-left">
                         &copy; 2026 Kurukshetra Gurukulam Foundation. All
                         rights reserved.
                     </p>
-                    <p className="text-xs text-indigo-200/30 font-semibold uppercase tracking-wider text-center md:text-right">
+                    <p className="text-xs text-white/30 font-semibold uppercase tracking-wider text-center md:text-right">
                         Sanatana. Sovereign. Smart.
                     </p>
                 </div>

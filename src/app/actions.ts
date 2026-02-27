@@ -42,9 +42,29 @@ export async function chatWithAI(history: any[], message: string) {
     }
 }
 
-export async function submitCorporateInquiry(formData: FormData) {
-    // Simulate email sending or DB storage
-    await new Promise(resolve => setTimeout(resolve, 1000));
+export async function submitCustomBatchInquiry(formData: FormData) {
+    const contactName = formData.get("contactName") as string
+    const email = formData.get("email") as string
+    const phone = formData.get("phone") as string
+    const organizationName = formData.get("organizationName") as string
+    const numberOfParticipants = formData.get("numberOfParticipants") as string
+    const preferredCourse = formData.get("preferredCourse") as string
+    const preferredSchedule = formData.get("preferredSchedule") as string
+    const additionalRequirements = formData.get("additionalRequirements") as string
+
+    console.log("Custom batch inquiry:", {
+        contactName,
+        email,
+        phone,
+        organizationName,
+        numberOfParticipants,
+        preferredCourse,
+        preferredSchedule,
+        additionalRequirements,
+    })
+
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    return { success: true }
 }
 
 export async function submitContactForm(formData: FormData) {

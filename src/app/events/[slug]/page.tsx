@@ -37,7 +37,7 @@ export default async function EventDetailPage({ params }: PageProps) {
     return (
         <div className="min-h-screen bg-off-white">
             {/* Hero */}
-            <div className="bg-navy text-white py-20 relative overflow-hidden">
+            <div className="bg-[#3E2723] text-white py-20 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
 
                 <div className="container-custom relative z-10">
@@ -102,7 +102,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                 <div className="max-w-3xl">
                     {/* Description */}
                     <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100 mb-8">
-                        <h2 className="text-2xl font-black text-navy mb-4">About This Event</h2>
+                        <h2 className="text-2xl font-black text-[#3E2723] mb-4">About This Event</h2>
                         <p className="text-gray-600 leading-relaxed text-lg">
                             {event.description}
                         </p>
@@ -111,7 +111,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                     {/* Highlights */}
                     {event.highlights && event.highlights.length > 0 && (
                         <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100 mb-8">
-                            <h2 className="text-2xl font-black text-navy mb-6">Highlights</h2>
+                            <h2 className="text-2xl font-black text-[#3E2723] mb-6">Highlights</h2>
                             <ul className="space-y-4">
                                 {event.highlights.map((highlight, i) => (
                                     <li key={i} className="flex items-start gap-3">
@@ -125,7 +125,7 @@ export default async function EventDetailPage({ params }: PageProps) {
 
                     {/* Registration CTA */}
                     {isUpcoming && event.registrationUrl && (
-                        <div className="bg-gradient-to-br from-navy to-navy/90 rounded-2xl p-8 sm:p-10 text-white">
+                        <div className="bg-gradient-to-br from-[#3E2723] to-[#5D4037] rounded-2xl p-8 sm:p-10 text-white">
                             <h2 className="text-2xl font-black mb-3">Register Now</h2>
                             <p className="text-gray-300 mb-6">
                                 Secure your spot at this event. Limited seats available.
@@ -134,7 +134,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                                 href={event.registrationUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-orange hover:bg-orange-light text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all shadow-lg shadow-orange/20"
+                                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all shadow-lg shadow-red-600/20"
                             >
                                 Register
                                 <ExternalLink className="w-4 h-4" />

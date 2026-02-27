@@ -46,10 +46,10 @@ const pillars = [
         sanskrit: "निर्माण",
         subtitle: "Nation Building",
         icon: Hammer,
-        accentColor: "blue-600",
-        bgColor: "bg-blue-50",
-        textColor: "text-blue-600",
-        borderColor: "border-blue-200",
+        accentColor: "amber-700",
+        bgColor: "bg-amber-50",
+        textColor: "text-amber-700",
+        borderColor: "border-amber-200",
         description:
             "Nirman is our commitment to building the infrastructure for a self-reliant Bharat. From skill development centers to institutional support, we create the physical and human foundations for a thriving Dharmic society.",
         initiatives: [
@@ -115,7 +115,7 @@ export default function MissionPage() {
     return (
         <div className="min-h-screen bg-off-white">
             {/* Hero */}
-            <div className="bg-navy text-white py-24 relative overflow-hidden">
+            <div className="bg-[#3E2723] text-white py-24 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
@@ -148,7 +148,7 @@ export default function MissionPage() {
                                             <PillarIcon className={`w-8 h-8 ${pillar.textColor}`} strokeWidth={2.5} />
                                         </div>
                                         <div>
-                                            <h2 className="text-4xl md:text-5xl font-black text-navy leading-none">
+                                            <h2 className="text-4xl md:text-5xl font-black text-[#3E2723] leading-none">
                                                 {pillar.name}{" "}
                                                 <span className={`${pillar.textColor} font-serif italic font-normal text-3xl`}>
                                                     ({pillar.sanskrit})
@@ -194,7 +194,7 @@ export default function MissionPage() {
                                                         <InitIcon className={`w-6 h-6 ${pillar.textColor}`} />
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-black text-navy text-lg">{initiative.title}</h4>
+                                                        <h4 className="font-black text-[#3E2723] text-lg">{initiative.title}</h4>
                                                         <p className="text-gray-500 mt-1">{initiative.desc}</p>
                                                     </div>
                                                 </div>
@@ -213,7 +213,7 @@ export default function MissionPage() {
             </div>
 
             {/* CTA */}
-            <div className="bg-navy text-white py-20">
+            <div className="bg-[#3E2723] text-white py-20">
                 <div className="container-custom text-center">
                     <h2 className="text-3xl md:text-4xl font-black mb-4 text-white">
                         Join the Movement
@@ -224,7 +224,7 @@ export default function MissionPage() {
                     <div className="flex flex-wrap justify-center gap-4">
                         <a
                             href="/ai-courses"
-                            className="bg-orange hover:bg-orange-light text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all shadow-lg shadow-orange/20"
+                            className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all shadow-lg shadow-red-600/20"
                         >
                             Explore Courses
                         </a>

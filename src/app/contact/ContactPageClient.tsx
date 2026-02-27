@@ -51,7 +51,7 @@ export function ContactPageClient() {
     return (
         <div className="min-h-screen bg-off-white">
             {/* Hero */}
-            <div className="bg-navy text-white py-24 relative overflow-hidden">
+            <div className="bg-[#3E2723] text-white py-24 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
 
                 <div className="container-custom relative z-10">
@@ -88,7 +88,7 @@ export function ContactPageClient() {
                             {submitted ? (
                                 <div className="text-center py-12">
                                     <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                                    <h3 className="text-2xl font-black text-navy mb-2">Message Sent!</h3>
+                                    <h3 className="text-2xl font-black text-[#3E2723] mb-2">Message Sent!</h3>
                                     <p className="text-gray-500 mb-6">
                                         Thank you for reaching out. We will get back to you within 24 to 48 hours.
                                     </p>
@@ -102,14 +102,14 @@ export function ContactPageClient() {
                             ) : (
                                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                                     <div>
-                                        <label htmlFor="name" className="block text-sm font-bold text-navy mb-2">
+                                        <label htmlFor="name" className="block text-sm font-bold text-[#3E2723] mb-2">
                                             Full Name
                                         </label>
                                         <input
                                             id="name"
                                             type="text"
                                             {...register("name", { required: "Name is required" })}
-                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-navy"
+                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-[#3E2723]"
                                             placeholder="Your full name"
                                         />
                                         {errors.name && (
@@ -118,7 +118,7 @@ export function ContactPageClient() {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="email" className="block text-sm font-bold text-navy mb-2">
+                                        <label htmlFor="email" className="block text-sm font-bold text-[#3E2723] mb-2">
                                             Email Address
                                         </label>
                                         <input
@@ -131,7 +131,7 @@ export function ContactPageClient() {
                                                     message: "Please enter a valid email address",
                                                 },
                                             })}
-                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-navy"
+                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-[#3E2723]"
                                             placeholder="you@example.com"
                                         />
                                         {errors.email && (
@@ -140,13 +140,13 @@ export function ContactPageClient() {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="subject" className="block text-sm font-bold text-navy mb-2">
+                                        <label htmlFor="subject" className="block text-sm font-bold text-[#3E2723] mb-2">
                                             Subject
                                         </label>
                                         <select
                                             id="subject"
                                             {...register("subject", { required: "Please select a subject" })}
-                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-navy bg-white"
+                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-[#3E2723] bg-white"
                                         >
                                             <option value="">Select a subject</option>
                                             {subjectOptions.map((opt) => (
@@ -161,7 +161,7 @@ export function ContactPageClient() {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="message" className="block text-sm font-bold text-navy mb-2">
+                                        <label htmlFor="message" className="block text-sm font-bold text-[#3E2723] mb-2">
                                             Message
                                         </label>
                                         <textarea
@@ -174,7 +174,7 @@ export function ContactPageClient() {
                                                     message: "Message must be at least 10 characters",
                                                 },
                                             })}
-                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-navy resize-none"
+                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-[#3E2723] resize-none"
                                             placeholder="Tell us how we can help..."
                                         />
                                         {errors.message && (
@@ -185,7 +185,7 @@ export function ContactPageClient() {
                                     <button
                                         type="submit"
                                         disabled={submitting}
-                                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-orange hover:bg-orange-light text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all shadow-lg shadow-orange/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all shadow-lg shadow-red-600/20 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         {submitting ? "Sending..." : "Send Message"}
                                         <Send className="w-4 h-4" />
@@ -203,14 +203,14 @@ export function ContactPageClient() {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
                         >
-                            <h3 className="text-xl font-black text-navy mb-6">Get in Touch</h3>
+                            <h3 className="text-xl font-black text-[#3E2723] mb-6">Get in Touch</h3>
                             <div className="space-y-5">
                                 <div className="flex items-start gap-4">
                                     <div className="w-10 h-10 rounded-xl bg-orange/10 flex items-center justify-center shrink-0">
                                         <Mail className="w-5 h-5 text-orange" />
                                     </div>
                                     <div>
-                                        <p className="font-bold text-navy text-sm">Email</p>
+                                        <p className="font-bold text-[#3E2723] text-sm">Email</p>
                                         <a
                                             href="mailto:info@kgfbharat.org"
                                             className="text-gray-500 hover:text-orange transition-colors"
@@ -225,7 +225,7 @@ export function ContactPageClient() {
                                         <Phone className="w-5 h-5 text-orange" />
                                     </div>
                                     <div>
-                                        <p className="font-bold text-navy text-sm">Phone</p>
+                                        <p className="font-bold text-[#3E2723] text-sm">Phone</p>
                                         <p className="text-gray-500">+91-XXXX-XXXXXX</p>
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@ export function ContactPageClient() {
                                         <MapPin className="w-5 h-5 text-orange" />
                                     </div>
                                     <div>
-                                        <p className="font-bold text-navy text-sm">Address</p>
+                                        <p className="font-bold text-[#3E2723] text-sm">Address</p>
                                         <p className="text-gray-500">
                                             KGF Bharat Foundation<br />
                                             New Delhi, India

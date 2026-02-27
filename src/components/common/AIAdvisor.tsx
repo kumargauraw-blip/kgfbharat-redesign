@@ -103,7 +103,7 @@ const AIAdvisor: React.FC = () => {
                         />
                         <button
                             onClick={handleSend}
-                            className="bg-orange p-3.5 rounded-2xl text-white hover:bg-orange-dark transition-all shadow-lg shadow-orange/20 active:scale-90"
+                            className="bg-red-600 p-3.5 rounded-2xl text-white hover:bg-red-700 transition-all shadow-lg shadow-red-600/20 active:scale-90"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" /></svg>
                         </button>

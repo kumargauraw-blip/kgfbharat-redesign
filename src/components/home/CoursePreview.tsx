@@ -70,7 +70,7 @@ export function CoursePreview() {
             <div className="container-custom">
                 <div className="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
                     <div className="space-y-4 text-center md:text-left">
-                        <h2 className="text-5xl md:text-7xl font-serif font-bold italic text-navy">
+                        <h2 className="text-5xl md:text-7xl font-serif font-bold italic text-[#3E2723]">
                             Dharmik <span className="text-orange">Education</span>
                         </h2>
                         <div className="w-24 h-2 bg-orange rounded-full mx-auto md:mx-0"></div>
@@ -94,15 +94,15 @@ export function CoursePreview() {
             <div className="container-custom">
                 <div className="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
                     <div className="space-y-4 text-center md:text-left">
-                        <h2 className="text-5xl md:text-7xl font-serif font-bold italic text-navy">
-                            AI-Tech <span className="text-blue-600">Innovation</span>
+                        <h2 className="text-5xl md:text-7xl font-serif font-bold italic text-[#3E2723]">
+                            AI-Tech <span className="text-[#5D4037]">Innovation</span>
                         </h2>
-                        <div className="w-24 h-2 bg-blue-600 rounded-full mx-auto md:mx-0"></div>
+                        <div className="w-24 h-2 bg-[#5D4037] rounded-full mx-auto md:mx-0"></div>
                         <p className="text-gray-500 text-lg font-medium max-w-xl">
                             Building the sovereign technological future of Bharat through AI and Engineering.
                         </p>
                     </div>
-                    <Link href="/ai-courses" className="text-blue-600 font-black uppercase tracking-widest text-sm hover:underline decoration-2 underline-offset-8">
+                    <Link href="/ai-courses" className="text-[#5D4037] font-black uppercase tracking-widest text-sm hover:underline decoration-2 underline-offset-8">
                         Explore Lab &rarr;
                     </Link>
                 </div>

@@ -47,7 +47,7 @@ export default function DharmalankaranPage() {
     return (
         <div className="min-h-screen bg-off-white">
             {/* Hero */}
-            <div className="bg-navy text-white py-28 relative overflow-hidden">
+            <div className="bg-[#3E2723] text-white py-28 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
                 {/* Decorative pattern */}
@@ -96,7 +96,7 @@ export default function DharmalankaranPage() {
                     <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                         About the Awards
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-black text-navy mb-6">
+                    <h2 className="text-3xl md:text-4xl font-black text-[#3E2723] mb-6">
                         Celebrating Excellence in Dharmic Service
                     </h2>
                     <p className="text-lg text-gray-600 leading-relaxed">
@@ -106,7 +106,7 @@ export default function DharmalankaranPage() {
 
                 {/* Highlights */}
                 <div className="max-w-2xl mx-auto mb-20">
-                    <h3 className="text-xl font-black text-navy mb-6 text-center">Event Highlights</h3>
+                    <h3 className="text-xl font-black text-[#3E2723] mb-6 text-center">Event Highlights</h3>
                     <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
                         <ul className="space-y-4">
                             {highlights.map((highlight, i) => (
@@ -125,7 +125,7 @@ export default function DharmalankaranPage() {
                         <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Recognition
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-black text-navy">
+                        <h2 className="text-3xl md:text-4xl font-black text-[#3E2723]">
                             Award Categories
                         </h2>
                     </div>
@@ -141,7 +141,7 @@ export default function DharmalankaranPage() {
                                     <div className="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-4">
                                         <Icon className="w-6 h-6 text-orange" />
                                     </div>
-                                    <h3 className="text-lg font-black text-navy mb-2">{category.title}</h3>
+                                    <h3 className="text-lg font-black text-[#3E2723] mb-2">{category.title}</h3>
                                     <p className="text-gray-500 text-sm">{category.description}</p>
                                 </div>
                             )
@@ -155,7 +155,7 @@ export default function DharmalankaranPage() {
                         <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Our Honorees
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-black text-navy">
+                        <h2 className="text-3xl md:text-4xl font-black text-[#3E2723]">
                             Past Honourees
                         </h2>
                     </div>
@@ -174,14 +174,14 @@ export default function DharmalankaranPage() {
                         <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Memories
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-black text-navy">
+                        <h2 className="text-3xl md:text-4xl font-black text-[#3E2723]">
                             Event Gallery
                         </h2>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[1, 2, 3, 4].map((i) => (
-                            <div key={i} className="aspect-square bg-navy/5 rounded-2xl flex items-center justify-center">
+                            <div key={i} className="aspect-square bg-[#3E2723]/5 rounded-2xl flex items-center justify-center">
                                 <span className="text-gray-300 text-sm font-medium">Photo {i}</span>
                             </div>
                         ))}
@@ -192,7 +192,7 @@ export default function DharmalankaranPage() {
                 </div>
 
                 {/* How to Nominate */}
-                <div className="bg-gradient-to-br from-navy to-navy/90 rounded-3xl p-10 sm:p-16 text-white text-center">
+                <div className="bg-gradient-to-br from-[#3E2723] to-[#5D4037] rounded-3xl p-10 sm:p-16 text-white text-center">
                     <h2 className="text-3xl md:text-4xl font-black mb-4 text-white">
                         How to Nominate
                     </h2>
@@ -202,7 +202,7 @@ export default function DharmalankaranPage() {
                     <div className="flex flex-wrap justify-center gap-4">
                         <Link
                             href="/contact"
-                            className="inline-flex items-center gap-2 bg-orange hover:bg-orange-light text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all shadow-lg shadow-orange/20"
+                            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all shadow-lg shadow-red-600/20"
                         >
                             Contact Us to Nominate
                             <ArrowRight className="w-4 h-4" />

@@ -38,7 +38,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
     return (
         <div className="min-h-screen bg-off-white pb-20">
             {/* Hero/Header */}
-            <div className="bg-navy text-white py-16 relative overflow-hidden">
+            <div className="bg-[#3E2723] text-white py-16 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="container-custom relative z-10">
                     <Link href="/ai-courses" className="inline-flex items-center text-orange hover:text-white mb-6 transition-colors text-sm font-medium">
@@ -66,7 +66,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
 
                     {/* Description */}
                     <section>
-                        <h2 className="text-2xl font-bold font-heading text-navy mb-4">About this Course</h2>
+                        <h2 className="text-2xl font-bold font-heading text-[#3E2723] mb-4">About this Course</h2>
                         <div className="prose max-w-none text-gray-600">
                             <p className="whitespace-pre-line">{course.description}</p>
                         </div>
@@ -75,7 +75,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                     {/* Learning Outcomes */}
                     {course.learningOutcomes && course.learningOutcomes.length > 0 && (
                         <section className="bg-white p-8 rounded-xl border border-gray-100">
-                            <h2 className="text-xl font-bold font-heading text-navy mb-6">What You Will Learn</h2>
+                            <h2 className="text-xl font-bold font-heading text-[#3E2723] mb-6">What You Will Learn</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {course.learningOutcomes.map((outcome, idx) => (
                                     <div key={idx} className="flex items-start space-x-3">
@@ -90,7 +90,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                     {/* Curriculum */}
                     {course.curriculum && course.curriculum.length > 0 && (
                         <section>
-                            <h2 className="text-2xl font-bold font-heading text-navy mb-6">Curriculum</h2>
+                            <h2 className="text-2xl font-bold font-heading text-[#3E2723] mb-6">Curriculum</h2>
                             <div className="space-y-4">
                                 {course.curriculum.map((topic, idx) => (
                                     <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex items-center">
@@ -107,14 +107,14 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                     {/* Upcoming Batches */}
                     {activeBatches.length > 0 && (
                         <section>
-                            <h2 className="text-2xl font-bold font-heading text-navy mb-6">Upcoming Batches</h2>
+                            <h2 className="text-2xl font-bold font-heading text-[#3E2723] mb-6">Upcoming Batches</h2>
                             <div className="space-y-4">
                                 {activeBatches.map((batch) => (
                                     <div key={batch.id} className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
                                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                                             <div className="space-y-2">
                                                 <div className="flex items-center gap-3">
-                                                    <span className="font-bold text-navy text-lg">{batch.batchNumber}</span>
+                                                    <span className="font-bold text-[#3E2723] text-lg">{batch.batchNumber}</span>
                                                     <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
                                                         batch.status === "Enrolling"
                                                             ? "bg-green-100 text-green-700"
@@ -143,14 +143,14 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                                                 </div>
                                             </div>
                                             <div className="flex flex-col items-end gap-2 shrink-0">
-                                                <span className="text-2xl font-bold text-navy">&#8377;{batch.price}</span>
+                                                <span className="text-2xl font-bold text-[#3E2723]">&#8377;{batch.price}</span>
                                                 {batch.seatsRemaining != null && batch.maxSeats != null && (
                                                     <span className="flex items-center gap-1 text-sm text-gray-500">
                                                         <Users className="h-3.5 w-3.5" />
                                                         {batch.seatsRemaining} of {batch.maxSeats} seats left
                                                     </span>
                                                 )}
-                                                <Button asChild className="bg-orange hover:bg-orange/90 text-white font-semibold px-6">
+                                                <Button asChild className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6">
                                                     <a href={batch.enrollmentUrl} target="_blank" rel="noopener noreferrer">
                                                         Enroll Now
                                                     </a>
@@ -165,13 +165,13 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
 
                     {/* Instructor Bio */}
                     <section>
-                        <h2 className="text-2xl font-bold font-heading text-navy mb-6">Your Instructor</h2>
+                        <h2 className="text-2xl font-bold font-heading text-[#3E2723] mb-6">Your Instructor</h2>
                         <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col sm:flex-row gap-6">
-                            <div className="w-20 h-20 rounded-full bg-navy/10 flex items-center justify-center shrink-0">
-                                <GraduationCap className="h-10 w-10 text-navy" />
+                            <div className="w-20 h-20 rounded-full bg-[#3E2723]/10 flex items-center justify-center shrink-0">
+                                <GraduationCap className="h-10 w-10 text-[#3E2723]" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold text-navy">Kumar Gauraw</h3>
+                                <h3 className="text-xl font-bold text-[#3E2723]">Kumar Gauraw</h3>
                                 <p className="text-orange font-medium text-sm mb-3">Lead AI Instructor</p>
                                 <p className="text-gray-600 leading-relaxed">
                                     Technology educator with 15+ years of experience bridging ancient Indian pedagogical methods with cutting-edge AI and technology training. Kumar brings a unique perspective that combines Sattvic principles with practical, industry-ready skills to help learners achieve transformative results.
@@ -183,7 +183,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                     {/* Testimonials */}
                     {testimonials.length > 0 && (
                         <section>
-                            <h2 className="text-2xl font-bold font-heading text-navy mb-6">What Our Students Say</h2>
+                            <h2 className="text-2xl font-bold font-heading text-[#3E2723] mb-6">What Our Students Say</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {testimonials.map((t) => (
                                     <div key={t.id} className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
@@ -199,7 +199,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                                             &ldquo;{t.content}&rdquo;
                                         </p>
                                         <div>
-                                            <p className="font-semibold text-navy">{t.name}</p>
+                                            <p className="font-semibold text-[#3E2723]">{t.name}</p>
                                             <p className="text-sm text-gray-500">
                                                 {t.role}{t.company ? `, ${t.company}` : ""}
                                             </p>
@@ -213,7 +213,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                     {/* FAQ */}
                     {course.faq && course.faq.length > 0 && (
                         <section>
-                            <h2 className="text-2xl font-bold font-heading text-navy mb-6">Frequently Asked Questions</h2>
+                            <h2 className="text-2xl font-bold font-heading text-[#3E2723] mb-6">Frequently Asked Questions</h2>
                             <FaqAccordion items={course.faq} />
                         </section>
                     )}
@@ -226,7 +226,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                             <div className="p-6 space-y-6">
                                 <div className="flex justify-between items-center border-b border-gray-100 pb-4">
                                     <span className="text-gray-500">Price</span>
-                                    <span className="text-2xl font-bold text-navy">{course.price}</span>
+                                    <span className="text-2xl font-bold text-[#3E2723]">{course.price}</span>
                                 </div>
 
                                 <div className="space-y-4 text-sm text-gray-600">
@@ -249,13 +249,13 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                                 </div>
 
                                 {activeBatches.length > 0 ? (
-                                    <Button asChild className="w-full bg-orange hover:bg-orange/90 text-white text-lg h-12 shadow-md font-semibold">
+                                    <Button asChild className="w-full bg-red-600 hover:bg-red-700 text-white text-lg h-12 shadow-md font-semibold">
                                         <a href={activeBatches[0].enrollmentUrl} target="_blank" rel="noopener noreferrer">
                                             Enroll Now
                                         </a>
                                     </Button>
                                 ) : course.status === 'Active' ? (
-                                    <Button className="w-full bg-orange hover:bg-orange/90 text-white text-lg h-12 shadow-md font-semibold">
+                                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white text-lg h-12 shadow-md font-semibold">
                                         Enroll Now
                                     </Button>
                                 ) : (
@@ -272,7 +272,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                             </div>
                             <div className="bg-gray-50 p-4 text-center">
                                 <p className="text-xs text-gray-500">
-                                    Need help? <Link href="/contact" className="text-navy underline font-medium">Contact Us</Link>
+                                    Need help? <Link href="/contact" className="text-[#3E2723] underline font-medium">Contact Us</Link>
                                 </p>
                             </div>
                         </div>

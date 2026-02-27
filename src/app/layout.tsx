@@ -65,7 +65,7 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} antialiased min-h-screen flex flex-col`}
       >
         <Navbar />
-        <main className="flex-1">
+        <main className="flex-1 pt-28">
           {children}
         </main>
         <Footer />

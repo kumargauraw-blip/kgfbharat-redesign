@@ -41,7 +41,7 @@ function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void })
                         />
                     </div>
                 ) : (
-                    <div className="aspect-video bg-navy/50 rounded-xl overflow-hidden flex items-center justify-center">
+                    <div className="aspect-video bg-[#3E2723]/50 rounded-xl overflow-hidden flex items-center justify-center">
                         <div className="text-center text-white">
                             <ImageIcon className="w-16 h-16 mx-auto mb-4 text-orange/50" />
                             <p className="text-lg font-bold">{item.title}</p>
@@ -86,7 +86,7 @@ export function GalleryPageClient({
     return (
         <div className="min-h-screen bg-off-white">
             {/* Hero */}
-            <div className="bg-navy text-white py-24 relative overflow-hidden">
+            <div className="bg-[#3E2723] text-white py-24 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
 
                 <div className="container-custom relative z-10">
@@ -119,8 +119,8 @@ export function GalleryPageClient({
                             onClick={() => setActiveCategory(category)}
                             className={`px-5 py-2.5 rounded-xl font-bold text-sm uppercase tracking-wider transition-all ${
                                 activeCategory === category
-                                    ? "bg-orange text-white shadow-lg shadow-orange/20"
-                                    : "bg-white text-gray-500 hover:text-navy border border-gray-200"
+                                    ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
+                                    : "bg-white text-gray-500 hover:text-[#3E2723] border border-gray-200"
                             }`}
                         >
                             {category}
@@ -148,10 +148,10 @@ export function GalleryPageClient({
                                     exit={{ opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.3, delay: i * 0.05 }}
                                     onClick={() => setSelectedItem(item)}
-                                    className="group relative aspect-[4/3] bg-navy/10 rounded-2xl overflow-hidden text-left"
+                                    className="group relative aspect-[4/3] bg-[#3E2723]/10 rounded-2xl overflow-hidden text-left"
                                 >
                                     {/* Placeholder visual */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-navy/20 to-navy/40 flex items-center justify-center">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-[#3E2723]/20 to-[#3E2723]/40 flex items-center justify-center">
                                         {item.type === "video" ? (
                                             <Play className="w-12 h-12 text-white/40 group-hover:text-orange/70 transition-colors" />
                                         ) : (
