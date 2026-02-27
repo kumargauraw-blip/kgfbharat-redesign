@@ -38,7 +38,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
                         )}
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-black text-[#3E2723] mb-3 group-hover:text-orange transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-black text-[#111827] mb-3 group-hover:text-orange transition-colors">
                         {event.title}
                     </h3>
 
@@ -88,9 +88,9 @@ export function EventsPageClient({ events }: { events: Event[] }) {
     const displayed = activeTab === "upcoming" ? upcoming : past
 
     return (
-        <div className="min-h-screen bg-off-white">
+        <div className="min-h-screen bg-white">
             {/* Hero */}
-            <div className="bg-[#3E2723] text-white py-24 relative overflow-hidden">
+            <div className="bg-[#111827] text-white py-24 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
@@ -123,7 +123,7 @@ export function EventsPageClient({ events }: { events: Event[] }) {
                         className={`px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-wider transition-all ${
                             activeTab === "upcoming"
                                 ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
-                                : "bg-white text-gray-500 hover:text-[#3E2723] border border-gray-200"
+                                : "bg-white text-gray-500 hover:text-[#111827] border border-gray-200"
                         }`}
                     >
                         Upcoming ({upcoming.length})
@@ -133,7 +133,7 @@ export function EventsPageClient({ events }: { events: Event[] }) {
                         className={`px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-wider transition-all ${
                             activeTab === "past"
                                 ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
-                                : "bg-white text-gray-500 hover:text-[#3E2723] border border-gray-200"
+                                : "bg-white text-gray-500 hover:text-[#111827] border border-gray-200"
                         }`}
                     >
                         Past ({past.length})

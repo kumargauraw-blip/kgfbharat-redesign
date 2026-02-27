@@ -55,9 +55,9 @@ export function DonatePageClient() {
     }
 
     return (
-        <div className="min-h-screen bg-off-white">
+        <div className="min-h-screen bg-white">
             {/* Hero */}
-            <div className="bg-[#3E2723] text-white py-24 relative overflow-hidden">
+            <div className="bg-[#111827] text-white py-24 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
@@ -109,18 +109,18 @@ export function DonatePageClient() {
                                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${
                                     tier.color === "orange" ? "bg-orange/10" :
                                     tier.color === "blue-600" ? "bg-amber-50" :
-                                    "bg-[#3E2723]/10"
+                                    "bg-[#111827]/10"
                                 }`}>
                                     <Icon className={`w-7 h-7 ${
                                         tier.color === "orange" ? "text-orange" :
                                         tier.color === "blue-600" ? "text-amber-700" :
-                                        "text-[#3E2723]"
+                                        "text-[#111827]"
                                     }`} />
                                 </div>
 
-                                <h3 className="text-xl font-black text-[#3E2723] mb-1">{tier.name}</h3>
+                                <h3 className="text-xl font-black text-[#111827] mb-1">{tier.name}</h3>
                                 <div className="flex items-baseline gap-1 mb-4">
-                                    <span className="text-3xl font-black text-[#3E2723]">
+                                    <span className="text-3xl font-black text-[#111827]">
                                         <IndianRupee className="w-6 h-6 inline -mt-1" />
                                         {tier.amount.toLocaleString("en-IN")}
                                     </span>
@@ -154,7 +154,7 @@ export function DonatePageClient() {
                     transition={{ duration: 0.4, delay: 0.4 }}
                     className="max-w-md mx-auto bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center"
                 >
-                    <h3 className="text-xl font-black text-[#3E2723] mb-2">Custom Amount</h3>
+                    <h3 className="text-xl font-black text-[#111827] mb-2">Custom Amount</h3>
                     <p className="text-gray-500 text-sm mb-6">Every contribution, big or small, makes a difference.</p>
                     <div className="flex gap-3">
                         <div className="relative flex-1">
@@ -165,7 +165,7 @@ export function DonatePageClient() {
                                 value={customAmount}
                                 onChange={(e) => setCustomAmount(e.target.value)}
                                 placeholder="Enter amount"
-                                className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-[#3E2723] font-bold"
+                                className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-[#111827] font-bold"
                             />
                         </div>
                         <button

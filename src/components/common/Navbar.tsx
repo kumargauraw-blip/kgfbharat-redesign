@@ -71,8 +71,8 @@ function DesktopDropdown({
         >
             <button
                 className={cn(
-                    "flex items-center gap-1 hover:text-orange-light transition-colors",
-                    isActive && "text-orange-light"
+                    "flex items-center gap-1 hover:text-orange transition-colors",
+                    isActive && "text-orange"
                 )}
             >
                 {item.name}
@@ -98,7 +98,7 @@ function DesktopDropdown({
                                 key={child.href}
                                 href={child.href}
                                 className={cn(
-                                    "block px-5 py-2.5 text-sm font-bold text-[#3E2723] hover:bg-orange/10 hover:text-orange transition-colors normal-case tracking-normal",
+                                    "block px-5 py-2.5 text-sm font-bold text-[#111827] hover:bg-orange/10 hover:text-orange transition-colors normal-case tracking-normal",
                                     pathname === child.href &&
                                         "text-orange bg-orange/5"
                                 )}
@@ -147,7 +147,7 @@ export function Navbar() {
         <nav
             className={cn(
                 "fixed top-0 left-0 right-0 z-[100] transition-all duration-500",
-                isScrolled ? "glass-nav py-3" : "bg-[#3E2723] py-4"
+                isScrolled ? "glass-nav py-3" : "bg-white border-b border-gray-100 py-4"
             )}
         >
             <div className="container-custom flex items-center justify-between">
@@ -160,7 +160,7 @@ export function Navbar() {
                                 isScrolled ? "h-10 w-10" : "h-14 w-14"
                             )}
                         >
-                            <div className="bg-white p-0.5 rounded-xl shadow-lg border-2 border-orange-light h-full w-full">
+                            <div className="bg-white p-0.5 rounded-xl shadow-lg border-2 border-orange h-full w-full">
                                 <img
                                     src="/kgf-logo.png"
                                     alt="KGF Logo"
@@ -170,11 +170,11 @@ export function Navbar() {
                         </div>
 
                         <div className="hidden sm:block">
-                            <h1 className="text-xl md:text-2xl font-black tracking-tighter text-white">
+                            <h1 className="text-xl md:text-2xl font-black tracking-tighter text-[#111827]">
                                 KGF{" "}
-                                <span className="text-orange-light">BHARAT</span>
+                                <span className="text-orange">BHARAT</span>
                             </h1>
-                            <p className="text-[8px] uppercase tracking-[0.4em] text-orange-200 font-bold">
+                            <p className="text-[8px] uppercase tracking-[0.4em] text-gray-400 font-bold">
                                 Kurukshetra Gurukulam Foundation
                             </p>
                         </div>
@@ -182,7 +182,7 @@ export function Navbar() {
                 </div>
 
                 {/* Desktop Navigation */}
-                <div className="hidden xl:flex items-center gap-8 text-[11px] font-black uppercase tracking-widest text-white/90">
+                <div className="hidden xl:flex items-center gap-8 text-[11px] font-black uppercase tracking-widest text-[#111827]/80">
                     {navItems.map((item) =>
                         item.children ? (
                             <DesktopDropdown
@@ -195,9 +195,9 @@ export function Navbar() {
                                 key={item.href}
                                 href={item.href}
                                 className={cn(
-                                    "hover:text-orange-light transition-colors",
+                                    "hover:text-orange transition-colors",
                                     pathname === item.href &&
-                                        "text-orange-light"
+                                        "text-orange"
                                 )}
                             >
                                 {item.name}
@@ -213,7 +213,7 @@ export function Navbar() {
                         className={cn(
                             "inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-7 py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl border-2 border-red-600",
                             pathname === "/donate" &&
-                                "bg-white text-red-600 border-white"
+                                "bg-white text-red-600 border-red-600"
                         )}
                     >
                         <Heart className="h-4 w-4" />
@@ -225,7 +225,7 @@ export function Navbar() {
                 <div className="flex xl:hidden">
                     <button
                         type="button"
-                        className="text-white hover:text-orange-light transition-colors p-2"
+                        className="text-[#111827] hover:text-orange transition-colors p-2"
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label={isOpen ? "Close menu" : "Open menu"}
                     >
@@ -246,7 +246,7 @@ export function Navbar() {
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="xl:hidden absolute top-full left-0 w-full bg-[#3E2723] border-b-2 border-orange-light shadow-2xl overflow-hidden"
+                        className="xl:hidden absolute top-full left-0 w-full bg-white border-b-2 border-orange shadow-2xl overflow-hidden"
                     >
                         <div className="py-4 px-4 max-h-[80vh] overflow-y-auto">
                             {mobileNavItems.map((item, index) => (
@@ -262,9 +262,9 @@ export function Navbar() {
                                     <Link
                                         href={item.href}
                                         className={cn(
-                                            "block px-4 py-3.5 text-lg font-black text-white hover:text-orange-light hover:bg-white/5 rounded-xl transition-colors",
+                                            "block px-4 py-3.5 text-lg font-black text-[#111827] hover:text-orange hover:bg-orange/5 rounded-xl transition-colors",
                                             pathname === item.href &&
-                                                "text-orange-light bg-white/5"
+                                                "text-orange bg-orange/5"
                                         )}
                                         onClick={() => setIsOpen(false)}
                                     >

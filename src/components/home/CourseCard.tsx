@@ -51,10 +51,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             </div>
 
             <div className="p-8">
-                <p className={`text-[11px] font-bold uppercase tracking-widest mb-3 ${isDharmik ? 'text-orange' : 'text-[#5D4037]'}`}>
+                <p className={`text-[11px] font-bold uppercase tracking-widest mb-3 ${isDharmik ? 'text-orange' : 'text-[#111827]'}`}>
                     {course.category}
                 </p>
-                <h3 className="text-2xl font-bold mb-4 text-[#3E2723] group-hover:text-orange transition-colors leading-tight">
+                <h3 className="text-2xl font-bold mb-4 text-[#111827] group-hover:text-orange transition-colors leading-tight">
                     {course.title}
                 </h3>
                 <p className="text-gray-500 text-sm line-clamp-2 mb-8 leading-relaxed font-medium">
@@ -66,7 +66,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                         <span className="text-[10px] text-gray-400 uppercase font-bold tracking-tighter">Duration</span>
                         <span className="text-sm font-bold text-gray-800">{course.duration}</span>
                     </div>
-                    <button className={`p-3.5 rounded-2xl bg-gray-50 hover:bg-white border border-gray-100 transition-all shadow-sm ${isDharmik ? 'text-orange hover:shadow-orange/20' : 'text-[#5D4037] hover:shadow-amber-100'}`}>
+                    <button className={`p-3.5 rounded-2xl bg-gray-50 hover:bg-white border border-gray-100 transition-all shadow-sm ${isDharmik ? 'text-orange hover:shadow-orange/20' : 'text-[#111827] hover:shadow-amber-100'}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                     </button>
                 </div>

@@ -40,7 +40,7 @@ export function MediaSection() {
             <div className="container-custom">
                 <div className="text-center mb-20 relative">
                     <div className="inline-block relative">
-                        <h2 className="text-5xl md:text-6xl font-black text-[#3E2723] relative z-10">
+                        <h2 className="text-5xl md:text-6xl font-black text-[#111827] relative z-10">
                             In The <span className="text-orange">Media</span>
                         </h2>
                         <div className="absolute -bottom-2 left-0 right-0 h-4 bg-orange/20 -rotate-1 -z-0"></div>
@@ -52,14 +52,14 @@ export function MediaSection() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {MEDIA_ITEMS.map((item) => (
-                        <div key={item.id} className="group flex flex-col bg-[#FAF9F6] rounded-[2.5rem] overflow-hidden border border-gray-100 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover:-translate-y-2">
+                        <div key={item.id} className="group flex flex-col bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover:-translate-y-2">
                             <div className="aspect-[16/10] overflow-hidden relative">
                                 <img
                                     src={item.image}
                                     alt={item.title}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#3E2723]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             </div>
 
                             <div className="p-10 flex flex-col flex-1">
@@ -74,14 +74,14 @@ export function MediaSection() {
                                     </span>
                                 </div>
 
-                                <h3 className="text-2xl font-black text-[#3E2723] leading-tight mb-8 group-hover:text-orange transition-colors">
+                                <h3 className="text-2xl font-black text-[#111827] leading-tight mb-8 group-hover:text-orange transition-colors">
                                     {item.title}
                                 </h3>
 
                                 <div className="mt-auto">
                                     <Link
                                         href={item.url}
-                                        className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-[#3E2723] group-hover:text-orange"
+                                        className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-[#111827] group-hover:text-orange"
                                     >
                                         Read Full Story
                                         <svg className="transition-transform group-hover:translate-x-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>

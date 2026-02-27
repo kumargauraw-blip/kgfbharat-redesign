@@ -21,7 +21,7 @@ export default function FaqAccordion({ items }: { items: FAQ[] }) {
                             onClick={() => setOpenIndex(isOpen ? null : idx)}
                             className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
                         >
-                            <span className="font-semibold text-[#3E2723] pr-4">{item.question}</span>
+                            <span className="font-semibold text-[#111827] pr-4">{item.question}</span>
                             <motion.span
                                 animate={{ rotate: isOpen ? 180 : 0 }}
                                 transition={{ duration: 0.2 }}

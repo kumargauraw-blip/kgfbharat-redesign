@@ -57,7 +57,7 @@ const AIAdvisor: React.FC = () => {
                             </div>
                             <div>
                                 <h4 className="font-extrabold text-white text-lg">Advisor GPT</h4>
-                                <p className="text-[10px] text-orange-light font-bold uppercase tracking-widest">KGF Virtual Guru</p>
+                                <p className="text-[10px] text-orange/80 font-bold uppercase tracking-widest">KGF Virtual Guru</p>
                             </div>
                         </div>
                         <button onClick={() => setIsOpen(false)} className="text-white/80 hover:text-white bg-white/10 p-2 rounded-xl transition-colors">

@@ -67,7 +67,7 @@ const socialLinks = [
 
 export function Footer() {
     return (
-        <footer className="pt-24 pb-12 bg-[#3E2723] text-white">
+        <footer className="pt-24 pb-12 bg-[#111827] text-white">
             <div className="container-custom">
                 {/* Main Footer Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12">
@@ -87,7 +87,7 @@ export function Footer() {
                                 <h4 className="text-2xl font-black tracking-tighter">
                                     KGF BHARAT
                                 </h4>
-                                <p className="text-[9px] font-bold text-orange-light uppercase tracking-widest">
+                                <p className="text-[9px] font-bold text-orange uppercase tracking-widest">
                                     Kurukshetra Gurukulam Foundation
                                 </p>
                             </div>
@@ -115,7 +115,7 @@ export function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h5 className="font-black text-orange-light mb-8 uppercase tracking-[0.2em] text-xs">
+                        <h5 className="font-black text-orange mb-8 uppercase tracking-[0.2em] text-xs">
                             Quick Links
                         </h5>
                         <ul className="space-y-3">
@@ -123,7 +123,7 @@ export function Footer() {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="text-white/70 hover:text-orange-light transition-colors text-sm font-semibold"
+                                        className="text-white/70 hover:text-orange transition-colors text-sm font-semibold"
                                     >
                                         {link.name}
                                     </Link>
@@ -134,27 +134,27 @@ export function Footer() {
 
                     {/* Contact Info */}
                     <div>
-                        <h5 className="font-black text-orange-light mb-8 uppercase tracking-[0.2em] text-xs">
+                        <h5 className="font-black text-orange mb-8 uppercase tracking-[0.2em] text-xs">
                             Contact Us
                         </h5>
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3">
-                                <Mail className="h-4 w-4 text-orange-light mt-0.5 shrink-0" />
+                                <Mail className="h-4 w-4 text-orange mt-0.5 shrink-0" />
                                 <a
                                     href="mailto:info@kgfbharat.org"
-                                    className="text-white/70 hover:text-orange-light transition-colors text-sm font-semibold"
+                                    className="text-white/70 hover:text-orange transition-colors text-sm font-semibold"
                                 >
                                     info@kgfbharat.org
                                 </a>
                             </li>
                             <li className="flex items-start gap-3">
-                                <Phone className="h-4 w-4 text-orange-light mt-0.5 shrink-0" />
+                                <Phone className="h-4 w-4 text-orange mt-0.5 shrink-0" />
                                 <span className="text-white/70 text-sm font-semibold">
                                     +91 98765 43210
                                 </span>
                             </li>
                             <li className="flex items-start gap-3">
-                                <MapPin className="h-4 w-4 text-orange-light mt-0.5 shrink-0" />
+                                <MapPin className="h-4 w-4 text-orange mt-0.5 shrink-0" />
                                 <span className="text-white/70 text-sm font-semibold">
                                     Bengaluru HQ, Karnataka, Bharat
                                 </span>
@@ -164,14 +164,14 @@ export function Footer() {
 
                     {/* Technology Partner */}
                     <div>
-                        <h5 className="font-black text-orange-light mb-8 uppercase tracking-[0.2em] text-xs">
+                        <h5 className="font-black text-orange mb-8 uppercase tracking-[0.2em] text-xs">
                             Technology Partner
                         </h5>
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
                             <p className="text-xl font-black tracking-tight">
                                 Krishna Worldwide
                             </p>
-                            <p className="text-[9px] font-bold text-orange-light uppercase tracking-widest">
+                            <p className="text-[9px] font-bold text-orange uppercase tracking-widest">
                                 Technology Solutions
                             </p>
                             <p className="text-white/50 text-xs leading-relaxed">
