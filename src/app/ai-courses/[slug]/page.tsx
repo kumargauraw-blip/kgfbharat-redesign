@@ -54,7 +54,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                     <h1 className="text-3xl md:text-5xl font-heading font-bold mb-6 leading-tight max-w-4xl">
                         {course.title}
                     </h1>
-                    <p className="text-xl text-[#111827] max-w-3xl leading-relaxed">
+                    <p className="text-xl text-[#111827] max-w-5xl leading-relaxed">
                         {course.tagline || course.description}
                     </p>
                 </div>

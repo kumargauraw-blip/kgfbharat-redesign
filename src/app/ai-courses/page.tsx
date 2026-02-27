@@ -53,7 +53,7 @@ export default async function CoursesPage() {
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                        <div className="max-w-2xl">
+                        <div className="max-w-3xl">
                             <div className="flex items-center gap-2 mb-4">
                                 <Sparkles className="h-5 w-5 text-purple-600" />
                                 <span className="text-purple-600 font-semibold tracking-wide uppercase text-sm">
@@ -191,7 +191,7 @@ export default async function CoursesPage() {
                 <div className="mt-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -translate-x-1/3 translate-y-1/3" />
-                    <div className="relative z-10 max-w-2xl mx-auto">
+                    <div className="relative z-10 max-w-3xl mx-auto">
                         <HelpCircle className="h-12 w-12 text-blue-200 mx-auto mb-4" />
                         <h3 className="text-2xl md:text-3xl font-bold mb-4">
                             Not sure which course is right for you?

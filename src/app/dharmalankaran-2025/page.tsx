@@ -57,7 +57,7 @@ export default function DharmalankaranPage() {
                 }} />
 
                 <div className="container-custom relative z-10 text-center">
-                    <div className="max-w-3xl mx-auto">
+                    <div className="max-w-5xl mx-auto">
                         <div className="inline-flex items-center gap-2 bg-orange/20 border border-orange/30 px-5 py-2 rounded-full mb-8">
                             <Award className="w-4 h-4 text-yellow-300" />
                             <span className="text-yellow-300 font-bold text-sm uppercase tracking-wider">National Awards Ceremony</span>
@@ -68,7 +68,7 @@ export default function DharmalankaranPage() {
                             <span className="block text-orange">2025</span>
                         </h1>
 
-                        <p className="text-xl text-[#111827] leading-relaxed mb-8 max-w-2xl mx-auto">
+                        <p className="text-xl text-[#111827] leading-relaxed mb-8 max-w-3xl mx-auto">
                             Honoring outstanding contributors to Dharmic values through technology, education, and social impact.
                         </p>
 
@@ -92,7 +92,7 @@ export default function DharmalankaranPage() {
 
             {/* About the Awards */}
             <div className="container-custom py-20">
-                <div className="max-w-3xl mx-auto text-center mb-20">
+                <div className="max-w-4xl mx-auto text-center mb-20">
                     <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                         About the Awards
                     </span>
@@ -105,7 +105,7 @@ export default function DharmalankaranPage() {
                 </div>
 
                 {/* Highlights */}
-                <div className="max-w-2xl mx-auto mb-20">
+                <div className="max-w-3xl mx-auto mb-20">
                     <h3 className="text-xl font-black text-[#111827] mb-6 text-center">Event Highlights</h3>
                     <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
                         <ul className="space-y-4">
@@ -196,7 +196,7 @@ export default function DharmalankaranPage() {
                     <h2 className="text-3xl md:text-4xl font-black mb-4 text-white">
                         How to Nominate
                     </h2>
-                    <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
+                    <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-8">
                         Know someone making exceptional contributions to Dharmic values and society? Nominate them for the Dharmalankaran Awards. Nominations for the next ceremony will open soon.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">

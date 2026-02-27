@@ -49,7 +49,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                         All Events
                     </Link>
 
-                    <div className="max-w-3xl">
+                    <div className="max-w-5xl">
                         <div className="flex flex-wrap items-center gap-3 mb-4">
                             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-white">
                                 {event.category}
@@ -99,7 +99,7 @@ export default async function EventDetailPage({ params }: PageProps) {
 
             {/* Content */}
             <div className="container-custom py-16">
-                <div className="max-w-3xl">
+                <div className="max-w-4xl">
                     {/* Description */}
                     <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100 mb-8">
                         <h2 className="text-2xl font-black text-[#111827] mb-4">About This Event</h2>

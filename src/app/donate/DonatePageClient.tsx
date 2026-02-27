@@ -66,7 +66,7 @@ export function DonatePageClient() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="max-w-3xl"
+                        className="max-w-5xl"
                     >
                         <span className="text-yellow-300 font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Support Our Mission
@@ -201,7 +201,7 @@ export function DonatePageClient() {
                             <span className="text-sm font-medium">500+ Donors and Growing</span>
                         </div>
                     </div>
-                    <p className="text-gray-400 text-sm max-w-xl mx-auto">
+                    <p className="text-gray-400 text-sm max-w-2xl mx-auto">
                         KGF Bharat is a registered charitable trust. All donations are eligible for tax exemption under Section 80G of the Income Tax Act, 1961. You will receive a tax receipt via email after your contribution.
                     </p>
                 </motion.div>

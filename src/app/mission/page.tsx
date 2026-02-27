@@ -120,7 +120,7 @@ export default function MissionPage() {
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
                 <div className="container-custom relative z-10">
-                    <div className="max-w-3xl">
+                    <div className="max-w-5xl">
                         <span className="text-yellow-300 font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Our Foundation
                         </span>
@@ -218,7 +218,7 @@ export default function MissionPage() {
                     <h2 className="text-3xl md:text-4xl font-black mb-4 text-white">
                         Join the Movement
                     </h2>
-                    <p className="text-gray-300 text-lg max-w-xl mx-auto mb-8">
+                    <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
                         Whether through education, building, or recognition, there is a place for you in the KGF Bharat mission.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">

@@ -59,7 +59,7 @@ export function ContactPageClient() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="max-w-3xl"
+                        className="max-w-5xl"
                     >
                         <span className="text-yellow-300 font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Reach Out

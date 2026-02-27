@@ -29,7 +29,7 @@ export function Hero() {
                             </h1>
                         </div>
 
-                        <p className="text-xl md:text-2xl text-gray-500 max-w-2xl font-medium leading-relaxed mx-auto lg:mx-0">
+                        <p className="text-xl md:text-2xl text-gray-500 max-w-3xl font-medium leading-relaxed mx-auto lg:mx-0">
                             KGF Bharat prepares the visionaries of tomorrow by anchoring them in Sanatana ethics while mastering the most powerful technology of the 21st century.
                         </p>
 

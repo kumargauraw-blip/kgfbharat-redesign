@@ -69,7 +69,7 @@ export default function AboutPage() {
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
                 <div className="container-custom relative z-10">
-                    <div className="max-w-3xl">
+                    <div className="max-w-5xl">
                         <span className="text-yellow-300 font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Who We Are
                         </span>
@@ -86,7 +86,7 @@ export default function AboutPage() {
             {/* Our Story */}
             <div className="bg-white py-24">
                 <div className="container-custom">
-                    <div className="max-w-3xl mx-auto text-center">
+                    <div className="max-w-5xl mx-auto text-center">
                         <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Our Story
                         </span>
@@ -214,7 +214,7 @@ export default function AboutPage() {
                     <h2 className="text-3xl md:text-4xl font-black mb-4 text-white">
                         Join the Movement
                     </h2>
-                    <p className="text-gray-300 text-lg max-w-xl mx-auto mb-8">
+                    <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
                         Be part of the Dharmic renaissance. Whether you are a student, professional, or supporter, there is a place for you.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
