@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Users, BookOpen, Award, Hammer, Heart, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { TeamMember } from "@/lib/types"
 
 export const metadata: Metadata = {
@@ -19,36 +20,42 @@ const teamMembers: TeamMember[] = [
         name: "Ssandeep Deo",
         role: "Founder President",
         initials: "SD",
+        imageUrl: "/team/ssandeep-deo.png",
         description: "A journalist of 25 years, a sharp writer with 9 books, bestselling author, a publisher through Kapot Media, an entrepreneur with a mission through Kurukshetra Gurukulam Foundation (KGF).",
     },
     {
         name: "Kamal Rawat",
         role: "Course Controller",
         initials: "KR",
+        imageUrl: "/team/kamal-rawat.jpg",
         description: "He is a software developer, trainer, author, and an entrepreneur. He has first-hand experience of implementing full life cycle of large scale applications across various domains and platforms.",
     },
     {
         name: "Shweta Deo",
         role: "Director",
         initials: "SD",
+        imageUrl: "/team/shweta-deo.png",
         description: "She holds a BSc (Chemistry Hons.) and serves as Director of Kurukchetra Gurukulam Foundation (KGF) and MD of Kapot Media Network LLP. She is an inspiration to the entire KGF team and drives all of our endeavours.",
     },
     {
         name: "Amardeep Deo",
         role: "Admin",
         initials: "AD",
+        imageUrl: "/team/amardeep-deo.jpg",
         description: "Highly organized Administrator dedicated to supporting the KGF mission through seamless office management and effective external communication.",
     },
     {
         name: "Raakesh Ojha",
         role: "IT Head",
         initials: "RO",
+        imageUrl: "/team/raakesh-ojha.jpg",
         description: "IT Professional with over a decade of hardcore experience in various domain ranging from Intl. business development, project management, to solution architects in Blockchain technology, Metaverse, NFTs, AI/ML and IoT ecosystem.",
     },
     {
         name: "Dr. Chetan Maan",
         role: "Management",
         initials: "CM",
+        imageUrl: "/team/dr-chetan-maan.jpg",
         description: "A results-driven Management professional overseeing the operation and leading teams at KGF. Adept at implementing effective processes to ensure KGF meets its goals and mission.",
     },
 ]
@@ -183,8 +190,14 @@ export default function AboutPage() {
                             key={member.name}
                             className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md hover:border-orange/20 transition-all"
                         >
-                            <div className="w-24 h-24 bg-[#111827] rounded-2xl mx-auto mb-6 flex items-center justify-center">
-                                <span className="text-white text-2xl font-black">{member.initials}</span>
+                            <div className="w-28 h-28 rounded-full mx-auto mb-6 overflow-hidden bg-gray-100">
+                                {member.imageUrl ? (
+                                    <Image src={member.imageUrl} alt={member.name} width={112} height={112} className="w-full h-full object-cover" />
+                                ) : (
+                                    <div className="w-full h-full bg-[#111827] flex items-center justify-center">
+                                        <span className="text-white text-2xl font-black">{member.initials}</span>
+                                    </div>
+                                )}
                             </div>
                             <h3 className="text-xl font-black text-[#111827]">{member.name}</h3>
                             <p className="text-orange text-sm font-bold mb-4">{member.role}</p>
