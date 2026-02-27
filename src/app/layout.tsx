@@ -19,8 +19,39 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "KGF Bharat | AI & Technology Education",
-  description: "Master AI and transform your career with KGF Bharat and Krishna Worldwide LLC.",
+  title: {
+    default: "KGF Bharat | AI & Technology Education",
+    template: "%s | KGF Bharat",
+  },
+  description:
+    "Master AI and transform your career with KGF Bharat and Krishna Worldwide Technology. Bridging ancient Dharmic wisdom with modern artificial intelligence.",
+  keywords: [
+    "KGF Bharat",
+    "Kurukshetra Gurukulam Foundation",
+    "AI courses",
+    "technology education",
+    "Krishna Worldwide",
+    "Dharmic wisdom",
+    "artificial intelligence training",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "KGF Bharat - Kurukshetra Gurukulam Foundation",
+    title: "KGF Bharat | AI & Technology Education",
+    description:
+      "Master AI and transform your career with KGF Bharat and Krishna Worldwide Technology.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KGF Bharat | AI & Technology Education",
+    description:
+      "Master AI and transform your career with KGF Bharat and Krishna Worldwide Technology.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

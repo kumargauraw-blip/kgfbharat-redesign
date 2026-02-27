@@ -1,13 +1,16 @@
 "use server";
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getCourses, getCourseBySlug, upsertCourse, deleteCourse } from "@/lib/courseService";
+import { getBatches, upsertBatch, deleteBatch } from "@/lib/batchService";
+import { Batch, Course } from "@/lib/types";
 
 const apiKey = process.env.GEMINI_API_KEY;
 
-const SYSTEM_INSTRUCTION = `You are the KGF Bharat AI Advisor. Your goal is to help students bridge the gap between Dharmik wisdom and modern AI technology. 
-You recommend courses from KGF Bharat's catalog (Dharmik Education and AI-Tech). 
-Always be polite, culturally respectful, and insightful. 
-If a student asks about tradition, link it to how technology can preserve it. 
+const SYSTEM_INSTRUCTION = `You are the KGF Bharat AI Advisor. Your goal is to help students bridge the gap between Dharmik wisdom and modern AI technology.
+You recommend courses from KGF Bharat's catalog (Dharmik Education and AI-Tech).
+Always be polite, culturally respectful, and insightful.
+If a student asks about tradition, link it to how technology can preserve it.
 If they ask about tech, link it to the ethics and values of Sanatana Dharma.`;
 
 export async function chatWithAI(history: any[], message: string) {
@@ -44,64 +47,69 @@ export async function submitCorporateInquiry(formData: FormData) {
     await new Promise(resolve => setTimeout(resolve, 1000));
 }
 
-export async function saveCourseAction(data: any) {
-    // Simulate DB save
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return { success: true, message: "Course saved successfully" };
+export async function submitContactForm(formData: FormData) {
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
+
+    // TODO: Integrate with email service or database
+    console.log("Contact form submission:", { name, email, subject, message });
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    return { success: true, message: "Contact form submitted successfully" };
+}
+
+// Course actions
+export async function saveCourseAction(data: Course) {
+    try {
+        await upsertCourse(data);
+        return { success: true, message: "Course saved successfully" };
+    } catch (error) {
+        console.error("Error saving course:", error);
+        return { success: false, message: "Failed to save course" };
+    }
 }
 
 export async function fetchCourses() {
-    // Simulate DB fetch
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    // Return dummy empty array or mock data for MVP
-    return [
-        {
-            id: "1",
-            title: "Demo Course",
-            slug: "demo-course",
-            tagline: "A demo course",
-            description: "Description",
-            targetAudience: ["Everyone"],
-            status: "Active",
-            price: "Free",
-            duration: "1 hour",
-            format: "Online",
-            overview: "Overview",
-            curriculum: [],
-            learningOutcomes: [],
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-        }
-    ];
+    return getCourses();
 }
 
 export async function fetchCourse(slug: string) {
-    // Simulate DB fetch
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    // Return mock data
-    return {
-        id: "1",
-        title: "Demo Course",
-        slug: slug,
-        tagline: "A demo course",
-        description: "Description",
-        targetAudience: ["Everyone"],
-        status: "Active",
-        price: "Free",
-        duration: "1 hour",
-        format: "Online",
-        overview: "Overview",
-        curriculum: [],
-        learningOutcomes: [],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-    };
+    return getCourseBySlug(slug);
 }
 
 export async function deleteCourseAction(courseId: string) {
-    // Simulate DB delete
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return { success: true, message: "Course deleted successfully" };
+    try {
+        await deleteCourse(courseId);
+        return { success: true, message: "Course deleted successfully" };
+    } catch (error) {
+        console.error("Error deleting course:", error);
+        return { success: false, message: "Failed to delete course" };
+    }
+}
+
+// Batch actions
+export async function fetchBatches() {
+    return getBatches();
+}
+
+export async function saveBatchAction(data: Batch) {
+    try {
+        await upsertBatch(data);
+        return { success: true, message: "Batch saved successfully" };
+    } catch (error) {
+        console.error("Error saving batch:", error);
+        return { success: false, message: "Failed to save batch" };
+    }
+}
+
+export async function deleteBatchAction(batchId: string) {
+    try {
+        await deleteBatch(batchId);
+        return { success: true, message: "Batch deleted successfully" };
+    } catch (error) {
+        console.error("Error deleting batch:", error);
+        return { success: false, message: "Failed to delete batch" };
+    }
 }

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "g1",
+    "title": "Dharmalankaran 2025 Award Ceremony",
+    "description": "The prestigious awards ceremony honoring outstanding contributors to Dharmic values and technology",
+    "type": "photo",
+    "url": "/images/gallery/dharmalankaran-ceremony.jpg",
+    "thumbnailUrl": "/images/gallery/dharmalankaran-ceremony-thumb.jpg",
+    "category": "Awards",
+    "date": "2025-12-14"
+  },
+  {
+    "id": "g2",
+    "title": "AI for Bharat Workshop - Mumbai",
+    "description": "Participants learning prompt engineering and AI automation techniques",
+    "type": "photo",
+    "url": "/images/gallery/ai-workshop-mumbai.jpg",
+    "thumbnailUrl": "/images/gallery/ai-workshop-mumbai-thumb.jpg",
+    "category": "Workshops",
+    "date": "2025-11-20"
+  },
+  {
+    "id": "g3",
+    "title": "Bharat AI Conclave 2025 Keynote",
+    "description": "Founder Sandeep Deo delivering the opening keynote at the inaugural AI Conclave",
+    "type": "photo",
+    "url": "/images/gallery/ai-conclave-keynote.jpg",
+    "thumbnailUrl": "/images/gallery/ai-conclave-keynote-thumb.jpg",
+    "category": "Events",
+    "date": "2025-09-20"
+  },
+  {
+    "id": "g4",
+    "title": "Vedic Computing Seminar Panel",
+    "description": "Expert panel discussing the intersection of Vedic mathematics and modern AI",
+    "type": "photo",
+    "url": "/images/gallery/vedic-seminar-panel.jpg",
+    "thumbnailUrl": "/images/gallery/vedic-seminar-panel-thumb.jpg",
+    "category": "Events",
+    "date": "2025-11-08"
+  },
+  {
+    "id": "g5",
+    "title": "Gurukul Bootcamp Hands-on Session",
+    "description": "Students building their first AI-powered applications during the intensive bootcamp",
+    "type": "photo",
+    "url": "/images/gallery/bootcamp-handson.jpg",
+    "thumbnailUrl": "/images/gallery/bootcamp-handson-thumb.jpg",
+    "category": "Workshops",
+    "date": "2025-10-15"
+  },
+  {
+    "id": "g6",
+    "title": "Dharmalankaran Lifetime Achievement Award",
+    "description": "Presentation of the Lifetime Achievement Award at Dharmalankaran 2025",
+    "type": "photo",
+    "url": "/images/gallery/lifetime-achievement.jpg",
+    "thumbnailUrl": "/images/gallery/lifetime-achievement-thumb.jpg",
+    "category": "Awards",
+    "date": "2025-12-14"
+  },
+  {
+    "id": "g7",
+    "title": "KGF Bharat Foundation Day Celebrations",
+    "description": "Cultural performances and celebrations marking the foundation day of KGF Bharat",
+    "type": "photo",
+    "url": "/images/gallery/foundation-day.jpg",
+    "thumbnailUrl": "/images/gallery/foundation-day-thumb.jpg",
+    "category": "Events",
+    "date": "2025-08-15"
+  },
+  {
+    "id": "g8",
+    "title": "AI Workshop Demo Day Highlights",
+    "description": "Students presenting their AI projects during the workshop demo day",
+    "type": "video",
+    "url": "https://www.youtube.com/embed/placeholder1",
+    "thumbnailUrl": "/images/gallery/demo-day-thumb.jpg",
+    "category": "Workshops",
+    "date": "2025-11-22"
+  },
+  {
+    "id": "g9",
+    "title": "Dharmalankaran Cultural Performance",
+    "description": "Traditional Bharatiya cultural performance at the Dharmalankaran ceremony",
+    "type": "video",
+    "url": "https://www.youtube.com/embed/placeholder2",
+    "thumbnailUrl": "/images/gallery/cultural-performance-thumb.jpg",
+    "category": "Awards",
+    "date": "2025-12-14"
+  },
+  {
+    "id": "g10",
+    "title": "Sanatana Tech Summit Networking",
+    "description": "Leaders and scholars networking at the tech summit reception",
+    "type": "photo",
+    "url": "/images/gallery/tech-summit-networking.jpg",
+    "thumbnailUrl": "/images/gallery/tech-summit-networking-thumb.jpg",
+    "category": "Events",
+    "date": "2025-09-21"
+  }
+]

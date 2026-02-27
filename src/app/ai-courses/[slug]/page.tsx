@@ -1,11 +1,23 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { CheckCircle, Clock, Globe, ArrowLeft } from "lucide-react"
+import { Metadata } from "next"
+import { CheckCircle, Clock, Globe, ArrowLeft, Calendar, MapPin, Users, Star, GraduationCap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { fetchCourse } from "@/app/actions"
+import { getBatchesByCourseId } from "@/lib/batchService"
+import { getTestimonialsByCourseSlug } from "@/lib/testimonialService"
+import { getCourses } from "@/lib/courseService"
+import FaqAccordion from "@/components/FaqAccordion"
 
-// Helper to generate static params (if we were fully static, but we are dynamic mostly)
-// export async function generateStaticParams() { ... }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params
+    const course = await fetchCourse(slug)
+    if (!course) return { title: "Course Not Found" }
+    return {
+        title: `${course.title} | KGF Bharat AI Courses`,
+        description: course.tagline || course.description,
+    }
+}
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
@@ -15,15 +27,24 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
         notFound()
     }
 
+    // Fetch batches for this course and testimonials in parallel
+    const [batches, testimonials] = await Promise.all([
+        getBatchesByCourseId(course.id),
+        getTestimonialsByCourseSlug(course.slug),
+    ])
+
+    const activeBatches = batches.filter(b => b.status === "Enrolling" || b.status === "Upcoming")
+
     return (
-        <div className="min-h-screen bg-white dark:bg-black pb-20">
+        <div className="min-h-screen bg-off-white pb-20">
             {/* Hero/Header */}
-            <div className="bg-charcoal text-white py-16 relative overflow-hidden">
+            <div className="bg-navy text-white py-16 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="container-custom relative z-10">
-                    <Link href="/ai-courses" className="inline-flex items-center text-saffron hover:text-white mb-6 transition-colors">
+                    <Link href="/ai-courses" className="inline-flex items-center text-orange hover:text-white mb-6 transition-colors text-sm font-medium">
                         <ArrowLeft className="h-4 w-4 mr-2" /> Back to Courses
                     </Link>
-                    <div className="flex flex-col md:flex-row gap-4 mb-4">
+                    <div className="flex flex-col md:flex-row gap-3 mb-4">
                         {course.targetAudience.map((audience, idx) => (
                             <span key={idx} className="bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-sm font-medium border border-white/20">
                                 {audience}
@@ -45,21 +66,21 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
 
                     {/* Description */}
                     <section>
-                        <h2 className="text-2xl font-bold font-heading text-charcoal mb-4">About this Course</h2>
-                        <div className="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+                        <h2 className="text-2xl font-bold font-heading text-navy mb-4">About this Course</h2>
+                        <div className="prose max-w-none text-gray-600">
                             <p className="whitespace-pre-line">{course.description}</p>
                         </div>
                     </section>
 
                     {/* Learning Outcomes */}
                     {course.learningOutcomes && course.learningOutcomes.length > 0 && (
-                        <section className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-800">
-                            <h2 className="text-xl font-bold font-heading text-charcoal mb-6">What You'll Learn</h2>
+                        <section className="bg-white p-8 rounded-xl border border-gray-100">
+                            <h2 className="text-xl font-bold font-heading text-navy mb-6">What You Will Learn</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {course.learningOutcomes.map((outcome, idx) => (
                                     <div key={idx} className="flex items-start space-x-3">
                                         <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                                        <span className="text-gray-700 dark:text-gray-300">{outcome}</span>
+                                        <span className="text-gray-700">{outcome}</span>
                                     </div>
                                 ))}
                             </div>
@@ -69,17 +90,131 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                     {/* Curriculum */}
                     {course.curriculum && course.curriculum.length > 0 && (
                         <section>
-                            <h2 className="text-2xl font-bold font-heading text-charcoal mb-6">Curriculum</h2>
+                            <h2 className="text-2xl font-bold font-heading text-navy mb-6">Curriculum</h2>
                             <div className="space-y-4">
                                 {course.curriculum.map((topic, idx) => (
-                                    <div key={idx} className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm flex items-center">
-                                        <span className="h-8 w-8 rounded-full bg-saffron/10 text-saffron flex items-center justify-center font-bold mr-4">
+                                    <div key={idx} className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex items-center">
+                                        <span className="h-8 w-8 rounded-full bg-orange/10 text-orange flex items-center justify-center font-bold mr-4 shrink-0">
                                             {idx + 1}
                                         </span>
-                                        <span className="font-medium text-gray-900 dark:text-gray-100">{topic}</span>
+                                        <span className="font-medium text-gray-900">{topic}</span>
                                     </div>
                                 ))}
                             </div>
+                        </section>
+                    )}
+
+                    {/* Upcoming Batches */}
+                    {activeBatches.length > 0 && (
+                        <section>
+                            <h2 className="text-2xl font-bold font-heading text-navy mb-6">Upcoming Batches</h2>
+                            <div className="space-y-4">
+                                {activeBatches.map((batch) => (
+                                    <div key={batch.id} className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+                                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                            <div className="space-y-2">
+                                                <div className="flex items-center gap-3">
+                                                    <span className="font-bold text-navy text-lg">{batch.batchNumber}</span>
+                                                    <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+                                                        batch.status === "Enrolling"
+                                                            ? "bg-green-100 text-green-700"
+                                                            : "bg-blue-100 text-blue-700"
+                                                    }`}>
+                                                        {batch.status}
+                                                    </span>
+                                                </div>
+                                                <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                                                    <span className="flex items-center gap-1.5">
+                                                        <Calendar className="h-4 w-4 text-orange" />
+                                                        {new Date(batch.startDate).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                                                        {" to "}
+                                                        {new Date(batch.endDate).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                                                    </span>
+                                                    <span className="flex items-center gap-1.5">
+                                                        <Globe className="h-4 w-4 text-orange" />
+                                                        {batch.format}
+                                                    </span>
+                                                    {batch.location && (
+                                                        <span className="flex items-center gap-1.5">
+                                                            <MapPin className="h-4 w-4 text-orange" />
+                                                            {batch.location}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-col items-end gap-2 shrink-0">
+                                                <span className="text-2xl font-bold text-navy">&#8377;{batch.price}</span>
+                                                {batch.seatsRemaining != null && batch.maxSeats != null && (
+                                                    <span className="flex items-center gap-1 text-sm text-gray-500">
+                                                        <Users className="h-3.5 w-3.5" />
+                                                        {batch.seatsRemaining} of {batch.maxSeats} seats left
+                                                    </span>
+                                                )}
+                                                <Button asChild className="bg-orange hover:bg-orange/90 text-white font-semibold px-6">
+                                                    <a href={batch.enrollmentUrl} target="_blank" rel="noopener noreferrer">
+                                                        Enroll Now
+                                                    </a>
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
+                    {/* Instructor Bio */}
+                    <section>
+                        <h2 className="text-2xl font-bold font-heading text-navy mb-6">Your Instructor</h2>
+                        <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col sm:flex-row gap-6">
+                            <div className="w-20 h-20 rounded-full bg-navy/10 flex items-center justify-center shrink-0">
+                                <GraduationCap className="h-10 w-10 text-navy" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-navy">Kumar Gauraw</h3>
+                                <p className="text-orange font-medium text-sm mb-3">Lead AI Instructor</p>
+                                <p className="text-gray-600 leading-relaxed">
+                                    Technology educator with 15+ years of experience bridging ancient Indian pedagogical methods with cutting-edge AI and technology training. Kumar brings a unique perspective that combines Sattvic principles with practical, industry-ready skills to help learners achieve transformative results.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Testimonials */}
+                    {testimonials.length > 0 && (
+                        <section>
+                            <h2 className="text-2xl font-bold font-heading text-navy mb-6">What Our Students Say</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {testimonials.map((t) => (
+                                    <div key={t.id} className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                                        <div className="flex items-center gap-1 mb-3">
+                                            {Array.from({ length: 5 }).map((_, i) => (
+                                                <Star
+                                                    key={i}
+                                                    className={`h-4 w-4 ${i < t.rating ? "text-orange fill-orange" : "text-gray-300"}`}
+                                                />
+                                            ))}
+                                        </div>
+                                        <p className="text-gray-600 leading-relaxed mb-4 italic">
+                                            &ldquo;{t.content}&rdquo;
+                                        </p>
+                                        <div>
+                                            <p className="font-semibold text-navy">{t.name}</p>
+                                            <p className="text-sm text-gray-500">
+                                                {t.role}{t.company ? `, ${t.company}` : ""}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
+                    {/* FAQ */}
+                    {course.faq && course.faq.length > 0 && (
+                        <section>
+                            <h2 className="text-2xl font-bold font-heading text-navy mb-6">Frequently Asked Questions</h2>
+                            <FaqAccordion items={course.faq} />
                         </section>
                     )}
                 </div>
@@ -87,11 +222,11 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                 {/* Sidebar / Enrollment Card */}
                 <div className="lg:col-span-1">
                     <div className="sticky top-24">
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+                        <div className="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden">
                             <div className="p-6 space-y-6">
                                 <div className="flex justify-between items-center border-b border-gray-100 pb-4">
                                     <span className="text-gray-500">Price</span>
-                                    <span className="text-2xl font-bold text-charcoal">{course.price}</span>
+                                    <span className="text-2xl font-bold text-navy">{course.price}</span>
                                 </div>
 
                                 <div className="space-y-4 text-sm text-gray-600">
@@ -103,10 +238,24 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                                         <div className="flex items-center"><Globe className="h-4 w-4 mr-2" /> Format</div>
                                         <span className="font-medium">{course.format}</span>
                                     </div>
+                                    {activeBatches.length > 0 && (
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center"><Calendar className="h-4 w-4 mr-2" /> Next Batch</div>
+                                            <span className="font-medium">
+                                                {new Date(activeBatches[0].startDate).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}
+                                            </span>
+                                        </div>
+                                    )}
                                 </div>
 
-                                {course.status === 'Active' ? (
-                                    <Button className="w-full bg-dark-red hover:bg-dark-red-light text-white text-lg h-12 shadow-md">
+                                {activeBatches.length > 0 ? (
+                                    <Button asChild className="w-full bg-orange hover:bg-orange/90 text-white text-lg h-12 shadow-md font-semibold">
+                                        <a href={activeBatches[0].enrollmentUrl} target="_blank" rel="noopener noreferrer">
+                                            Enroll Now
+                                        </a>
+                                    </Button>
+                                ) : course.status === 'Active' ? (
+                                    <Button className="w-full bg-orange hover:bg-orange/90 text-white text-lg h-12 shadow-md font-semibold">
                                         Enroll Now
                                     </Button>
                                 ) : (
@@ -115,13 +264,15 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                                     </Button>
                                 )}
 
-                                <p className="text-xs text-center text-gray-400">
-                                    Next Batch details will appear here dynamically.
-                                </p>
+                                {activeBatches.length > 0 && activeBatches[0].seatsRemaining != null && (
+                                    <p className="text-xs text-center text-orange font-medium">
+                                        Only {activeBatches[0].seatsRemaining} seats remaining in the next batch!
+                                    </p>
+                                )}
                             </div>
-                            <div className="bg-gray-50 dark:bg-gray-900 p-4 text-center">
+                            <div className="bg-gray-50 p-4 text-center">
                                 <p className="text-xs text-gray-500">
-                                    Need help? <Link href="/contact" className="text-charcoal underline">Contact Us</Link>
+                                    Need help? <Link href="/contact" className="text-navy underline font-medium">Contact Us</Link>
                                 </p>
                             </div>
                         </div>

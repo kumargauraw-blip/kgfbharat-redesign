@@ -1,0 +1,44 @@
+[
+  {
+    "id": "b1",
+    "courseId": "1",
+    "batchNumber": "Batch 1",
+    "startDate": "2026-03-15",
+    "endDate": "2026-04-12",
+    "format": "Online",
+    "location": "Virtual (Zoom)",
+    "price": "4,999",
+    "enrollmentUrl": "https://kgfbharat.org/enroll/ai-fundamentals-b1",
+    "status": "Enrolling",
+    "maxSeats": 30,
+    "seatsRemaining": 12
+  },
+  {
+    "id": "b2",
+    "courseId": "1",
+    "batchNumber": "Batch 2",
+    "startDate": "2026-04-20",
+    "endDate": "2026-05-18",
+    "format": "Hybrid",
+    "location": "Bengaluru + Virtual",
+    "price": "5,999",
+    "enrollmentUrl": "https://kgfbharat.org/enroll/ai-fundamentals-b2",
+    "status": "Upcoming",
+    "maxSeats": 25,
+    "seatsRemaining": 25
+  },
+  {
+    "id": "b3",
+    "courseId": "1",
+    "batchNumber": "Batch 3",
+    "startDate": "2026-06-01",
+    "endDate": "2026-06-28",
+    "format": "Online",
+    "location": "Virtual (Zoom)",
+    "price": "4,999",
+    "enrollmentUrl": "https://kgfbharat.org/enroll/ai-fundamentals-b3",
+    "status": "Upcoming",
+    "maxSeats": 30,
+    "seatsRemaining": 30
+  }
+]

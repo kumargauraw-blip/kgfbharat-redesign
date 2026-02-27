@@ -24,6 +24,24 @@
       "Master ChatGPT",
       "Automate Emails",
       "Create Content Faster"
+    ],
+    "faq": [
+      {
+        "question": "Do I need any prior AI or programming experience?",
+        "answer": "No. This course is designed for absolute beginners. We start from the fundamentals and gradually build up to advanced techniques. All you need is a laptop and an internet connection."
+      },
+      {
+        "question": "What tools and platforms will we use during the course?",
+        "answer": "You will get hands-on experience with ChatGPT, Claude, Midjourney, and other leading AI tools. We also cover workflow automation platforms to help you integrate AI into your daily routine."
+      },
+      {
+        "question": "Is the course live or pre-recorded?",
+        "answer": "All sessions are conducted live via Zoom with the instructor. Recordings are provided after each session so you can revisit the material at your own pace."
+      },
+      {
+        "question": "Will I receive a certificate upon completion?",
+        "answer": "Yes. Upon successfully completing all modules and the final project, you will receive a KGF Bharat Certificate of Completion that you can add to your LinkedIn profile."
+      }
     ]
   },
   {

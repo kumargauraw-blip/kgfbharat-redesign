@@ -1,0 +1,81 @@
+[
+  {
+    "id": "e1",
+    "title": "Dharmalankaran 2025 - National Awards Ceremony",
+    "slug": "dharmalankaran-2025",
+    "description": "The prestigious Dharmalankaran Awards recognize individuals and organizations that have made outstanding contributions to the preservation and promotion of Dharmic values through technology, education, and social impact.",
+    "date": "2025-12-14",
+    "time": "10:00 AM - 6:00 PM IST",
+    "location": "India International Centre, New Delhi",
+    "type": "past",
+    "category": "awards",
+    "highlights": [
+      "Keynote address by Sandeep Deo, Founder of KGF Bharat",
+      "Panel discussion on AI and Dharmic ethics",
+      "Awards in 5 categories - Education, Technology, Social Impact, Youth Leadership, Lifetime Achievement",
+      "Cultural performances celebrating Bharatiya traditions",
+      "Networking dinner with 200+ leaders and scholars"
+    ]
+  },
+  {
+    "id": "e2",
+    "title": "AI for Bharat - National Workshop Series",
+    "slug": "ai-for-bharat-workshop",
+    "description": "A hands-on workshop series designed to introduce AI tools and productivity techniques to professionals, students, and entrepreneurs across Bharat. Learn prompt engineering, automation, and content creation with AI.",
+    "date": "2026-04-05",
+    "endDate": "2026-04-06",
+    "time": "9:00 AM - 5:00 PM IST",
+    "location": "IIT Bombay, Mumbai",
+    "type": "upcoming",
+    "category": "workshop",
+    "registrationUrl": "https://kgfbharat.org/register/ai-bharat-workshop"
+  },
+  {
+    "id": "e3",
+    "title": "Sanatana Tech Summit 2026",
+    "slug": "sanatana-tech-summit-2026",
+    "description": "A two-day technology summit bringing together thought leaders, engineers, and educators to explore how ancient Indian knowledge systems can inform modern AI development. Topics include ethical AI, Vedic mathematics in machine learning, and Sanskrit NLP.",
+    "date": "2026-05-22",
+    "endDate": "2026-05-23",
+    "time": "9:00 AM - 6:00 PM IST",
+    "location": "HICC Convention Centre, Hyderabad",
+    "type": "upcoming",
+    "category": "conference",
+    "registrationUrl": "https://kgfbharat.org/register/sanatana-tech-summit"
+  },
+  {
+    "id": "e4",
+    "title": "Gurukul AI Bootcamp - Bengaluru",
+    "slug": "gurukul-ai-bootcamp",
+    "description": "An intensive weekend bootcamp where participants learn to build AI-powered applications from scratch. From prompt engineering to RAG systems, this bootcamp covers the full spectrum of practical AI skills.",
+    "date": "2026-03-29",
+    "endDate": "2026-03-30",
+    "time": "8:30 AM - 6:00 PM IST",
+    "location": "KGF Bharat HQ, Bengaluru",
+    "type": "upcoming",
+    "category": "workshop",
+    "registrationUrl": "https://kgfbharat.org/register/gurukul-bootcamp"
+  },
+  {
+    "id": "e5",
+    "title": "Bharat AI Conclave 2025",
+    "slug": "bharat-ai-conclave-2025",
+    "description": "The inaugural Bharat AI Conclave brought together 500+ participants from across the nation to discuss the future of AI education in India. Featured keynotes from industry leaders and live demonstrations of AI tools.",
+    "date": "2025-09-20",
+    "time": "10:00 AM - 5:00 PM IST",
+    "location": "Bengaluru International Exhibition Centre",
+    "type": "past",
+    "category": "conference"
+  },
+  {
+    "id": "e6",
+    "title": "Vedic Computing Seminar",
+    "slug": "vedic-computing-seminar",
+    "description": "An academic seminar exploring the intersection of Vedic mathematics, Sanskrit computational linguistics, and modern artificial intelligence. Researchers presented papers on applications of ancient Indian mathematical concepts in machine learning.",
+    "date": "2025-11-08",
+    "time": "2:00 PM - 7:00 PM IST",
+    "location": "JNU Convention Centre, New Delhi",
+    "type": "past",
+    "category": "seminar"
+  }
+]

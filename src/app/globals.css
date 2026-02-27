@@ -38,6 +38,8 @@
   --color-accent-foreground: var(--color-orange);
 }
 
+/* ─── Custom Utility Classes ─── */
+
 @utility container-custom {
   @apply container mx-auto px-6 md:px-12 max-w-[1700px];
 }
@@ -61,6 +63,32 @@
 @utility animate-float {
   animation: float 4s ease-in-out infinite;
 }
+
+@utility section-padding {
+  @apply py-20 md:py-28;
+}
+
+@utility heading-lg {
+  @apply text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-navy leading-[1.1];
+}
+
+@utility heading-md {
+  @apply text-3xl md:text-4xl font-black tracking-tight text-navy leading-tight;
+}
+
+@utility heading-sm {
+  @apply text-2xl md:text-3xl font-bold tracking-tight text-navy;
+}
+
+@utility body-lg {
+  @apply text-lg md:text-xl text-gray-600 leading-relaxed;
+}
+
+@utility label-caps {
+  @apply text-[11px] font-black uppercase tracking-widest;
+}
+
+/* ─── Base Styles ─── */
 
 @layer base {
   :root {
@@ -89,7 +117,23 @@
   h2 {
     @apply text-4xl md:text-5xl leading-tight text-navy;
   }
+
+  /* Focus visible ring for interactive elements */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply outline-none ring-2 ring-orange ring-offset-2 ring-offset-background rounded-sm;
+  }
+
+  /* Smooth scroll for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
 }
+
+/* ─── Keyframes ─── */
 
 @keyframes float {
   0% {
@@ -102,5 +146,40 @@
 
   100% {
     transform: translateY(0px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
   }
 }

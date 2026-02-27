@@ -9,6 +9,7 @@ export interface Batch {
     startDate: string
     endDate: string
     format: CourseFormat
+    location?: string
     price: string
     enrollmentUrl: string
     status: "Upcoming" | "Enrolling" | "In Progress" | "Completed"
@@ -31,11 +32,65 @@ export interface Course {
 
     // Detailed Content
     overview: string
-    curriculum: string[] // List of modules or topics
+    curriculum: string[]
     learningOutcomes: string[]
     instructorBio?: string
+
+    // FAQ
+    faq?: FAQ[]
 
     // Meta
     createdAt: string
     updatedAt: string
+}
+
+export interface Event {
+    id: string
+    title: string
+    slug: string
+    description: string
+    date: string
+    endDate?: string
+    time: string
+    location: string
+    type: "upcoming" | "past"
+    category: "conference" | "workshop" | "seminar" | "cultural" | "awards"
+    imageUrl?: string
+    registrationUrl?: string
+    highlights?: string[]
+}
+
+export interface GalleryItem {
+    id: string
+    title: string
+    description?: string
+    type: "photo" | "video"
+    url: string
+    thumbnailUrl?: string
+    category: string
+    date: string
+}
+
+export interface TeamMember {
+    name: string
+    role: string
+    initials: string
+    description: string
+    imageUrl?: string
+}
+
+export interface Testimonial {
+    id: string
+    name: string
+    role: string
+    company?: string
+    content: string
+    courseSlug?: string
+    rating: number
+    imageUrl?: string
+}
+
+export interface FAQ {
+    question: string
+    answer: string
 }

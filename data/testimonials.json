@@ -1,0 +1,38 @@
+[
+  {
+    "id": "t1",
+    "name": "Rajesh Sharma",
+    "role": "Senior Developer",
+    "company": "TCS",
+    "content": "This course transformed my approach to daily development tasks. I now automate repetitive work with AI and my productivity has genuinely tripled. The prompt engineering module alone was worth the entire investment.",
+    "courseSlug": "ai-fundamentals-productivity",
+    "rating": 5
+  },
+  {
+    "id": "t2",
+    "name": "Priya Patel",
+    "role": "Content Creator",
+    "company": "Freelance",
+    "content": "As a creator, I was skeptical about AI replacing creativity. Instead, it supercharged it. I now produce scripts, thumbnails, and social posts in half the time. Kumar sir's teaching style makes complex concepts feel simple.",
+    "courseSlug": "ai-fundamentals-productivity",
+    "rating": 5
+  },
+  {
+    "id": "t3",
+    "name": "Amit Verma",
+    "role": "Database Administrator",
+    "company": "Infosys",
+    "content": "The practical, hands-on approach sets this course apart. Every session had real-world exercises that I could apply immediately at work. My team noticed the difference within the first week.",
+    "courseSlug": "ai-fundamentals-productivity",
+    "rating": 4
+  },
+  {
+    "id": "t4",
+    "name": "Neha Gupta",
+    "role": "Marketing Manager",
+    "company": "Flipkart",
+    "content": "From writing campaign copy to analyzing customer data, AI has become my daily co-pilot. This course gave me the confidence and skills to integrate AI tools into every part of our marketing workflow.",
+    "courseSlug": "ai-fundamentals-productivity",
+    "rating": 5
+  }
+]
