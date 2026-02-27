@@ -7,7 +7,7 @@ import { ArrowRight, BookOpen } from "lucide-react"
 
 export function Hero() {
     return (
-        <section id="home" className="relative flex items-center pt-24 pb-16 overflow-hidden bg-white">
+        <section id="home" className="relative flex items-center pt-8 pb-12 overflow-hidden bg-white">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-orange/5 -skew-x-12 translate-x-12"></div>
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-100/50 blur-[140px] rounded-full -z-10"></div>
 
