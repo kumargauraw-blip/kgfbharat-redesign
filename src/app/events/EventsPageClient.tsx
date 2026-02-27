@@ -90,7 +90,7 @@ export function EventsPageClient({ events }: { events: Event[] }) {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero */}
-            <div className="text-white py-24 relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
+            <div className="text-white pt-14 pb-28 relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
                 <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
@@ -101,13 +101,13 @@ export function EventsPageClient({ events }: { events: Event[] }) {
                         transition={{ duration: 0.5 }}
                         className="max-w-3xl"
                     >
-                        <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
+                        <span className="text-yellow-300 font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Community and Learning
                         </span>
                         <h1 className="text-4xl md:text-6xl font-black mb-6 leading-[1.1] text-white">
                             Events
                         </h1>
-                        <p className="text-xl text-white/80 leading-relaxed">
+                        <p className="text-xl text-[#111827] leading-relaxed">
                             Join us at workshops, conferences, and award ceremonies that bring together thought leaders, technologists, and educators from across Bharat.
                         </p>
                     </motion.div>

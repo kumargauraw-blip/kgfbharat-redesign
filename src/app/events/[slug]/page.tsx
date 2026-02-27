@@ -37,13 +37,13 @@ export default async function EventDetailPage({ params }: PageProps) {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero */}
-            <div className="text-white py-20 relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
+            <div className="text-white pt-14 pb-28 relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
                 <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
 
                 <div className="container-custom relative z-10">
                     <Link
                         href="/events"
-                        className="inline-flex items-center gap-2 text-white/80 hover:text-orange transition-colors mb-8 text-sm font-bold uppercase tracking-wider"
+                        className="inline-flex items-center gap-2 text-yellow-300 hover:text-orange transition-colors mb-8 text-sm font-bold uppercase tracking-wider"
                     >
                         <ArrowLeft className="w-4 h-4" />
                         All Events
@@ -65,7 +65,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                             {event.title}
                         </h1>
 
-                        <div className="flex flex-col sm:flex-row flex-wrap gap-4 text-white/80">
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-4 text-[#111827]">
                             <div className="flex items-center gap-2">
                                 <Calendar className="w-5 h-5 text-orange" />
                                 <span>

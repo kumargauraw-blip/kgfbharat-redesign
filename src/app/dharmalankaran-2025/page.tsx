@@ -47,7 +47,7 @@ export default function DharmalankaranPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero */}
-            <div className="text-white py-28 relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
+            <div className="text-white pt-14 pb-28 relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
                 <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
                 {/* Decorative pattern */}
@@ -59,8 +59,8 @@ export default function DharmalankaranPage() {
                 <div className="container-custom relative z-10 text-center">
                     <div className="max-w-3xl mx-auto">
                         <div className="inline-flex items-center gap-2 bg-orange/20 border border-orange/30 px-5 py-2 rounded-full mb-8">
-                            <Award className="w-4 h-4 text-orange" />
-                            <span className="text-orange font-bold text-sm uppercase tracking-wider">National Awards Ceremony</span>
+                            <Award className="w-4 h-4 text-yellow-300" />
+                            <span className="text-yellow-300 font-bold text-sm uppercase tracking-wider">National Awards Ceremony</span>
                         </div>
 
                         <h1 className="text-5xl md:text-7xl font-black mb-4 leading-[1.05] text-white">
@@ -68,11 +68,11 @@ export default function DharmalankaranPage() {
                             <span className="block text-orange">2025</span>
                         </h1>
 
-                        <p className="text-xl text-white/80 leading-relaxed mb-8 max-w-2xl mx-auto">
+                        <p className="text-xl text-[#111827] leading-relaxed mb-8 max-w-2xl mx-auto">
                             Honoring outstanding contributors to Dharmic values through technology, education, and social impact.
                         </p>
 
-                        <div className="flex flex-wrap justify-center gap-6 text-white/80">
+                        <div className="flex flex-wrap justify-center gap-6 text-[#111827]">
                             <div className="flex items-center gap-2">
                                 <Calendar className="w-5 h-5 text-orange" />
                                 <span className="font-medium">December 14, 2025</span>

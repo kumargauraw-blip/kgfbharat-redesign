@@ -6,50 +6,50 @@ import { TeamMember } from "@/lib/types"
 export const metadata: Metadata = {
     title: "About Us | KGF Bharat",
     description:
-        "Learn about KGF Bharat, our mission to bridge Dharmic wisdom with modern technology, and the team driving the movement for a self-reliant Bharat.",
+        "Learn about Kurukshetra Gurukulam Foundation (KGF), established to reawaken Dharmakshetra for Sanatan Dharmis through Shiksha, Puraskar, and Nirman.",
     openGraph: {
         title: "About KGF Bharat",
         description:
-            "Building a new generation of creators and engineers who blend modern AI technology with ancient Dharmic wisdom.",
+            "Kurukshetra Gurukulam Foundation (KGF) has been established to reawaken Dharmakshetra for the Sanatan Dharmis through Shiksha, Puraskar, and Nirman.",
     },
 }
 
 const teamMembers: TeamMember[] = [
     {
-        name: "Sandeep Deo",
-        role: "Founder and Chairman",
+        name: "Ssandeep Deo",
+        role: "Founder President",
         initials: "SD",
-        description: "Visionary behind KGF Bharat and the movement for Dharmic renaissance. Leading the foundation's mission to build a self-reliant, culturally rooted society.",
+        description: "A journalist of 25 years, a sharp writer with 9 books, bestselling author, a publisher through Kapot Media, an entrepreneur with a mission through Kurukshetra Gurukulam Foundation (KGF).",
     },
     {
         name: "Kamal Rawat",
         role: "Course Controller",
         initials: "KR",
-        description: "Overseeing academic rigor, curriculum development, and student success across all KGF Bharat education programs.",
+        description: "He is a software developer, trainer, author, and an entrepreneur. He has first-hand experience of implementing full life cycle of large scale applications across various domains and platforms.",
     },
     {
         name: "Shweta Deo",
         role: "Director",
         initials: "SD",
-        description: "Managing operations, institutional strategy, and partnerships to expand the reach and impact of KGF Bharat.",
+        description: "She holds a BSc (Chemistry Hons.) and serves as Director of Kurukchetra Gurukulam Foundation (KGF) and MD of Kapot Media Network LLP. She is an inspiration to the entire KGF team and drives all of our endeavours.",
     },
     {
-        name: "Kumar Gauraw",
-        role: "Lead AI Instructor",
-        initials: "KG",
-        description: "Founder of Krishna Worldwide LLC. AI expert and architect leading the technology education curriculum.",
+        name: "Amardeep Deo",
+        role: "Admin",
+        initials: "AD",
+        description: "Highly organized Administrator dedicated to supporting the KGF mission through seamless office management and effective external communication.",
     },
     {
-        name: "Ananya Sharma",
-        role: "Community Coordinator",
-        initials: "AS",
-        description: "Building and nurturing the KGF Bharat community across cities, managing events, volunteer programs, and outreach initiatives.",
+        name: "Raakesh Ojha",
+        role: "IT Head",
+        initials: "RO",
+        description: "IT Professional with over a decade of hardcore experience in various domain ranging from Intl. business development, project management, to solution architects in Blockchain technology, Metaverse, NFTs, AI/ML and IoT ecosystem.",
     },
     {
-        name: "Rajesh Verma",
-        role: "Technology Lead",
-        initials: "RV",
-        description: "Driving the digital infrastructure and technology platforms that power KGF Bharat's online learning and community engagement.",
+        name: "Dr. Chetan Maan",
+        role: "Management",
+        initials: "CM",
+        description: "A results-driven Management professional overseeing the operation and leading teams at KGF. Adept at implementing effective processes to ensure KGF meets its goals and mission.",
     },
 ]
 
@@ -57,27 +57,56 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero */}
-            <div className="text-white py-24 relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
+            <div className="text-white pt-14 pb-28 relative overflow-hidden" style={{ background: "linear-gradient(to bottom, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
                 <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
                 <div className="container-custom relative z-10">
                     <div className="max-w-3xl">
-                        <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
+                        <span className="text-yellow-300 font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                             Who We Are
                         </span>
                         <h1 className="text-4xl md:text-6xl font-black mb-6 leading-[1.1] text-white">
-                            The Sattvic Technologist
+                            Kurukshetra Gurukulam Foundation
                         </h1>
-                        <p className="text-xl text-white/80 leading-relaxed">
-                            We are building a new generation of creators and engineers who blend modern AI technology with ancient Dharmic wisdom, creating a future rooted in values and powered by innovation.
+                        <p className="text-xl text-[#111827] leading-relaxed">
+                            Reawakening Dharmakshetra for Sanatan Dharmis through Shiksha, Puraskar, and Nirman.
                         </p>
                     </div>
                 </div>
             </div>
 
-            {/* Mission Pillars */}
-            <div className="container-custom py-20">
+            {/* Our Story */}
+            <div className="bg-white py-24">
+                <div className="container-custom">
+                    <div className="max-w-3xl mx-auto text-center">
+                        <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
+                            Our Story
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-black text-[#111827] mb-8">
+                            Rooted in Dharma, Built for All
+                        </h2>
+                        <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+                            <p>
+                                Kurukshetra Gurukulam Foundation (KGF) has been established to reawaken Dharmakshetra for the Sanatan Dharmis. This Gurukulam is different from the traditional Gurukuls, in which only the study and teaching of young students was arranged. This Gurukulam is for both men and women of all age groups. Its aim is to Strengthen the Sanatan society through Shiksha, Puraskar, and Nirman.
+                            </p>
+                            <p>
+                                Kurukshetra has been called Dharmakshetra because it is blessed by Bhagwan Vishnu. According to Vaman Purana, King Kuru cultivated the Mahadharmas here, for which he sacrificed his body as a seed and Prabhu Vishnu sowed that seed. This is why Kurukshetra is called Dharmakshetra.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Decorative Divider */}
+            <div className="flex items-center justify-center py-2">
+                <div className="h-px w-16 bg-orange/30" />
+                <div className="mx-4 w-2 h-2 rounded-full bg-orange/40" />
+                <div className="h-px w-16 bg-orange/30" />
+            </div>
+
+            {/* Three Pillars */}
+            <div className="container-custom py-24">
                 <div className="text-center mb-16">
                     <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                         Our Foundation
@@ -87,39 +116,39 @@ export default function AboutPage() {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-                        <div className="mx-auto w-16 h-16 bg-orange/10 rounded-2xl flex items-center justify-center mb-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                        <div className="mx-auto w-16 h-16 bg-orange/10 rounded-2xl flex items-center justify-center mb-6">
                             <BookOpen className="h-8 w-8 text-orange" />
                         </div>
-                        <h3 className="text-2xl font-black text-[#111827] mb-2">Shiksha</h3>
-                        <p className="text-gray-500">
-                            Education that liberates. We provide world-class technical training rooted in ethical foundations and Dharmic wisdom.
+                        <h3 className="text-2xl font-black text-[#111827] mb-3">Shiksha</h3>
+                        <p className="text-gray-500 leading-relaxed">
+                            KGF offers courses in Sanatan Dharma, Gita, Itihasa, Diplomacy, Political Science, Economics, Culture and Physical Training, presented in today&apos;s context.
                         </p>
                     </div>
 
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-                        <div className="mx-auto w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mb-4">
+                    <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                        <div className="mx-auto w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mb-6">
                             <Hammer className="h-8 w-8 text-amber-700" />
                         </div>
-                        <h3 className="text-2xl font-black text-[#111827] mb-2">Nirman</h3>
-                        <p className="text-gray-500">
-                            Building for society. We foster a community of builders who create tools and institutions for the betterment of Bharat.
+                        <h3 className="text-2xl font-black text-[#111827] mb-3">Nirman</h3>
+                        <p className="text-gray-500 leading-relaxed">
+                            Through Nirman (Development), KGF focuses on the creation and development of Sanatan institutions that strengthen society.
                         </p>
                     </div>
 
-                    <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-                        <div className="mx-auto w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-4">
+                    <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                        <div className="mx-auto w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6">
                             <Award className="h-8 w-8 text-yellow-600" />
                         </div>
-                        <h3 className="text-2xl font-black text-[#111827] mb-2">Puraskar</h3>
-                        <p className="text-gray-500">
-                            Honoring excellence. Recognizing outstanding achievements in the fields of Dharmic technology, education, and social impact.
+                        <h3 className="text-2xl font-black text-[#111827] mb-3">Puraskar</h3>
+                        <p className="text-gray-500 leading-relaxed">
+                            Puraskar (Awards) is KGF&apos;s way of honoring outstanding contributors to Sanatan Dharma, culture, social service, education, and national pride.
                         </p>
                     </div>
                 </div>
 
-                <div className="text-center mt-10">
+                <div className="text-center mt-12">
                     <Link
                         href="/mission"
                         className="inline-flex items-center gap-2 text-orange font-bold hover:gap-3 transition-all"
@@ -130,33 +159,15 @@ export default function AboutPage() {
                 </div>
             </div>
 
-            {/* Our Story */}
-            <div className="bg-white py-20">
-                <div className="container-custom">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
-                            Our Story
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-black text-[#111827] mb-6">
-                            Rooted in Tradition, Ready for the Future
-                        </h2>
-                        <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                            <p>
-                                The Kurukshetra Gurukulam Foundation (KGF) was established with a singular vision: to revive the spirit of the ancient Gurukul system while embracing the transformative power of modern technology.
-                            </p>
-                            <p>
-                                Named after the sacred land of Kurukshetra, where the Bhagavad Gita was revealed, KGF Bharat seeks to be the modern-day battlefield for knowledge, where every student and professional becomes equipped to serve Dharma through skill, wisdom, and integrity.
-                            </p>
-                            <p>
-                                From AI education to community building, from national awards to startup mentorship, KGF Bharat is creating an ecosystem where tradition and technology thrive together.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            {/* Decorative Divider */}
+            <div className="flex items-center justify-center py-2">
+                <div className="h-px w-16 bg-orange/30" />
+                <div className="mx-4 w-2 h-2 rounded-full bg-orange/40" />
+                <div className="h-px w-16 bg-orange/30" />
             </div>
 
             {/* Team Section */}
-            <div className="container-custom py-20">
+            <div className="container-custom py-24">
                 <div className="text-center mb-16">
                     <span className="text-orange font-black tracking-[0.3em] uppercase text-xs mb-4 block">
                         The People Behind KGF
@@ -166,17 +177,17 @@ export default function AboutPage() {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     {teamMembers.map((member) => (
                         <div
                             key={member.name}
-                            className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md hover:border-orange/20 transition-all"
+                            className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md hover:border-orange/20 transition-all"
                         >
-                            <div className="w-20 h-20 bg-[#111827] rounded-2xl mx-auto mb-5 flex items-center justify-center">
-                                <span className="text-white text-xl font-black">{member.initials}</span>
+                            <div className="w-24 h-24 bg-[#111827] rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                                <span className="text-white text-2xl font-black">{member.initials}</span>
                             </div>
-                            <h3 className="text-lg font-black text-[#111827]">{member.name}</h3>
-                            <p className="text-orange text-sm font-bold mb-3">{member.role}</p>
+                            <h3 className="text-xl font-black text-[#111827]">{member.name}</h3>
+                            <p className="text-orange text-sm font-bold mb-4">{member.role}</p>
                             <p className="text-gray-500 text-sm leading-relaxed">{member.description}</p>
                         </div>
                     ))}
