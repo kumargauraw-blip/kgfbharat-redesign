@@ -38,8 +38,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
     return (
         <div className="min-h-screen bg-white pb-20">
             {/* Hero/Header */}
-            <div className="bg-[#111827] text-white py-16 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+            <div className="text-white py-16 relative overflow-hidden" style={{ background: "radial-gradient(ellipse at top left, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
+                <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
                 <div className="container-custom relative z-10">
                     <Link href="/ai-courses" className="inline-flex items-center text-orange hover:text-white mb-6 transition-colors text-sm font-medium">
                         <ArrowLeft className="h-4 w-4 mr-2" /> Back to Courses
@@ -54,7 +54,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                     <h1 className="text-3xl md:text-5xl font-heading font-bold mb-6 leading-tight max-w-4xl">
                         {course.title}
                     </h1>
-                    <p className="text-xl text-gray-200 max-w-3xl leading-relaxed">
+                    <p className="text-xl text-white/80 max-w-3xl leading-relaxed">
                         {course.tagline || course.description}
                     </p>
                 </div>

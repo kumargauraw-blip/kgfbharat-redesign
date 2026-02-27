@@ -176,7 +176,7 @@ export function Navbar() {
                                 KGF{" "}
                                 <span className="text-orange">BHARAT</span>
                             </h1>
-                            <p className="text-[8px] uppercase tracking-[0.4em] text-gray-400 font-bold">
+                            <p className="text-[8px] uppercase tracking-[0.4em] text-[#111827]/60 font-bold">
                                 Kurukshetra Gurukulam Foundation
                             </p>
                         </div>

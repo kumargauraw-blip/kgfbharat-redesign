@@ -67,7 +67,7 @@ const socialLinks = [
 
 export function Footer() {
     return (
-        <footer className="pt-24 pb-12 bg-[#111827] text-white">
+        <footer className="pt-24 pb-12 bg-[#001033] text-white">
             <div className="container-custom">
                 {/* Main Footer Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12">

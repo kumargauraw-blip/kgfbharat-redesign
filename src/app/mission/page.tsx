@@ -115,9 +115,9 @@ export default function MissionPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero */}
-            <div className="bg-[#111827] text-white py-24 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+            <div className="text-white py-24 relative overflow-hidden" style={{ background: "radial-gradient(ellipse at top left, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
+                <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
                 <div className="container-custom relative z-10">
                     <div className="max-w-3xl">
@@ -127,7 +127,7 @@ export default function MissionPage() {
                         <h1 className="text-4xl md:text-6xl font-black mb-6 leading-[1.1] text-white">
                             Three Pillars of KGF Bharat
                         </h1>
-                        <p className="text-xl text-gray-300 leading-relaxed">
+                        <p className="text-xl text-white/80 leading-relaxed">
                             The Kurukshetra Gurukulam Foundation is built on three pillars that guide every initiative, program, and decision we make in service of Dharmic society.
                         </p>
                     </div>

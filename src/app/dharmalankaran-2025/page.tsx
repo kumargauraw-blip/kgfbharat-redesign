@@ -47,9 +47,9 @@ export default function DharmalankaranPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero */}
-            <div className="bg-[#111827] text-white py-28 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+            <div className="text-white py-28 relative overflow-hidden" style={{ background: "radial-gradient(ellipse at top left, #cd5600 0%, #e07020 30%, #f0a060 60%, #fff5eb 90%, white 100%)" }}>
+                <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
                 {/* Decorative pattern */}
                 <div className="absolute inset-0 opacity-5" style={{
                     backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
@@ -68,11 +68,11 @@ export default function DharmalankaranPage() {
                             <span className="block text-orange">2025</span>
                         </h1>
 
-                        <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto">
+                        <p className="text-xl text-white/80 leading-relaxed mb-8 max-w-2xl mx-auto">
                             Honoring outstanding contributors to Dharmic values through technology, education, and social impact.
                         </p>
 
-                        <div className="flex flex-wrap justify-center gap-6 text-gray-300">
+                        <div className="flex flex-wrap justify-center gap-6 text-white/80">
                             <div className="flex items-center gap-2">
                                 <Calendar className="w-5 h-5 text-orange" />
                                 <span className="font-medium">December 14, 2025</span>
