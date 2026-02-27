@@ -7,19 +7,14 @@ import { ArrowRight, BookOpen } from "lucide-react"
 
 export function Hero() {
     return (
-        <section id="home" className="relative min-h-[95vh] flex items-center pt-32 overflow-hidden bg-white">
+        <section id="home" className="relative flex items-center pt-24 pb-16 overflow-hidden bg-white">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-orange/5 -skew-x-12 translate-x-12"></div>
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-100/50 blur-[140px] rounded-full -z-10"></div>
 
             <div className="container-custom relative z-10">
-                <div className="grid lg:grid-cols-2 items-center gap-20">
-                    <div className="space-y-12 text-center lg:text-left">
-                        <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-orange-50 border border-orange-100 shadow-sm mx-auto lg:mx-0">
-                            <span className="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
-                            <span className="text-[11px] font-black uppercase tracking-widest text-orange-700">Protecting Tradition. Engineering Progress.</span>
-                        </div>
-
-                        <div className="space-y-6">
+                <div className="grid lg:grid-cols-2 items-center gap-12">
+                    <div className="space-y-8 text-center lg:text-left">
+                        <div className="space-y-4">
                             <h2 className="text-[#111827]/50 text-2xl md:text-3xl font-serif italic font-semibold">
                                 धर्मक्षेत्रे कुरुक्षेत्रे...
                             </h2>
