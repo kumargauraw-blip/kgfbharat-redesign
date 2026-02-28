@@ -1,8 +1,9 @@
 "use server";
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { getCourses, getCourseBySlug, upsertCourse, deleteCourse } from "@/lib/courseService";
-import { getBatches, upsertBatch, deleteBatch } from "@/lib/batchService";
+import { getCourses as dsGetCourses, getCourseBySlug as dsGetCourseBySlug, getBatches as dsGetBatches } from "@/lib/data-source";
+import { upsertCourse, deleteCourse } from "@/lib/courseService";
+import { upsertBatch, deleteBatch } from "@/lib/batchService";
 import { Batch, Course } from "@/lib/types";
 
 const apiKey = process.env.GEMINI_API_KEY;
@@ -92,11 +93,11 @@ export async function saveCourseAction(data: Course) {
 }
 
 export async function fetchCourses() {
-    return getCourses();
+    return dsGetCourses();
 }
 
 export async function fetchCourse(slug: string) {
-    return getCourseBySlug(slug);
+    return dsGetCourseBySlug(slug);
 }
 
 export async function deleteCourseAction(courseId: string) {
@@ -111,7 +112,7 @@ export async function deleteCourseAction(courseId: string) {
 
 // Batch actions
 export async function fetchBatches() {
-    return getBatches();
+    return dsGetBatches();
 }
 
 export async function saveBatchAction(data: Batch) {

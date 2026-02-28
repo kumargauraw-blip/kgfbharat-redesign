@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Clock, MessageCircle, HelpCircle, Sparkles, CalendarDays } from "lucide-react"
-import { fetchCourses, fetchBatches } from "@/app/actions"
+import { getCourses, getBatches } from "@/lib/data-source"
 import { CustomBatchForm } from "@/components/ai-courses/CustomBatchForm"
 import type { Batch } from "@/lib/types"
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
 }
 
-export const dynamic = "force-dynamic"
+export const revalidate = 300
 
 function getNextBatchDate(courseId: string, batches: Batch[]): string | null {
     const now = new Date()
@@ -40,8 +40,8 @@ function formatDate(dateStr: string): string {
 
 export default async function CoursesPage() {
     const [courses, batches] = await Promise.all([
-        fetchCourses(),
-        fetchBatches(),
+        getCourses(),
+        getBatches(),
     ])
 
     return (

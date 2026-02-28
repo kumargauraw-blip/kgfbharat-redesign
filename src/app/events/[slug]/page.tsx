@@ -2,7 +2,9 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Calendar, MapPin, Clock, ArrowLeft, ExternalLink, CheckCircle } from "lucide-react"
-import { getEventBySlug, getEvents } from "@/lib/eventService"
+import { getEventBySlug, getEvents } from "@/lib/data-source"
+
+export const revalidate = 300
 
 interface PageProps {
     params: Promise<{ slug: string }>

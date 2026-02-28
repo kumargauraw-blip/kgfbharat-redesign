@@ -1,6 +1,8 @@
 import { Metadata } from "next"
-import { getEvents } from "@/lib/eventService"
+import { getEvents } from "@/lib/data-source"
 import { EventsPageClient } from "./EventsPageClient"
+
+export const revalidate = 300
 
 export const metadata: Metadata = {
     title: "Events | KGF Bharat",

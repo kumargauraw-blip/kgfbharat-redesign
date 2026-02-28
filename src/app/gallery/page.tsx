@@ -1,6 +1,8 @@
 import { Metadata } from "next"
-import { getGalleryItems, getGalleryCategories } from "@/lib/galleryService"
+import { getGalleryItems, getGalleryCategories } from "@/lib/data-source"
 import { GalleryPageClient } from "./GalleryPageClient"
+
+export const revalidate = 300
 
 export const metadata: Metadata = {
     title: "Gallery | KGF Bharat",

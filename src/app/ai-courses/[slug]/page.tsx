@@ -3,15 +3,14 @@ import Link from "next/link"
 import { Metadata } from "next"
 import { CheckCircle, Clock, Globe, ArrowLeft, Calendar, MapPin, Users, Star, GraduationCap } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { fetchCourse } from "@/app/actions"
-import { getBatchesByCourseId } from "@/lib/batchService"
-import { getTestimonialsByCourseSlug } from "@/lib/testimonialService"
-import { getCourses } from "@/lib/courseService"
+import { getCourseBySlug, getBatchesByCourseId, getTestimonialsByCourseSlug, getCourses } from "@/lib/data-source"
 import FaqAccordion from "@/components/FaqAccordion"
+
+export const revalidate = 300
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params
-    const course = await fetchCourse(slug)
+    const course = await getCourseBySlug(slug)
     if (!course) return { title: "Course Not Found" }
     return {
         title: `${course.title} | KGF Bharat AI Courses`,
@@ -21,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
-    const course = await fetchCourse(slug)
+    const course = await getCourseBySlug(slug)
 
     if (!course) {
         notFound()
