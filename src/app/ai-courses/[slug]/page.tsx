@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { getCourseBySlug, getBatchesByCourseId, getTestimonialsByCourseSlug, getCourses } from "@/lib/data-source"
 import FaqAccordion from "@/components/FaqAccordion"
 
-export const revalidate = 300
+export const dynamic = "force-dynamic"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params

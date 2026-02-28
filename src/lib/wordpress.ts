@@ -52,7 +52,7 @@ async function wpFetch<T>(endpoint: string): Promise<T> {
   const url = `${WP_API_URL}${separator}${endpoint}`;
 
   const res = await fetch(url, {
-    next: { revalidate: REVALIDATE },
+    next: { revalidate: 60 },
   });
 
   if (!res.ok) {

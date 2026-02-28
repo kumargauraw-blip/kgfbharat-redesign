@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { getEvents } from "@/lib/data-source"
 import { EventsPageClient } from "./EventsPageClient"
 
-export const revalidate = 300
+export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
     title: "Events | KGF Bharat",

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
 }
 
-export const revalidate = 300
+export const dynamic = "force-dynamic"
 
 function getNextBatchDate(courseId: string, batches: Batch[]): string | null {
     const now = new Date()

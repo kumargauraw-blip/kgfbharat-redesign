@@ -2,9 +2,9 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Calendar, MapPin, Clock, ArrowLeft, ExternalLink, CheckCircle } from "lucide-react"
-import { getEventBySlug, getEvents } from "@/lib/data-source"
+import { getEventBySlug } from "@/lib/data-source"
 
-export const revalidate = 300
+export const dynamic = "force-dynamic"
 
 interface PageProps {
     params: Promise<{ slug: string }>
@@ -22,8 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
-    const events = await getEvents()
-    return events.map(event => ({ slug: event.slug }))
+    return []
 }
 
 export default async function EventDetailPage({ params }: PageProps) {
