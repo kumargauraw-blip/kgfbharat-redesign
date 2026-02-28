@@ -78,21 +78,21 @@ function mapWPCourse(wp: WPPost): Course {
 
   return {
     id: String(wp.id),
-    slug: wp.slug,
+    slug: getField(wp, 'kgf_slug', '') || wp.slug,
     title: stripHtml(wp.title?.rendered || ''),
-    tagline: getField(wp, 'tagline', ''),
+    tagline: getField(wp, 'kgf_tagline', ''),
     description,
-    targetAudience: safeJsonParse(getField(wp, 'target_audience', []), []) as TargetAudience[],
-    status: (getField(wp, 'status', 'Active') || 'Active') as CourseStatus,
-    price: getField(wp, 'price', ''),
-    duration: getField(wp, 'duration', ''),
-    format: (getField(wp, 'format', 'Online') || 'Online') as CourseFormat,
+    targetAudience: safeJsonParse(getField(wp, 'kgf_target_audience', []), []) as TargetAudience[],
+    status: (getField(wp, 'kgf_status', 'Active') || 'Active') as CourseStatus,
+    price: getField(wp, 'kgf_price', ''),
+    duration: getField(wp, 'kgf_duration', ''),
+    format: (getField(wp, 'kgf_format', 'Online') || 'Online') as CourseFormat,
     thumbnailUrl: getField(wp, 'thumbnail_url') || undefined,
     overview: getField(wp, 'overview', '') || description,
-    curriculum: safeJsonParse(getField(wp, 'curriculum', []), []),
-    learningOutcomes: safeJsonParse(getField(wp, 'learning_outcomes', []), []),
-    instructorBio: getField(wp, 'instructor_bio') || undefined,
-    faq: safeJsonParse(getField(wp, 'faq', []), []) as FAQ[],
+    curriculum: safeJsonParse(getField(wp, 'kgf_curriculum', []), []),
+    learningOutcomes: safeJsonParse(getField(wp, 'kgf_learning_outcomes', []), []),
+    instructorBio: getField(wp, 'kgf_instructor_bio') || undefined,
+    faq: safeJsonParse(getField(wp, 'kgf_faq', []), []) as FAQ[],
     createdAt: wp.date,
     updatedAt: wp.modified,
   };
@@ -101,17 +101,17 @@ function mapWPCourse(wp: WPPost): Course {
 function mapWPBatch(wp: WPPost): Batch {
   return {
     id: String(wp.id),
-    courseId: getField(wp, 'course_id', ''),
-    batchNumber: getField(wp, 'batch_number', ''),
-    startDate: getField(wp, 'start_date', ''),
-    endDate: getField(wp, 'end_date', ''),
-    format: (getField(wp, 'format', 'Online') || 'Online') as CourseFormat,
-    location: getField(wp, 'location') || undefined,
-    price: getField(wp, 'price', ''),
-    enrollmentUrl: getField(wp, 'enrollment_url', ''),
-    status: getField(wp, 'status', 'Upcoming') as Batch['status'],
-    maxSeats: getField(wp, 'max_seats') ? Number(getField(wp, 'max_seats')) : undefined,
-    seatsRemaining: getField(wp, 'seats_remaining') ? Number(getField(wp, 'seats_remaining')) : undefined,
+    courseId: getField(wp, 'kgf_course_id', ''),
+    batchNumber: getField(wp, 'kgf_batch_number', ''),
+    startDate: getField(wp, 'kgf_start_date', ''),
+    endDate: getField(wp, 'kgf_end_date', ''),
+    format: (getField(wp, 'kgf_format', 'Online') || 'Online') as CourseFormat,
+    location: getField(wp, 'kgf_location') || undefined,
+    price: getField(wp, 'kgf_price', ''),
+    enrollmentUrl: getField(wp, 'kgf_enrollment_url', ''),
+    status: getField(wp, 'kgf_batch_status', 'Upcoming') as Batch['status'],
+    maxSeats: getField(wp, 'kgf_max_seats') ? Number(getField(wp, 'kgf_max_seats')) : undefined,
+    seatsRemaining: getField(wp, 'kgf_seats_remaining') ? Number(getField(wp, 'kgf_seats_remaining')) : undefined,
   };
 }
 
@@ -119,17 +119,17 @@ function mapWPEvent(wp: WPPost): Event {
   return {
     id: String(wp.id),
     title: stripHtml(wp.title?.rendered || ''),
-    slug: wp.slug,
+    slug: getField(wp, 'kgf_slug', '') || wp.slug,
     description: stripHtml(wp.content?.rendered || ''),
-    date: getField(wp, 'date', wp.date),
-    endDate: getField(wp, 'end_date') || undefined,
-    time: getField(wp, 'time', ''),
-    location: getField(wp, 'location', ''),
-    type: (getField(wp, 'event_type', 'upcoming') || 'upcoming') as Event['type'],
-    category: (getField(wp, 'category', 'conference') || 'conference') as Event['category'],
+    date: getField(wp, 'kgf_start_date', wp.date),
+    endDate: getField(wp, 'kgf_end_date') || undefined,
+    time: getField(wp, 'kgf_time', ''),
+    location: getField(wp, 'kgf_location', ''),
+    type: (getField(wp, 'kgf_event_type', 'upcoming') || 'upcoming') as Event['type'],
+    category: (getField(wp, 'kgf_event_type', 'conference') || 'conference') as Event['category'],
     imageUrl: getField(wp, 'image_url') || undefined,
-    registrationUrl: getField(wp, 'registration_url') || undefined,
-    highlights: safeJsonParse(getField(wp, 'highlights', []), []),
+    registrationUrl: getField(wp, 'kgf_registration_url') || undefined,
+    highlights: safeJsonParse(getField(wp, 'kgf_highlights', []), []),
   };
 }
 
@@ -162,7 +162,7 @@ function mapWPTestimonial(wp: WPPost): Testimonial {
 // ---- Public API ----
 
 export async function wpGetCourses(): Promise<Course[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('courses', 'kgf_course');
+  const posts = await wpFetchWithFallback<WPPost[]>('courses', 'kgf-courses');
   return posts.map(mapWPCourse);
 }
 
@@ -185,7 +185,7 @@ export async function wpGetCourseBySlug(slug: string): Promise<Course | undefine
 }
 
 export async function wpGetEvents(): Promise<Event[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('events', 'kgf_event');
+  const posts = await wpFetchWithFallback<WPPost[]>('events', 'kgf-events');
   return posts.map(mapWPEvent);
 }
 
@@ -208,7 +208,7 @@ export async function wpGetEventBySlug(slug: string): Promise<Event | undefined>
 }
 
 export async function wpGetBatches(): Promise<Batch[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('batches', 'kgf_batch');
+  const posts = await wpFetchWithFallback<WPPost[]>('batches', 'kgf-batches');
   return posts.map(mapWPBatch);
 }
 
@@ -218,7 +218,7 @@ export async function wpGetBatchesByCourseId(courseId: string): Promise<Batch[]>
 }
 
 export async function wpGetGalleryItems(): Promise<GalleryItem[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('gallery', 'kgf_gallery');
+  const posts = await wpFetchWithFallback<WPPost[]>('gallery', 'kgf-gallery');
   return posts.map(mapWPGalleryItem);
 }
 
@@ -229,7 +229,7 @@ export async function wpGetGalleryCategories(): Promise<string[]> {
 }
 
 export async function wpGetTestimonials(): Promise<Testimonial[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('testimonials', 'kgf_testimonial');
+  const posts = await wpFetchWithFallback<WPPost[]>('testimonials', 'kgf-testimonials');
   return posts.map(mapWPTestimonial);
 }
 
