@@ -40,6 +40,12 @@ function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void })
                             title={item.title}
                         />
                     </div>
+                ) : item.url ? (
+                    <img
+                        src={item.url}
+                        alt={item.title}
+                        className="w-full max-h-[80vh] object-contain rounded-xl"
+                    />
                 ) : (
                     <div className="aspect-video bg-[#111827]/50 rounded-xl overflow-hidden flex items-center justify-center">
                         <div className="text-center text-white">
@@ -150,14 +156,23 @@ export function GalleryPageClient({
                                     onClick={() => setSelectedItem(item)}
                                     className="group relative aspect-[4/3] bg-[#111827]/10 rounded-2xl overflow-hidden text-left"
                                 >
-                                    {/* Placeholder visual */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#111827]/20 to-[#111827]/40 flex items-center justify-center">
-                                        {item.type === "video" ? (
-                                            <Play className="w-12 h-12 text-white/40 group-hover:text-orange/70 transition-colors" />
-                                        ) : (
-                                            <ImageIcon className="w-12 h-12 text-white/30 group-hover:text-orange/50 transition-colors" />
-                                        )}
-                                    </div>
+                                    {/* Image or video placeholder */}
+                                    {item.url && item.type !== "video" ? (
+                                        <img
+                                            src={item.thumbnailUrl || item.url}
+                                            alt={item.title}
+                                            className="absolute inset-0 w-full h-full object-cover"
+                                            loading="lazy"
+                                        />
+                                    ) : (
+                                        <div className="absolute inset-0 bg-gradient-to-br from-[#111827]/20 to-[#111827]/40 flex items-center justify-center">
+                                            {item.type === "video" ? (
+                                                <Play className="w-12 h-12 text-white/40 group-hover:text-orange/70 transition-colors" />
+                                            ) : (
+                                                <ImageIcon className="w-12 h-12 text-white/30 group-hover:text-orange/50 transition-colors" />
+                                            )}
+                                        </div>
+                                    )}
 
                                     {/* Overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
