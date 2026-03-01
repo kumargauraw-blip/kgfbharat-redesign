@@ -33,7 +33,8 @@ export default async function EventDetailPage({ params }: PageProps) {
         notFound()
     }
 
-    const isUpcoming = event.type === "upcoming"
+    const isPast = event.category === "completed" || event.type === "past" || (event.date && new Date(event.date) < new Date())
+    const isUpcoming = !isPast && (event.type === "upcoming" || (event.date && new Date(event.date) >= new Date()))
 
     return (
         <div className="min-h-screen bg-white">

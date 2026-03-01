@@ -81,10 +81,12 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 }
 
 export function EventsPageClient({ events }: { events: Event[] }) {
-    const [activeTab, setActiveTab] = useState<"upcoming" | "past">("upcoming")
+    const hasUpcoming = events.some(e => e.type === "upcoming" || (e.date && new Date(e.date) >= new Date()))
+    const [activeTab, setActiveTab] = useState<"upcoming" | "past">(hasUpcoming ? "upcoming" : "past")
 
-    const upcoming = events.filter(e => e.type === "upcoming")
-    const past = events.filter(e => e.type === "past")
+    const now = new Date()
+    const upcoming = events.filter(e => e.type === "upcoming" || (e.date && new Date(e.date) >= now))
+    const past = events.filter(e => e.type === "past" || e.category === "completed" || (e.date && new Date(e.date) < now && e.type !== "upcoming"))
     const displayed = activeTab === "upcoming" ? upcoming : past
 
     return (
