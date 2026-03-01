@@ -33,6 +33,16 @@ function getField(post: WPPost, field: string, fallback: any = ''): any {
   return fallback;
 }
 
+// Normalize date strings: ACF may return "20251219" instead of "2025-12-19"
+function normalizeDate(value: string): string {
+  if (!value) return value;
+  // If it matches YYYYMMDD (8 digits, no hyphens), convert to YYYY-MM-DD
+  if (/^\d{8}$/.test(value)) {
+    return `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}`;
+  }
+  return value;
+}
+
 // Safely parse a JSON string field or return the value if already parsed
 function safeJsonParse(value: any, fallback: any = []): any {
   if (Array.isArray(value)) return value;
@@ -266,8 +276,8 @@ function mapKGFBatch(b: KGFBatchResponse): Batch {
     id: b.id,
     courseId: b.courseId,
     batchNumber: b.batchNumber,
-    startDate: b.startDate,
-    endDate: b.endDate,
+    startDate: normalizeDate(b.startDate),
+    endDate: normalizeDate(b.endDate),
     format: (b.format || 'Online') as CourseFormat,
     location: b.location || undefined,
     price: b.price,
@@ -284,8 +294,8 @@ function mapKGFEvent(e: KGFEventResponse): Event {
     title: e.title,
     slug: e.slug,
     description: stripHtml(e.description),
-    date: e.date,
-    endDate: e.endDate || undefined,
+    date: normalizeDate(e.date),
+    endDate: e.endDate ? normalizeDate(e.endDate) : undefined,
     time: e.time,
     location: e.location,
     type: (e.type || 'upcoming') as Event['type'],
