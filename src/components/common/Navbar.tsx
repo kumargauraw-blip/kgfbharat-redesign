@@ -264,7 +264,7 @@ export function Navbar() {
                                     <Link
                                         href={item.href}
                                         className={cn(
-                                            "block px-4 py-3.5 text-lg font-black text-[#111827] hover:text-orange hover:bg-orange/5 rounded-xl transition-colors",
+                                            "block px-4 py-3.5 text-lg font-black uppercase tracking-widest text-[#111827] hover:text-orange hover:bg-orange/5 rounded-xl transition-colors",
                                             pathname === item.href &&
                                                 "text-orange bg-orange/5"
                                         )}
