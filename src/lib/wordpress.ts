@@ -62,13 +62,14 @@ async function wpFetch<T>(endpoint: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-// Try custom KGF endpoint first, fall back to standard WP REST API
-async function wpFetchWithFallback<T>(customPath: string, standardPath: string): Promise<T> {
-  try {
-    return await wpFetch<T>(`/wp-json/kgf/v1/${customPath}`);
-  } catch {
-    return await wpFetch<T>(`/wp-json/wp/v2/${standardPath}?per_page=100`);
-  }
+// Fetch from custom KGF endpoint (returns pre-formatted data)
+async function wpFetchCustom<T>(path: string): Promise<T> {
+  return wpFetch<T>(`/wp-json/kgf/v1/${path}`);
+}
+
+// Fetch from standard WP REST API (returns WPPost format)
+async function wpFetchStandard<T>(path: string): Promise<T> {
+  return wpFetch<T>(`/wp-json/wp/v2/${path}?per_page=100`);
 }
 
 // ---- Mappers ----
@@ -159,57 +160,237 @@ function mapWPTestimonial(wp: WPPost): Testimonial {
   };
 }
 
-// ---- Public API ----
+// ---- Custom endpoint response types (pre-formatted by kgf-headless plugin) ----
+
+interface KGFCourseResponse {
+  id: string;
+  slug: string;
+  title: string;
+  tagline: string;
+  description: string;
+  targetAudience: string[];
+  status: string;
+  price: string;
+  duration: string;
+  format: string;
+  thumbnailUrl: string | null;
+  overview: string;
+  curriculum: string[];
+  learningOutcomes: string[];
+  instructorBio: string;
+  faq: { question: string; answer: string }[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface KGFEventResponse {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  date: string;
+  endDate: string | null;
+  time: string;
+  location: string;
+  type: string;
+  category: string;
+  imageUrl: string | null;
+  registrationUrl: string | null;
+  highlights: string[];
+}
+
+interface KGFBatchResponse {
+  id: string;
+  courseId: string;
+  batchNumber: string;
+  startDate: string;
+  endDate: string;
+  format: string;
+  location: string;
+  price: string;
+  enrollmentUrl: string;
+  status: string;
+  maxSeats: number | null;
+  seatsRemaining: number | null;
+}
+
+interface KGFGalleryResponse {
+  id: string;
+  title: string;
+  description: string;
+  type: string;
+  url: string;
+  thumbnailUrl: string | null;
+  category: string;
+  date: string;
+}
+
+interface KGFTestimonialResponse {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+  courseSlug: string;
+  rating: number;
+  imageUrl: string | null;
+}
+
+// ---- Mappers from custom endpoint format ----
+
+function mapKGFCourse(c: KGFCourseResponse): Course {
+  return {
+    id: c.id,
+    slug: c.slug,
+    title: c.title,
+    tagline: c.tagline,
+    description: stripHtml(c.description),
+    targetAudience: (c.targetAudience || []) as TargetAudience[],
+    status: (c.status || 'active') as CourseStatus,
+    price: c.price,
+    duration: c.duration,
+    format: (c.format || 'Online') as CourseFormat,
+    thumbnailUrl: c.thumbnailUrl || undefined,
+    overview: c.overview || stripHtml(c.description),
+    curriculum: c.curriculum || [],
+    learningOutcomes: c.learningOutcomes || [],
+    instructorBio: c.instructorBio || undefined,
+    faq: (c.faq || []) as FAQ[],
+    createdAt: c.createdAt,
+    updatedAt: c.updatedAt,
+  };
+}
+
+function mapKGFBatch(b: KGFBatchResponse): Batch {
+  return {
+    id: b.id,
+    courseId: b.courseId,
+    batchNumber: b.batchNumber,
+    startDate: b.startDate,
+    endDate: b.endDate,
+    format: (b.format || 'Online') as CourseFormat,
+    location: b.location || undefined,
+    price: b.price,
+    enrollmentUrl: b.enrollmentUrl,
+    status: (b.status || 'upcoming') as Batch['status'],
+    maxSeats: b.maxSeats || undefined,
+    seatsRemaining: b.seatsRemaining || undefined,
+  };
+}
+
+function mapKGFEvent(e: KGFEventResponse): Event {
+  return {
+    id: e.id,
+    title: e.title,
+    slug: e.slug,
+    description: stripHtml(e.description),
+    date: e.date,
+    endDate: e.endDate || undefined,
+    time: e.time,
+    location: e.location,
+    type: (e.type || 'upcoming') as Event['type'],
+    category: (e.category || 'conference') as Event['category'],
+    imageUrl: e.imageUrl || undefined,
+    registrationUrl: e.registrationUrl || undefined,
+    highlights: e.highlights || [],
+  };
+}
+
+function mapKGFGalleryItem(g: KGFGalleryResponse): GalleryItem {
+  return {
+    id: g.id,
+    title: g.title,
+    description: g.description || undefined,
+    type: (g.type || 'photo') as GalleryItem['type'],
+    url: g.url,
+    thumbnailUrl: g.thumbnailUrl || undefined,
+    category: g.category,
+    date: g.date,
+  };
+}
+
+function mapKGFTestimonial(t: KGFTestimonialResponse): Testimonial {
+  return {
+    id: t.id,
+    name: t.name,
+    role: t.role,
+    company: t.company || undefined,
+    content: t.content,
+    courseSlug: t.courseSlug || undefined,
+    rating: t.rating || 5,
+    imageUrl: t.imageUrl || undefined,
+  };
+}
+
+// ---- Public API (uses custom kgf/v1 endpoints, falls back to wp/v2 with WPPost mappers) ----
 
 export async function wpGetCourses(): Promise<Course[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('courses', 'kgf-courses');
-  return posts.map(mapWPCourse);
+  try {
+    const data = await wpFetchCustom<KGFCourseResponse[]>('courses');
+    return data.map(mapKGFCourse);
+  } catch {
+    const posts = await wpFetchStandard<WPPost[]>('kgf-courses');
+    return posts.map(mapWPCourse);
+  }
 }
 
 export async function wpGetCourseBySlug(slug: string): Promise<Course | undefined> {
   try {
-    const posts = await wpFetch<WPPost[]>(`/wp-json/kgf/v1/courses?slug=${encodeURIComponent(slug)}`);
-    if (posts.length > 0) return mapWPCourse(posts[0]);
+    const data = await wpFetchCustom<KGFCourseResponse>(`courses/${encodeURIComponent(slug)}`);
+    return mapKGFCourse(data);
   } catch {
-    // Fall through to standard endpoint
+    try {
+      const posts = await wpFetchStandard<WPPost[]>(`kgf-courses?slug=${encodeURIComponent(slug)}`);
+      if (posts.length > 0) return mapWPCourse(posts[0]);
+    } catch {
+      // No result
+    }
   }
-
-  try {
-    const posts = await wpFetch<WPPost[]>(`/wp-json/wp/v2/kgf_course?slug=${encodeURIComponent(slug)}`);
-    if (posts.length > 0) return mapWPCourse(posts[0]);
-  } catch {
-    // No result
-  }
-
   return undefined;
 }
 
 export async function wpGetEvents(): Promise<Event[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('events', 'kgf-events');
-  return posts.map(mapWPEvent);
+  try {
+    const data = await wpFetchCustom<KGFEventResponse[]>('events');
+    return data.map(mapKGFEvent);
+  } catch {
+    const posts = await wpFetchStandard<WPPost[]>('kgf-events');
+    return posts.map(mapWPEvent);
+  }
 }
 
 export async function wpGetEventBySlug(slug: string): Promise<Event | undefined> {
   try {
-    const posts = await wpFetch<WPPost[]>(`/wp-json/kgf/v1/events?slug=${encodeURIComponent(slug)}`);
-    if (posts.length > 0) return mapWPEvent(posts[0]);
+    const data = await wpFetchCustom<KGFEventResponse>(`events/${encodeURIComponent(slug)}`);
+    return mapKGFEvent(data);
   } catch {
-    // Fall through
+    try {
+      const posts = await wpFetchStandard<WPPost[]>(`kgf-events?slug=${encodeURIComponent(slug)}`);
+      if (posts.length > 0) return mapWPEvent(posts[0]);
+    } catch {
+      // No result
+    }
   }
-
-  try {
-    const posts = await wpFetch<WPPost[]>(`/wp-json/wp/v2/kgf_event?slug=${encodeURIComponent(slug)}`);
-    if (posts.length > 0) return mapWPEvent(posts[0]);
-  } catch {
-    // No result
-  }
-
   return undefined;
 }
 
 export async function wpGetBatches(): Promise<Batch[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('batches', 'kgf-batches');
-  return posts.map(mapWPBatch);
+  try {
+    // No "all batches" custom endpoint, use standard
+    const posts = await wpFetchStandard<WPPost[]>('kgf-batches');
+    return posts.map(mapWPBatch);
+  } catch {
+    return [];
+  }
+}
+
+export async function wpGetBatchesByCourseSlug(courseSlug: string): Promise<Batch[]> {
+  try {
+    const data = await wpFetchCustom<KGFBatchResponse[]>(`courses/${encodeURIComponent(courseSlug)}/batches`);
+    return data.map(mapKGFBatch);
+  } catch {
+    return [];
+  }
 }
 
 export async function wpGetBatchesByCourseId(courseId: string): Promise<Batch[]> {
@@ -218,19 +399,29 @@ export async function wpGetBatchesByCourseId(courseId: string): Promise<Batch[]>
 }
 
 export async function wpGetGalleryItems(): Promise<GalleryItem[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('gallery', 'kgf-gallery');
-  return posts.map(mapWPGalleryItem);
+  try {
+    const data = await wpFetchCustom<KGFGalleryResponse[]>('gallery');
+    return data.map(mapKGFGalleryItem);
+  } catch {
+    const posts = await wpFetchStandard<WPPost[]>('kgf-gallery');
+    return posts.map(mapWPGalleryItem);
+  }
 }
 
 export async function wpGetGalleryCategories(): Promise<string[]> {
   const items = await wpGetGalleryItems();
-  const categories = new Set(items.map(item => item.category));
+  const categories = new Set(items.map(item => item.category).filter(Boolean));
   return ['All', ...Array.from(categories)];
 }
 
 export async function wpGetTestimonials(): Promise<Testimonial[]> {
-  const posts = await wpFetchWithFallback<WPPost[]>('testimonials', 'kgf-testimonials');
-  return posts.map(mapWPTestimonial);
+  try {
+    const data = await wpFetchCustom<KGFTestimonialResponse[]>('testimonials');
+    return data.map(mapKGFTestimonial);
+  } catch {
+    const posts = await wpFetchStandard<WPPost[]>('kgf-testimonials');
+    return posts.map(mapWPTestimonial);
+  }
 }
 
 export async function wpGetTestimonialsByCourseSlug(courseSlug: string): Promise<Testimonial[]> {

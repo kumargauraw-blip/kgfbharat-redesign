@@ -2,7 +2,7 @@
 /**
  * Plugin Name: KGF Bharat Headless CMS
  * Description: Custom Post Types and REST API endpoints for the KGF Bharat headless Next.js frontend.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: KGF Bharat
  * Text Domain: kgf-headless
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KGF_HEADLESS_VERSION', '1.0.0' );
+define( 'KGF_HEADLESS_VERSION', '1.1.0' );
 define( 'KGF_HEADLESS_DIR', plugin_dir_path( __FILE__ ) );
 
 /**
@@ -819,6 +819,118 @@ function kgf_add_acf_to_rest() {
 	}
 }
 add_action( 'rest_api_init', 'kgf_add_acf_to_rest' );
+
+/**
+ * Register ACF Field Groups for all KGF custom post types.
+ * This gives editors a nice visual form in wp-admin.
+ */
+function kgf_register_acf_field_groups() {
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	// ── COURSES ──
+	acf_add_local_field_group( array(
+		'key'      => 'group_kgf_course',
+		'title'    => 'Course Details',
+		'fields'   => array(
+			array( 'key' => 'field_kgf_slug', 'label' => 'Slug', 'name' => 'kgf_slug', 'type' => 'text', 'instructions' => 'URL-friendly slug (e.g. ai-fundamentals). Used in the frontend URL.', 'required' => 1 ),
+			array( 'key' => 'field_kgf_tagline', 'label' => 'Tagline', 'name' => 'kgf_tagline', 'type' => 'text', 'instructions' => 'Short tagline shown below the title.' ),
+			array( 'key' => 'field_kgf_status', 'label' => 'Status', 'name' => 'kgf_status', 'type' => 'select', 'choices' => array( 'active' => 'Active', 'upcoming' => 'Upcoming', 'completed' => 'Completed', 'draft' => 'Draft' ), 'default_value' => 'active' ),
+			array( 'key' => 'field_kgf_price', 'label' => 'Price (INR)', 'name' => 'kgf_price', 'type' => 'text', 'instructions' => 'Price in INR without currency symbol (e.g. 10000).' ),
+			array( 'key' => 'field_kgf_duration', 'label' => 'Duration', 'name' => 'kgf_duration', 'type' => 'text', 'instructions' => 'e.g. "3 Months", "6 Weeks"' ),
+			array( 'key' => 'field_kgf_format', 'label' => 'Format', 'name' => 'kgf_format', 'type' => 'text', 'instructions' => 'e.g. "Live Online + Recorded Sessions"' ),
+			array( 'key' => 'field_kgf_instructor_bio', 'label' => 'Instructor Bio', 'name' => 'kgf_instructor_bio', 'type' => 'textarea', 'rows' => 3 ),
+			array( 'key' => 'field_kgf_target_audience', 'label' => 'Target Audience', 'name' => 'kgf_target_audience', 'type' => 'textarea', 'instructions' => 'JSON array of strings, e.g. ["Students", "Professionals"]', 'rows' => 3 ),
+			array( 'key' => 'field_kgf_curriculum', 'label' => 'Curriculum', 'name' => 'kgf_curriculum', 'type' => 'textarea', 'instructions' => 'JSON array of strings. Each item is a curriculum point.', 'rows' => 5 ),
+			array( 'key' => 'field_kgf_learning_outcomes', 'label' => 'Learning Outcomes', 'name' => 'kgf_learning_outcomes', 'type' => 'textarea', 'instructions' => 'JSON array of strings. Each item is a learning outcome.', 'rows' => 5 ),
+			array( 'key' => 'field_kgf_faq', 'label' => 'FAQ', 'name' => 'kgf_faq', 'type' => 'textarea', 'instructions' => 'JSON array of objects: [{"question":"...","answer":"..."}]', 'rows' => 5 ),
+		),
+		'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'kgf_course' ) ) ),
+		'position' => 'normal',
+		'style'    => 'default',
+		'menu_order' => 0,
+	) );
+
+	// ── EVENTS ──
+	acf_add_local_field_group( array(
+		'key'      => 'group_kgf_event',
+		'title'    => 'Event Details',
+		'fields'   => array(
+			array( 'key' => 'field_kgf_event_slug', 'label' => 'Slug', 'name' => 'kgf_slug', 'type' => 'text', 'instructions' => 'URL-friendly slug.', 'required' => 1 ),
+			array( 'key' => 'field_kgf_event_type', 'label' => 'Event Type', 'name' => 'kgf_event_type', 'type' => 'select', 'choices' => array( 'workshop' => 'Workshop', 'seminar' => 'Seminar', 'webinar' => 'Webinar', 'conference' => 'Conference', 'cultural' => 'Cultural', 'other' => 'Other' ) ),
+			array( 'key' => 'field_kgf_event_start', 'label' => 'Start Date', 'name' => 'kgf_start_date', 'type' => 'date_picker', 'display_format' => 'd/m/Y', 'return_format' => 'Y-m-d' ),
+			array( 'key' => 'field_kgf_event_end', 'label' => 'End Date', 'name' => 'kgf_end_date', 'type' => 'date_picker', 'display_format' => 'd/m/Y', 'return_format' => 'Y-m-d' ),
+			array( 'key' => 'field_kgf_event_time', 'label' => 'Time', 'name' => 'kgf_time', 'type' => 'text', 'instructions' => 'e.g. "10:00 AM - 4:00 PM IST"' ),
+			array( 'key' => 'field_kgf_event_location', 'label' => 'Location', 'name' => 'kgf_location', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_event_venue', 'label' => 'Venue', 'name' => 'kgf_venue', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_event_reg_url', 'label' => 'Registration URL', 'name' => 'kgf_registration_url', 'type' => 'url' ),
+			array( 'key' => 'field_kgf_event_status', 'label' => 'Event Status', 'name' => 'kgf_event_status', 'type' => 'select', 'choices' => array( 'upcoming' => 'Upcoming', 'ongoing' => 'Ongoing', 'completed' => 'Completed', 'cancelled' => 'Cancelled' ) ),
+			array( 'key' => 'field_kgf_event_highlights', 'label' => 'Highlights', 'name' => 'kgf_highlights', 'type' => 'textarea', 'instructions' => 'JSON array of strings.', 'rows' => 4 ),
+		),
+		'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'kgf_event' ) ) ),
+		'position' => 'normal',
+		'style'    => 'default',
+	) );
+
+	// ── BATCHES ──
+	acf_add_local_field_group( array(
+		'key'      => 'group_kgf_batch',
+		'title'    => 'Batch Details',
+		'fields'   => array(
+			array( 'key' => 'field_kgf_batch_course_id', 'label' => 'Course ID', 'name' => 'kgf_course_id', 'type' => 'text', 'instructions' => 'The WordPress post ID of the parent course.', 'required' => 1 ),
+			array( 'key' => 'field_kgf_batch_number', 'label' => 'Batch Number', 'name' => 'kgf_batch_number', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_batch_start', 'label' => 'Start Date', 'name' => 'kgf_start_date', 'type' => 'date_picker', 'display_format' => 'd/m/Y', 'return_format' => 'Y-m-d' ),
+			array( 'key' => 'field_kgf_batch_end', 'label' => 'End Date', 'name' => 'kgf_end_date', 'type' => 'date_picker', 'display_format' => 'd/m/Y', 'return_format' => 'Y-m-d' ),
+			array( 'key' => 'field_kgf_batch_format', 'label' => 'Format', 'name' => 'kgf_format', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_batch_location', 'label' => 'Location', 'name' => 'kgf_location', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_batch_price', 'label' => 'Price (INR)', 'name' => 'kgf_price', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_batch_enroll_url', 'label' => 'Enrollment URL', 'name' => 'kgf_enrollment_url', 'type' => 'url' ),
+			array( 'key' => 'field_kgf_batch_status', 'label' => 'Batch Status', 'name' => 'kgf_batch_status', 'type' => 'select', 'choices' => array( 'active' => 'Active', 'upcoming' => 'Upcoming', 'completed' => 'Completed', 'cancelled' => 'Cancelled' ) ),
+			array( 'key' => 'field_kgf_batch_max_seats', 'label' => 'Max Seats', 'name' => 'kgf_max_seats', 'type' => 'number' ),
+			array( 'key' => 'field_kgf_batch_seats_left', 'label' => 'Seats Remaining', 'name' => 'kgf_seats_remaining', 'type' => 'number' ),
+		),
+		'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'kgf_batch' ) ) ),
+		'position' => 'normal',
+		'style'    => 'default',
+	) );
+
+	// ── GALLERY ──
+	acf_add_local_field_group( array(
+		'key'      => 'group_kgf_gallery',
+		'title'    => 'Gallery Details',
+		'fields'   => array(
+			array( 'key' => 'field_kgf_gallery_image_url', 'label' => 'Image URL', 'name' => 'kgf_image_url', 'type' => 'url' ),
+			array( 'key' => 'field_kgf_gallery_category', 'label' => 'Category', 'name' => 'kgf_category', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_gallery_event', 'label' => 'Event Name', 'name' => 'kgf_event_name', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_gallery_date', 'label' => 'Date', 'name' => 'kgf_date', 'type' => 'date_picker', 'display_format' => 'd/m/Y', 'return_format' => 'Y-m-d' ),
+			array( 'key' => 'field_kgf_gallery_media_type', 'label' => 'Media Type', 'name' => 'kgf_media_type', 'type' => 'select', 'choices' => array( 'photo' => 'Photo', 'video' => 'Video' ), 'default_value' => 'photo' ),
+			array( 'key' => 'field_kgf_gallery_video_url', 'label' => 'Video URL', 'name' => 'kgf_video_url', 'type' => 'url', 'conditional_logic' => array( array( array( 'field' => 'field_kgf_gallery_media_type', 'operator' => '==', 'value' => 'video' ) ) ) ),
+		),
+		'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'kgf_gallery' ) ) ),
+		'position' => 'normal',
+		'style'    => 'default',
+	) );
+
+	// ── TESTIMONIALS ──
+	acf_add_local_field_group( array(
+		'key'      => 'group_kgf_testimonial',
+		'title'    => 'Testimonial Details',
+		'fields'   => array(
+			array( 'key' => 'field_kgf_testimonial_name', 'label' => 'Student Name', 'name' => 'kgf_student_name', 'type' => 'text', 'required' => 1 ),
+			array( 'key' => 'field_kgf_testimonial_text', 'label' => 'Testimonial Text', 'name' => 'kgf_testimonial_text', 'type' => 'textarea', 'rows' => 4, 'required' => 1 ),
+			array( 'key' => 'field_kgf_testimonial_designation', 'label' => 'Designation / Role', 'name' => 'kgf_designation', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_testimonial_company', 'label' => 'Company', 'name' => 'kgf_company', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_testimonial_course_name', 'label' => 'Course Name', 'name' => 'kgf_course_name', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_testimonial_course_slug', 'label' => 'Course Slug', 'name' => 'kgf_course_slug', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_testimonial_rating', 'label' => 'Rating (1-5)', 'name' => 'kgf_rating', 'type' => 'number', 'min' => 1, 'max' => 5, 'default_value' => 5 ),
+		),
+		'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'kgf_testimonial' ) ) ),
+		'position' => 'normal',
+		'style'    => 'default',
+	) );
+}
+add_action( 'acf/init', 'kgf_register_acf_field_groups' );
 
 /**
  * Load sample data importer if in admin.
