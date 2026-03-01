@@ -71,7 +71,7 @@ function DesktopDropdown({
         >
             <button
                 className={cn(
-                    "flex items-center gap-1 hover:text-orange transition-colors",
+                    "flex items-center gap-1 uppercase tracking-widest hover:text-orange transition-colors",
                     isActive && "text-orange"
                 )}
             >
@@ -98,7 +98,7 @@ function DesktopDropdown({
                                 key={child.href}
                                 href={child.href}
                                 className={cn(
-                                    "block px-5 py-2.5 text-sm font-bold text-[#111827] hover:bg-orange/10 hover:text-orange transition-colors normal-case tracking-normal",
+                                    "block px-5 py-2.5 text-sm font-bold text-[#111827] hover:bg-orange/10 hover:text-orange transition-colors uppercase tracking-widest",
                                     pathname === child.href &&
                                         "text-orange bg-orange/5"
                                 )}
