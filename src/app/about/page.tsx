@@ -16,19 +16,13 @@ export const metadata: Metadata = {
 }
 
 const teamMembers: TeamMember[] = [
+    // Row 1
     {
         name: "Ssandeep Deo",
         role: "Founder President",
         initials: "SD",
         imageUrl: "/team/ssandeep-deo.png",
         description: "A journalist of 25 years, a sharp writer with 9 books, bestselling author, a publisher through Kapot Media, an entrepreneur with a mission through Kurukshetra Gurukulam Foundation (KGF).",
-    },
-    {
-        name: "Kamal Rawat",
-        role: "Course Controller",
-        initials: "KR",
-        imageUrl: "/team/kamal-rawat.jpg",
-        description: "He is a software developer, trainer, author, and an entrepreneur. He has first-hand experience of implementing full life cycle of large scale applications across various domains and platforms.",
     },
     {
         name: "Shweta Deo",
@@ -43,6 +37,14 @@ const teamMembers: TeamMember[] = [
         initials: "AD",
         imageUrl: "/team/amardeep-deo.jpg",
         description: "Highly organized Administrator dedicated to supporting the KGF mission through seamless office management and effective external communication.",
+    },
+    // Row 2
+    {
+        name: "Kamal Rawat",
+        role: "Course Controller",
+        initials: "KR",
+        imageUrl: "/team/kamal-rawat.jpg",
+        description: "He is a software developer, trainer, author, and an entrepreneur. He has first-hand experience of implementing full life cycle of large scale applications across various domains and platforms.",
     },
     {
         name: "Raakesh Ojha",
