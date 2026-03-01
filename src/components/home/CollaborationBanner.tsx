@@ -22,11 +22,11 @@ export function CollaborationBanner() {
                     </div>
 
                     {/* Krishna Worldwide */}
-                    <div className="text-center group">
+                    <a href="https://www.krishnawwteam.com" target="_blank" rel="noopener noreferrer" className="text-center group block">
                         <h3 className="font-heading text-3xl font-bold text-[#111827] group-hover:text-dark-red transition-colors duration-300">Krishna Worldwide</h3>
                         <div className="h-1 w-12 bg-saffron mx-auto my-3 rounded-full"></div>
                         <p className="text-xs text-[#111827]/60 uppercase tracking-widest font-bold">Technology Partner</p>
-                    </div>
+                    </a>
                 </div>
 
                 <p className="mt-10 text-sm text-[#111827]/50 max-w-xl mx-auto">

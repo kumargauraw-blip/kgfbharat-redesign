@@ -168,9 +168,9 @@ export function Footer() {
                             Technology Partner
                         </h5>
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
-                            <p className="text-xl font-black tracking-tight">
+                            <a href="https://www.krishnawwteam.com" target="_blank" rel="noopener noreferrer" className="text-xl font-black tracking-tight hover:text-orange transition-colors block">
                                 Krishna Worldwide
-                            </p>
+                            </a>
                             <p className="text-[9px] font-bold text-orange uppercase tracking-widest">
                                 Technology Solutions
                             </p>

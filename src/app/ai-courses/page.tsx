@@ -65,9 +65,9 @@ export default async function CoursesPage() {
                             </h1>
                             <p className="text-lg text-gray-600 leading-relaxed">
                                 Advanced technical training provided in partnership with{" "}
-                                <span className="text-gray-900 font-semibold">
+                                <a href="https://www.krishnawwteam.com" target="_blank" rel="noopener noreferrer" className="text-gray-900 font-semibold hover:text-purple-700 transition-colors underline decoration-purple-300">
                                     Krishna Worldwide LLC
-                                </span>
+                                </a>
                                 . Designed to equip the modern technologist with state-of-the-art
                                 capabilities.
                             </p>
@@ -79,9 +79,9 @@ export default async function CoursesPage() {
                                 <p className="text-xs text-purple-600 uppercase tracking-widest font-bold mb-1">
                                     Powered By
                                 </p>
-                                <p className="font-bold text-gray-900 text-lg">
+                                <a href="https://www.krishnawwteam.com" target="_blank" rel="noopener noreferrer" className="font-bold text-gray-900 text-lg hover:text-purple-700 transition-colors">
                                     Krishna Worldwide
-                                </p>
+                                </a>
                             </div>
                         </div>
                     </div>
