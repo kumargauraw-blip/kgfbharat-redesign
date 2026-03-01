@@ -141,22 +141,22 @@ export function Footer() {
                             <li className="flex items-start gap-3">
                                 <Mail className="h-4 w-4 text-orange mt-0.5 shrink-0" />
                                 <a
-                                    href="mailto:info@kgfbharat.org"
+                                    href="mailto:contact@kgfbharat.org"
                                     className="text-white/70 hover:text-orange transition-colors text-sm font-semibold"
                                 >
-                                    info@kgfbharat.org
+                                    contact@kgfbharat.org
                                 </a>
                             </li>
                             <li className="flex items-start gap-3">
                                 <Phone className="h-4 w-4 text-orange mt-0.5 shrink-0" />
                                 <span className="text-white/70 text-sm font-semibold">
-                                    +91 98765 43210
+                                    +91 88262 91284<br />011-41033369 &amp; 011-79690022
                                 </span>
                             </li>
                             <li className="flex items-start gap-3">
                                 <MapPin className="h-4 w-4 text-orange mt-0.5 shrink-0" />
                                 <span className="text-white/70 text-sm font-semibold">
-                                    Bengaluru HQ, Karnataka, Bharat
+                                    A-50, near Uttam Nagar East Metro station, Milap Nagar, Uttam Nagar, Delhi, 110059
                                 </span>
                             </li>
                         </ul>

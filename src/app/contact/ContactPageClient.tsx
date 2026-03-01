@@ -212,10 +212,10 @@ export function ContactPageClient() {
                                     <div>
                                         <p className="font-bold text-[#111827] text-sm">Email</p>
                                         <a
-                                            href="mailto:info@kgfbharat.org"
+                                            href="mailto:contact@kgfbharat.org"
                                             className="text-gray-500 hover:text-orange transition-colors"
                                         >
-                                            info@kgfbharat.org
+                                            contact@kgfbharat.org
                                         </a>
                                     </div>
                                 </div>
@@ -226,7 +226,8 @@ export function ContactPageClient() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-[#111827] text-sm">Phone</p>
-                                        <p className="text-gray-500">+91-XXXX-XXXXXX</p>
+                                        <p className="text-gray-500">+91 88262 91284</p>
+                                        <p className="text-gray-500">011-41033369 &amp; 011-79690022</p>
                                     </div>
                                 </div>
 
@@ -237,8 +238,8 @@ export function ContactPageClient() {
                                     <div>
                                         <p className="font-bold text-[#111827] text-sm">Address</p>
                                         <p className="text-gray-500">
-                                            KGF Bharat Foundation<br />
-                                            New Delhi, India
+                                            A-50, near Uttam Nagar East Metro station,<br />
+                                            Milap Nagar, Uttam Nagar, Delhi, 110059
                                         </p>
                                     </div>
                                 </div>
