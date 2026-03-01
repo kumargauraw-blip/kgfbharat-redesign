@@ -32,7 +32,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
         getTestimonialsByCourseSlug(course.slug),
     ])
 
-    const activeBatches = batches.filter(b => b.status === "Enrolling" || b.status === "Upcoming")
+    const activeBatches = batches.filter(b => ["Enrolling", "Upcoming", "active", "upcoming"].includes(b.status))
 
     return (
         <div className="min-h-screen bg-white pb-20">
