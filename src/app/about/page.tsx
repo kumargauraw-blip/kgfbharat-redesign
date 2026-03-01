@@ -7,11 +7,11 @@ import { TeamMember } from "@/lib/types"
 export const metadata: Metadata = {
     title: "About Us | KGF Bharat",
     description:
-        "Learn about Kurukshetra Gurukulam Foundation (KGF), established to reawaken Dharmakshetra for Sanatan Dharmis through Shiksha, Puraskar, and Nirman.",
+        "Learn about Kurukshetra Gurukulam Foundation (KGF), established to reawaken Dharmakshetra for Sanatan Dharmis through Shiksha, Samman, and Nirman.",
     openGraph: {
         title: "About KGF Bharat",
         description:
-            "Kurukshetra Gurukulam Foundation (KGF) has been established to reawaken Dharmakshetra for the Sanatan Dharmis through Shiksha, Puraskar, and Nirman.",
+            "Kurukshetra Gurukulam Foundation (KGF) has been established to reawaken Dharmakshetra for the Sanatan Dharmis through Shiksha, Samman, and Nirman.",
     },
 }
 
@@ -77,7 +77,7 @@ export default function AboutPage() {
                             Kurukshetra Gurukulam Foundation
                         </h1>
                         <p className="text-xl text-[#111827] leading-relaxed">
-                            Reawakening Dharmakshetra for Sanatan Dharmis through Shiksha, Puraskar, and Nirman.
+                            Reawakening Dharmakshetra for Sanatan Dharmis through Shiksha, Samman, and Nirman.
                         </p>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ export default function AboutPage() {
                         </h2>
                         <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                             <p>
-                                Kurukshetra Gurukulam Foundation (KGF) has been established to reawaken Dharmakshetra for the Sanatan Dharmis. This Gurukulam is different from the traditional Gurukuls, in which only the study and teaching of young students was arranged. This Gurukulam is for both men and women of all age groups. Its aim is to Strengthen the Sanatan society through Shiksha, Puraskar, and Nirman.
+                                Kurukshetra Gurukulam Foundation (KGF) has been established to reawaken Dharmakshetra for the Sanatan Dharmis. This Gurukulam is different from the traditional Gurukuls, in which only the study and teaching of young students was arranged. This Gurukulam is for both men and women of all age groups. Its aim is to Strengthen the Sanatan society through Shiksha, Samman, and Nirman.
                             </p>
                             <p>
                                 Kurukshetra has been called Dharmakshetra because it is blessed by Bhagwan Vishnu. According to Vaman Purana, King Kuru cultivated the Mahadharmas here, for which he sacrificed his body as a seed and Prabhu Vishnu sowed that seed. This is why Kurukshetra is called Dharmakshetra.
@@ -148,9 +148,9 @@ export default function AboutPage() {
                         <div className="mx-auto w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center mb-6">
                             <Award className="h-8 w-8 text-yellow-600" />
                         </div>
-                        <h3 className="text-2xl font-black text-[#111827] mb-3">Puraskar</h3>
+                        <h3 className="text-2xl font-black text-[#111827] mb-3">Samman</h3>
                         <p className="text-gray-500 leading-relaxed">
-                            Puraskar (Awards) is KGF&apos;s way of honoring outstanding contributors to Sanatan Dharma, culture, social service, education, and national pride.
+                            Samman (Awards) is KGF&apos;s way of honoring outstanding contributors to Sanatan Dharma, culture, social service, education, and national pride.
                         </p>
                     </div>
                 </div>

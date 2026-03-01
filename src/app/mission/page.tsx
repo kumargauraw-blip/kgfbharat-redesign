@@ -3,7 +3,7 @@ import { BookOpen, Hammer, Award, GraduationCap, Building, Trophy, Users, Trendi
 
 export const metadata: Metadata = {
     title: "Our Mission | KGF Bharat",
-    description: "Discover the three pillars of KGF Bharat: Shiksha (Education), Nirman (Nation Building), and Puraskar (Recognition), driving Dharmic renaissance through technology and tradition.",
+    description: "Discover the three pillars of KGF Bharat: Shiksha (Education), Nirman (Nation Building), and Samman (Recognition), driving Dharmic renaissance through technology and tradition.",
 }
 
 const pillars = [
@@ -76,8 +76,8 @@ const pillars = [
         ],
     },
     {
-        name: "Puraskar",
-        sanskrit: "पुरस्कार",
+        name: "Samman",
+        sanskrit: "सम्मान",
         subtitle: "Recognition",
         icon: Award,
         accentColor: "yellow-600",
@@ -85,7 +85,7 @@ const pillars = [
         textColor: "text-yellow-600",
         borderColor: "border-yellow-200",
         description:
-            "Puraskar honors those who have made extraordinary contributions to Dharmic values, education, and social impact. Through the Dharmalankaran Awards and other recognitions, we celebrate excellence and inspire the next generation.",
+            "Samman honors those who have made extraordinary contributions to Dharmic values, education, and social impact. Through the Dharmalankaran Awards and other recognitions, we celebrate excellence and inspire the next generation.",
         initiatives: [
             {
                 icon: Trophy,

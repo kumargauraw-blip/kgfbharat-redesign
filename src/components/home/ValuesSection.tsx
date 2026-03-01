@@ -61,16 +61,16 @@ export function ValuesSection() {
                             </div>
                         </div>
 
-                        {/* Puraskar Card */}
+                        {/* Samman Card */}
                         <div className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 hover:border-yellow-200 transition-all group">
                             <div className="flex gap-8 items-start flex-col sm:flex-row">
                                 <div className="w-20 h-20 shrink-0 bg-yellow-50 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                     <Award className="w-10 h-10 text-yellow-600" strokeWidth={2.5} />
                                 </div>
                                 <div className="space-y-4">
-                                    <h3 className="text-3xl font-black text-[#111827]">Puraskar <span className="text-yellow-600 font-serif italic font-normal">(पुरस्कार)</span></h3>
+                                    <h3 className="text-3xl font-black text-[#111827]">Samman <span className="text-yellow-600 font-serif italic font-normal">(सम्मान)</span></h3>
                                     <p className="text-gray-500 font-medium leading-relaxed text-lg">
-                                        Honoring our Heroes. Puraskar is our way of recognizing outstanding contributors to <span className="text-[#111827] font-bold">Sanatan Dharma, education, and social service</span>. By celebrating these role models, we inspire the youth to dedicate themselves to the renaissance of our glorious society.
+                                        Honoring our Heroes. Samman is our way of recognizing outstanding contributors to <span className="text-[#111827] font-bold">Sanatan Dharma, education, and social service</span>. By celebrating these role models, we inspire the youth to dedicate themselves to the renaissance of our glorious society.
                                     </p>
                                 </div>
                             </div>
