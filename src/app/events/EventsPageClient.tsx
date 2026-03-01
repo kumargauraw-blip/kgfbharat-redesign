@@ -12,6 +12,9 @@ const categoryColors: Record<string, string> = {
     seminar: "bg-purple-100 text-purple-800",
     cultural: "bg-pink-100 text-pink-800",
     awards: "bg-amber-100 text-amber-800",
+    completed: "bg-gray-100 text-gray-700",
+    upcoming: "bg-orange-100 text-orange-800",
+    ongoing: "bg-green-100 text-green-800",
 }
 
 function EventCard({ event, index }: { event: Event; index: number }) {

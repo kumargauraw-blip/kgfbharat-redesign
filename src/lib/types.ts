@@ -53,8 +53,8 @@ export interface Event {
     endDate?: string
     time: string
     location: string
-    type: "upcoming" | "past"
-    category: "conference" | "workshop" | "seminar" | "cultural" | "awards"
+    type: "upcoming" | "past" | "cultural" | "workshop" | "seminar" | "conference" | "webinar" | "other" | string
+    category: "conference" | "workshop" | "seminar" | "cultural" | "awards" | "upcoming" | "ongoing" | "completed" | "cancelled" | string
     imageUrl?: string
     registrationUrl?: string
     highlights?: string[]
