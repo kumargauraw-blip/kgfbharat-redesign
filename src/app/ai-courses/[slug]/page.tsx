@@ -164,16 +164,16 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
 
                     {/* Instructor Bio */}
                     <section>
-                        <h2 className="text-2xl font-bold font-heading text-[#111827] mb-6">Your Instructor</h2>
+                        <h2 className="text-2xl font-bold font-heading text-[#111827] mb-6">Your Coach</h2>
                         <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col sm:flex-row gap-6">
                             <div className="w-20 h-20 rounded-full bg-[#111827]/10 flex items-center justify-center shrink-0">
                                 <GraduationCap className="h-10 w-10 text-[#111827]" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-[#111827]">Kumar Gauraw</h3>
-                                <p className="text-orange font-medium text-sm mb-3">Lead AI Instructor</p>
+                                <p className="text-orange font-medium text-sm mb-3">Lead AI Coach</p>
                                 <p className="text-gray-600 leading-relaxed">
-                                    Technology educator with 15+ years of experience bridging ancient Indian pedagogical methods with cutting-edge AI and technology training. Kumar brings a unique perspective that combines Sattvic principles with practical, industry-ready skills to help learners achieve transformative results.
+                                    Technology educator with almost 30 years of experience bridging ancient Indian pedagogical methods with cutting-edge AI and technology training. Kumar brings a unique perspective that combines Sattvic principles with practical, industry-ready skills to help learners achieve transformative results.
                                 </p>
                             </div>
                         </div>

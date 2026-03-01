@@ -25,8 +25,8 @@ const valueProps = [
     },
     {
         icon: UserCheck,
-        title: "Dedicated Instructor",
-        description: "Get a personal instructor focused entirely on your group's learning goals.",
+        title: "Dedicated Coach",
+        description: "Get a personal coach focused entirely on your group's learning goals.",
     },
     {
         icon: Users,
@@ -95,7 +95,7 @@ export function CustomBatchForm({ courses }: { courses: Course[] }) {
                     </h2>
                     <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
                         Looking to train your team? We offer private batches for groups of 15-20+ people
-                        with customized schedules, dedicated instructors, and group pricing.
+                        with customized schedules, dedicated coaches, and group pricing.
                     </p>
                 </div>
 
