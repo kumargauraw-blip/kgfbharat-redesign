@@ -53,18 +53,27 @@ export async function submitCustomBatchInquiry(formData: FormData) {
     const preferredSchedule = formData.get("preferredSchedule") as string
     const additionalRequirements = formData.get("additionalRequirements") as string
 
-    console.log("Custom batch inquiry:", {
-        contactName,
-        email,
-        phone,
-        organizationName,
-        numberOfParticipants,
-        preferredCourse,
-        preferredSchedule,
-        additionalRequirements,
+    const res = await fetch("https://formspree.io/f/mlgwkkeo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+            name: contactName,
+            email,
+            phone,
+            organizationName,
+            numberOfParticipants,
+            preferredCourse,
+            preferredSchedule,
+            additionalRequirements,
+            _subject: `[KGF Custom Batch] ${preferredCourse} - ${contactName}`,
+        }),
     })
 
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    if (!res.ok) {
+        console.error("Formspree error:", await res.text())
+        return { success: false }
+    }
+
     return { success: true }
 }
 
@@ -74,9 +83,22 @@ export async function submitContactForm(formData: FormData) {
     const subject = formData.get("subject") as string;
     const message = formData.get("message") as string;
 
-    // TODO: Integrate with email service or database
-    console.log("Contact form submission:", { name, email, subject, message });
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const res = await fetch("https://formspree.io/f/mlgwkkeo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+            name,
+            email,
+            subject,
+            message,
+            _subject: `[KGF Contact] ${subject}`,
+        }),
+    });
+
+    if (!res.ok) {
+        console.error("Formspree error:", await res.text());
+        return { success: false, message: "Failed to send message. Please try again." };
+    }
 
     return { success: true, message: "Contact form submitted successfully" };
 }
