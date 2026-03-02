@@ -449,7 +449,7 @@ interface KGFNewsResponse {
   title: string;
   description: string;
   imageUrl: string | null;
-  url: string;
+  url: string | null;
   source: string;
   date: string;
   category: string;

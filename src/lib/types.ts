@@ -96,7 +96,7 @@ export interface News {
     title: string
     description: string
     imageUrl?: string
-    url: string
+    url?: string
     source: string
     date: string
     category: string

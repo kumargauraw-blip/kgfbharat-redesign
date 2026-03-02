@@ -101,6 +101,7 @@ export async function MediaSection() {
                                     {item.title}
                                 </h3>
 
+                                {item.url && item.url !== '#' && (
                                 <div className="mt-auto">
                                     <a
                                         href={item.url}
@@ -112,6 +113,7 @@ export async function MediaSection() {
                                         <svg className="transition-transform group-hover:translate-x-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                                     </a>
                                 </div>
+                                )}
                             </div>
                         </div>
                     ))}

@@ -572,7 +572,7 @@ function kgf_format_news( $post ) {
 		'title'       => $post->post_title,
 		'description' => wp_trim_words( $post->post_content, 30 ),
 		'imageUrl'    => kgf_get_thumbnail_url( $post->ID ),
-		'url'         => isset( $meta['kgf_news_url'][0] ) ? $meta['kgf_news_url'][0] : '',
+		'url'         => ! empty( $meta['kgf_news_url'][0] ) ? $meta['kgf_news_url'][0] : null,
 		'source'      => isset( $meta['kgf_news_source'][0] ) ? $meta['kgf_news_source'][0] : '',
 		'date'        => isset( $meta['kgf_news_date'][0] ) ? $meta['kgf_news_date'][0] : '',
 		'category'    => isset( $meta['kgf_news_category'][0] ) ? $meta['kgf_news_category'][0] : '',
@@ -1030,7 +1030,7 @@ function kgf_register_acf_field_groups() {
 		'key'      => 'group_kgf_news',
 		'title'    => 'News Details',
 		'fields'   => array(
-			array( 'key' => 'field_kgf_news_url', 'label' => 'URL Link', 'name' => 'kgf_news_url', 'type' => 'url', 'instructions' => 'Link to the full news article.', 'required' => 1 ),
+			array( 'key' => 'field_kgf_news_url', 'label' => 'URL Link', 'name' => 'kgf_news_url', 'type' => 'url', 'instructions' => 'Link to the full news article (optional).', 'required' => 0 ),
 			array( 'key' => 'field_kgf_news_source', 'label' => 'Source Name', 'name' => 'kgf_news_source', 'type' => 'text', 'instructions' => 'e.g. "The Times of India", "Republic World"' ),
 			array( 'key' => 'field_kgf_news_date', 'label' => 'Publication Date', 'name' => 'kgf_news_date', 'type' => 'date_picker', 'display_format' => 'd/m/Y', 'return_format' => 'Y-m-d' ),
 			array( 'key' => 'field_kgf_news_category', 'label' => 'Category', 'name' => 'kgf_news_category', 'type' => 'text', 'instructions' => 'e.g. "Education", "Technology", "Culture"' ),
