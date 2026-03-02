@@ -2,7 +2,7 @@
 /**
  * Plugin Name: KGF Bharat Headless CMS
  * Description: Custom Post Types and REST API endpoints for the KGF Bharat headless Next.js frontend.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: KGF Bharat
  * Text Domain: kgf-headless
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KGF_HEADLESS_VERSION', '1.1.0' );
+define( 'KGF_HEADLESS_VERSION', '1.2.0' );
 define( 'KGF_HEADLESS_DIR', plugin_dir_path( __FILE__ ) );
 
 /**
@@ -133,6 +133,29 @@ function kgf_register_post_types() {
 		'supports'     => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'excerpt' ),
 		'rewrite'      => array( 'slug' => 'testimonials' ),
 	) );
+
+	// News
+	register_post_type( 'kgf_news', array(
+		'labels'       => array(
+			'name'               => __( 'News', 'kgf-headless' ),
+			'singular_name'      => __( 'News', 'kgf-headless' ),
+			'add_new'            => __( 'Add New News', 'kgf-headless' ),
+			'add_new_item'       => __( 'Add New News', 'kgf-headless' ),
+			'edit_item'          => __( 'Edit News', 'kgf-headless' ),
+			'new_item'           => __( 'New News', 'kgf-headless' ),
+			'view_item'          => __( 'View News', 'kgf-headless' ),
+			'search_items'       => __( 'Search News', 'kgf-headless' ),
+			'not_found'          => __( 'No news found', 'kgf-headless' ),
+			'not_found_in_trash' => __( 'No news found in trash', 'kgf-headless' ),
+		),
+		'public'       => true,
+		'has_archive'  => true,
+		'show_in_rest' => true,
+		'rest_base'    => 'kgf-news',
+		'menu_icon'    => 'dashicons-media-document',
+		'supports'     => array( 'title', 'editor', 'thumbnail' ),
+		'rewrite'      => array( 'slug' => 'news' ),
+	) );
 }
 add_action( 'init', 'kgf_register_post_types' );
 
@@ -150,6 +173,7 @@ function kgf_register_meta_fields() {
 		'kgf_price',
 		'kgf_status',
 		'kgf_instructor_bio',
+		'kgf_course_category',
 	);
 
 	foreach ( $course_string_fields as $field ) {
@@ -311,6 +335,26 @@ function kgf_register_meta_fields() {
 			return current_user_can( 'edit_posts' );
 		},
 	) );
+
+	// News meta fields.
+	$news_string_fields = array(
+		'kgf_news_url',
+		'kgf_news_source',
+		'kgf_news_date',
+		'kgf_news_category',
+	);
+
+	foreach ( $news_string_fields as $field ) {
+		register_post_meta( 'kgf_news', $field, array(
+			'type'              => 'string',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'sanitize_text_field',
+			'auth_callback'     => function () {
+				return current_user_can( 'edit_posts' );
+			},
+		) );
+	}
 }
 add_action( 'init', 'kgf_register_meta_fields' );
 
@@ -383,6 +427,7 @@ function kgf_format_course( $post ) {
 	$price             = isset( $meta['kgf_price'][0] ) ? $meta['kgf_price'][0] : '';
 	$status            = isset( $meta['kgf_status'][0] ) ? $meta['kgf_status'][0] : '';
 	$instructor_bio    = isset( $meta['kgf_instructor_bio'][0] ) ? $meta['kgf_instructor_bio'][0] : '';
+	$course_category   = isset( $meta['kgf_course_category'][0] ) ? $meta['kgf_course_category'][0] : '';
 	$target_audience   = kgf_decode_json_meta( isset( $meta['kgf_target_audience'][0] ) ? $meta['kgf_target_audience'][0] : '' );
 	$curriculum        = kgf_decode_json_meta( isset( $meta['kgf_curriculum'][0] ) ? $meta['kgf_curriculum'][0] : '' );
 	$learning_outcomes = kgf_decode_json_meta( isset( $meta['kgf_learning_outcomes'][0] ) ? $meta['kgf_learning_outcomes'][0] : '' );
@@ -399,6 +444,7 @@ function kgf_format_course( $post ) {
 		'price'            => $price,
 		'duration'         => $duration,
 		'format'           => $format,
+		'courseCategory'    => $course_category,
 		'thumbnailUrl'     => kgf_get_thumbnail_url( $post->ID ),
 		'overview'         => wp_trim_words( $post->post_content, 55 ),
 		'curriculum'       => $curriculum,
@@ -513,6 +559,27 @@ function kgf_format_testimonial( $post ) {
 }
 
 /**
+ * Format a news post for API response.
+ *
+ * @param WP_Post $post The news post.
+ * @return array
+ */
+function kgf_format_news( $post ) {
+	$meta = get_post_meta( $post->ID );
+
+	return array(
+		'id'          => (string) $post->ID,
+		'title'       => $post->post_title,
+		'description' => wp_trim_words( $post->post_content, 30 ),
+		'imageUrl'    => kgf_get_thumbnail_url( $post->ID ),
+		'url'         => isset( $meta['kgf_news_url'][0] ) ? $meta['kgf_news_url'][0] : '',
+		'source'      => isset( $meta['kgf_news_source'][0] ) ? $meta['kgf_news_source'][0] : '',
+		'date'        => isset( $meta['kgf_news_date'][0] ) ? $meta['kgf_news_date'][0] : '',
+		'category'    => isset( $meta['kgf_news_category'][0] ) ? $meta['kgf_news_category'][0] : '',
+	);
+}
+
+/**
  * Register custom REST API routes.
  */
 function kgf_register_rest_routes() {
@@ -602,6 +669,13 @@ function kgf_register_rest_routes() {
 				'sanitize_callback' => 'sanitize_text_field',
 			),
 		),
+	) );
+
+	// GET /news
+	register_rest_route( $namespace, '/news', array(
+		'methods'             => 'GET',
+		'callback'            => 'kgf_rest_get_news',
+		'permission_callback' => '__return_true',
 	) );
 }
 add_action( 'rest_api_init', 'kgf_register_rest_routes' );
@@ -797,6 +871,26 @@ function kgf_rest_get_testimonials( $request ) {
 }
 
 /**
+ * REST callback: Get all news.
+ *
+ * @param WP_REST_Request $request The request object.
+ * @return WP_REST_Response
+ */
+function kgf_rest_get_news( $request ) {
+	$posts = get_posts( array(
+		'post_type'      => 'kgf_news',
+		'posts_per_page' => 100,
+		'post_status'    => 'publish',
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+	) );
+
+	$news = array_map( 'kgf_format_news', $posts );
+
+	return new WP_REST_Response( $news, 200 );
+}
+
+/**
  * Include ACF fields in REST API responses if ACF is active.
  */
 function kgf_add_acf_to_rest() {
@@ -804,7 +898,7 @@ function kgf_add_acf_to_rest() {
 		return;
 	}
 
-	$post_types = array( 'kgf_course', 'kgf_event', 'kgf_batch', 'kgf_gallery', 'kgf_testimonial' );
+	$post_types = array( 'kgf_course', 'kgf_event', 'kgf_batch', 'kgf_gallery', 'kgf_testimonial', 'kgf_news' );
 
 	foreach ( $post_types as $post_type ) {
 		add_filter( "rest_prepare_{$post_type}", function ( $response, $post ) {
@@ -836,6 +930,7 @@ function kgf_register_acf_field_groups() {
 		'fields'   => array(
 			array( 'key' => 'field_kgf_slug', 'label' => 'Slug', 'name' => 'kgf_slug', 'type' => 'text', 'instructions' => 'URL-friendly slug (e.g. ai-fundamentals). Used in the frontend URL.', 'required' => 1 ),
 			array( 'key' => 'field_kgf_tagline', 'label' => 'Tagline', 'name' => 'kgf_tagline', 'type' => 'text', 'instructions' => 'Short tagline shown below the title.' ),
+			array( 'key' => 'field_kgf_course_category', 'label' => 'Course Category', 'name' => 'kgf_course_category', 'type' => 'select', 'choices' => array( 'dharmic' => 'Dharmic', 'ai-tech' => 'AI-Tech' ), 'default_value' => 'ai-tech', 'instructions' => 'Category for the course: Dharmic or AI-Tech.' ),
 			array( 'key' => 'field_kgf_status', 'label' => 'Status', 'name' => 'kgf_status', 'type' => 'select', 'choices' => array( 'active' => 'Active', 'upcoming' => 'Upcoming', 'completed' => 'Completed', 'draft' => 'Draft' ), 'default_value' => 'active' ),
 			array( 'key' => 'field_kgf_price', 'label' => 'Price (INR)', 'name' => 'kgf_price', 'type' => 'text', 'instructions' => 'Price in INR without currency symbol (e.g. 10000).' ),
 			array( 'key' => 'field_kgf_duration', 'label' => 'Duration', 'name' => 'kgf_duration', 'type' => 'text', 'instructions' => 'e.g. "3 Months", "6 Weeks"' ),
@@ -926,6 +1021,21 @@ function kgf_register_acf_field_groups() {
 			array( 'key' => 'field_kgf_testimonial_rating', 'label' => 'Rating (1-5)', 'name' => 'kgf_rating', 'type' => 'number', 'min' => 1, 'max' => 5, 'default_value' => 5 ),
 		),
 		'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'kgf_testimonial' ) ) ),
+		'position' => 'normal',
+		'style'    => 'default',
+	) );
+
+	// ── NEWS ──
+	acf_add_local_field_group( array(
+		'key'      => 'group_kgf_news',
+		'title'    => 'News Details',
+		'fields'   => array(
+			array( 'key' => 'field_kgf_news_url', 'label' => 'URL Link', 'name' => 'kgf_news_url', 'type' => 'url', 'instructions' => 'Link to the full news article.', 'required' => 1 ),
+			array( 'key' => 'field_kgf_news_source', 'label' => 'Source Name', 'name' => 'kgf_news_source', 'type' => 'text', 'instructions' => 'e.g. "The Times of India", "Republic World"' ),
+			array( 'key' => 'field_kgf_news_date', 'label' => 'Publication Date', 'name' => 'kgf_news_date', 'type' => 'date_picker', 'display_format' => 'd/m/Y', 'return_format' => 'Y-m-d' ),
+			array( 'key' => 'field_kgf_news_category', 'label' => 'Category', 'name' => 'kgf_news_category', 'type' => 'text', 'instructions' => 'e.g. "Education", "Technology", "Culture"' ),
+		),
+		'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'kgf_news' ) ) ),
 		'position' => 'normal',
 		'style'    => 'default',
 	) );

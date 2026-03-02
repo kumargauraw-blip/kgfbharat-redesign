@@ -1,6 +1,6 @@
 import * as wp from './wordpress';
 import * as fallback from './wp-fallback';
-import type { Course, Batch, Event, GalleryItem, Testimonial } from './types';
+import type { Course, Batch, Event, GalleryItem, Testimonial, News } from './types';
 
 const useWordPress = !!process.env.WORDPRESS_API_URL;
 
@@ -101,5 +101,15 @@ export async function getTestimonialsByCourseSlug(courseSlug: string): Promise<T
   } catch (error) {
     console.error('WordPress API error, using fallback:', error);
     return fallback.getTestimonialsByCourseSlug(courseSlug);
+  }
+}
+
+export async function getNews(): Promise<News[]> {
+  if (!useWordPress) return fallback.getNews();
+  try {
+    return await wp.wpGetNews();
+  } catch (error) {
+    console.error('WordPress API error, using fallback:', error);
+    return fallback.getNews();
   }
 }

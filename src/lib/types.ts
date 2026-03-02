@@ -29,6 +29,7 @@ export interface Course {
     duration: string
     format: CourseFormat
     thumbnailUrl?: string
+    courseCategory?: "dharmic" | "ai-tech" | string
 
     // Detailed Content
     overview: string
@@ -88,6 +89,17 @@ export interface Testimonial {
     courseSlug?: string
     rating: number
     imageUrl?: string
+}
+
+export interface News {
+    id: string
+    title: string
+    description: string
+    imageUrl?: string
+    url: string
+    source: string
+    date: string
+    category: string
 }
 
 export interface FAQ {

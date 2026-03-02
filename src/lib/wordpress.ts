@@ -1,4 +1,4 @@
-import type { Course, Batch, Event, GalleryItem, Testimonial, FAQ, CourseFormat, CourseStatus, TargetAudience } from './types';
+import type { Course, Batch, Event, GalleryItem, Testimonial, News, FAQ, CourseFormat, CourseStatus, TargetAudience } from './types';
 
 const WP_API_URL = process.env.WORDPRESS_API_URL || '';
 const REVALIDATE = parseInt(process.env.WORDPRESS_API_REVALIDATE || '300', 10);
@@ -98,6 +98,7 @@ function mapWPCourse(wp: WPPost): Course {
     price: getField(wp, 'kgf_price', ''),
     duration: getField(wp, 'kgf_duration', ''),
     format: (getField(wp, 'kgf_format', 'Online') || 'Online') as CourseFormat,
+    courseCategory: getField(wp, 'kgf_course_category') || undefined,
     thumbnailUrl: getField(wp, 'thumbnail_url') || undefined,
     overview: getField(wp, 'overview', '') || description,
     curriculum: safeJsonParse(getField(wp, 'kgf_curriculum', []), []),
@@ -183,6 +184,7 @@ interface KGFCourseResponse {
   price: string;
   duration: string;
   format: string;
+  courseCategory: string;
   thumbnailUrl: string | null;
   overview: string;
   curriculum: string[];
@@ -260,6 +262,7 @@ function mapKGFCourse(c: KGFCourseResponse): Course {
     price: c.price,
     duration: c.duration,
     format: (c.format || 'Online') as CourseFormat,
+    courseCategory: c.courseCategory || undefined,
     thumbnailUrl: c.thumbnailUrl || undefined,
     overview: c.overview || stripHtml(c.description),
     curriculum: c.curriculum || [],
@@ -437,4 +440,39 @@ export async function wpGetTestimonials(): Promise<Testimonial[]> {
 export async function wpGetTestimonialsByCourseSlug(courseSlug: string): Promise<Testimonial[]> {
   const allTestimonials = await wpGetTestimonials();
   return allTestimonials.filter(t => t.courseSlug === courseSlug);
+}
+
+// ---- News ----
+
+interface KGFNewsResponse {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string | null;
+  url: string;
+  source: string;
+  date: string;
+  category: string;
+}
+
+function mapKGFNews(n: KGFNewsResponse): News {
+  return {
+    id: n.id,
+    title: n.title,
+    description: n.description || '',
+    imageUrl: n.imageUrl || undefined,
+    url: n.url || '',
+    source: n.source || '',
+    date: normalizeDate(n.date),
+    category: n.category || '',
+  };
+}
+
+export async function wpGetNews(): Promise<News[]> {
+  try {
+    const data = await wpFetchCustom<KGFNewsResponse[]>('news');
+    return data.map(mapKGFNews);
+  } catch {
+    return [];
+  }
 }
