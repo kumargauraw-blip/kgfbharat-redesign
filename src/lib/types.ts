@@ -93,6 +93,7 @@ export interface Testimonial {
 
 export interface News {
     id: string
+    slug: string
     title: string
     description: string
     imageUrl?: string
@@ -100,6 +101,7 @@ export interface News {
     source: string
     date: string
     category: string
+    content?: string
 }
 
 export interface FAQ {

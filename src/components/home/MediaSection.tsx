@@ -5,31 +5,31 @@ import type { News } from '@/lib/types';
 const FALLBACK_MEDIA: News[] = [
     {
         id: "1",
+        slug: "reviving-gurukul-system",
         title: "Reviving the Gurukul System in the Age of AI",
         source: "The Times of India",
         date: "2025-09",
         description: "",
-        url: "#",
         category: "Education",
         imageUrl: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1000",
     },
     {
         id: "2",
+        slug: "preserving-sanatan-dharma",
         title: "How KGF Bharat is preserving Sanatan Dharma",
         source: "Republic World",
         date: "2025-08",
         description: "",
-        url: "#",
         category: "Culture",
         imageUrl: "https://images.unsplash.com/photo-1582560475093-d09bc505f33d?auto=format&fit=crop&q=80&w=1000",
     },
     {
         id: "3",
+        slug: "fusion-sanskrit-silicon-valley",
         title: "The Fusion of Sanskrit and Silicon Valley",
         source: "OpIndia",
         date: "2025-07",
         description: "",
-        url: "#",
         category: "Technology",
         imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000",
     },
@@ -69,7 +69,7 @@ export async function MediaSection() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {displayItems.map((item) => (
-                        <div key={item.id} className="group flex flex-col bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover:-translate-y-2">
+                        <Link key={item.id} href={`/news/${item.slug}`} className="group flex flex-col bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover:-translate-y-2">
                             <div className="aspect-[16/10] overflow-hidden relative">
                                 {item.imageUrl ? (
                                     <img
@@ -101,21 +101,14 @@ export async function MediaSection() {
                                     {item.title}
                                 </h3>
 
-                                {item.url && item.url !== '#' && (
                                 <div className="mt-auto">
-                                    <a
-                                        href={item.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-[#111827] group-hover:text-orange"
-                                    >
-                                        Read Full Story
+                                    <span className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-[#111827] group-hover:text-orange">
+                                        Read More
                                         <svg className="transition-transform group-hover:translate-x-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                                    </a>
+                                    </span>
                                 </div>
-                                )}
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

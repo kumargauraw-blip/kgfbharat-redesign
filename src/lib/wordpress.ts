@@ -446,6 +446,7 @@ export async function wpGetTestimonialsByCourseSlug(courseSlug: string): Promise
 
 interface KGFNewsResponse {
   id: string;
+  slug: string;
   title: string;
   description: string;
   imageUrl: string | null;
@@ -453,18 +454,21 @@ interface KGFNewsResponse {
   source: string;
   date: string;
   category: string;
+  content?: string;
 }
 
 function mapKGFNews(n: KGFNewsResponse): News {
   return {
     id: n.id,
+    slug: n.slug || '',
     title: n.title,
     description: n.description || '',
     imageUrl: n.imageUrl || undefined,
-    url: n.url || '',
+    url: n.url || undefined,
     source: n.source || '',
     date: normalizeDate(n.date),
     category: n.category || '',
+    content: n.content,
   };
 }
 
@@ -474,5 +478,14 @@ export async function wpGetNews(): Promise<News[]> {
     return data.map(mapKGFNews);
   } catch {
     return [];
+  }
+}
+
+export async function wpGetNewsBySlug(slug: string): Promise<News | null> {
+  try {
+    const data = await wpFetchCustom<KGFNewsResponse>(`news/${slug}`);
+    return mapKGFNews(data);
+  } catch {
+    return null;
   }
 }

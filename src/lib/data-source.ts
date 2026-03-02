@@ -113,3 +113,12 @@ export async function getNews(): Promise<News[]> {
     return fallback.getNews();
   }
 }
+
+export async function getNewsBySlug(slug: string): Promise<News | null> {
+  if (!useWordPress) return null;
+  try {
+    return await wp.wpGetNewsBySlug(slug);
+  } catch {
+    return null;
+  }
+}

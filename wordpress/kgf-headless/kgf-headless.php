@@ -564,11 +564,12 @@ function kgf_format_testimonial( $post ) {
  * @param WP_Post $post The news post.
  * @return array
  */
-function kgf_format_news( $post ) {
+function kgf_format_news( $post, $full = false ) {
 	$meta = get_post_meta( $post->ID );
 
-	return array(
+	$data = array(
 		'id'          => (string) $post->ID,
+		'slug'        => $post->post_name,
 		'title'       => $post->post_title,
 		'description' => wp_trim_words( $post->post_content, 30 ),
 		'imageUrl'    => kgf_get_thumbnail_url( $post->ID ),
@@ -577,6 +578,12 @@ function kgf_format_news( $post ) {
 		'date'        => isset( $meta['kgf_news_date'][0] ) ? $meta['kgf_news_date'][0] : '',
 		'category'    => isset( $meta['kgf_news_category'][0] ) ? $meta['kgf_news_category'][0] : '',
 	);
+
+	if ( $full ) {
+		$data['content'] = apply_filters( 'the_content', $post->post_content );
+	}
+
+	return $data;
 }
 
 /**
@@ -676,6 +683,21 @@ function kgf_register_rest_routes() {
 		'methods'             => 'GET',
 		'callback'            => 'kgf_rest_get_news',
 		'permission_callback' => '__return_true',
+	) );
+
+	// GET /news/{slug}
+	register_rest_route( $namespace, '/news/(?P<slug>[a-zA-Z0-9_-]+)', array(
+		'methods'             => 'GET',
+		'callback'            => 'kgf_rest_get_news_by_slug',
+		'permission_callback' => '__return_true',
+		'args'                => array(
+			'slug' => array(
+				'required'          => true,
+				'validate_callback' => function ( $param ) {
+					return is_string( $param );
+				},
+			),
+		),
 	) );
 }
 add_action( 'rest_api_init', 'kgf_register_rest_routes' );
@@ -888,6 +910,25 @@ function kgf_rest_get_news( $request ) {
 	$news = array_map( 'kgf_format_news', $posts );
 
 	return new WP_REST_Response( $news, 200 );
+}
+
+/**
+ * REST callback: Get a single news item by slug (with full content).
+ */
+function kgf_rest_get_news_by_slug( $request ) {
+	$slug  = $request->get_param( 'slug' );
+	$posts = get_posts( array(
+		'post_type'      => 'kgf_news',
+		'name'           => $slug,
+		'posts_per_page' => 1,
+		'post_status'    => 'publish',
+	) );
+
+	if ( empty( $posts ) ) {
+		return new WP_REST_Response( array( 'message' => 'News not found' ), 404 );
+	}
+
+	return new WP_REST_Response( kgf_format_news( $posts[0], true ), 200 );
 }
 
 /**
