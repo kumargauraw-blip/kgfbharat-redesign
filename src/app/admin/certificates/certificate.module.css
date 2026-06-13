@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600;700&family=Great+Vibes&display=swap');
+
+/* The certificate is rendered at a fixed 1056x816 (Letter landscape) so the
+   exported PDF/PNG is always pixel-identical regardless of screen size. */
+.certificate-container {
+    width: 1056px;
+    height: 816px;
+    background: #ffffff;
+    border: 18px solid #d35400; /* Saffron/Orange border */
+    outline: 4px solid #2c3e50; /* Modern tech blue outline */
+    outline-offset: -22px;
+    box-sizing: border-box;
+    position: relative;
+    padding: 46px 56px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    background-image: radial-gradient(circle at center, #ffffff 45%, #fdf5e6 100%);
+}
+
+/* Decorative corner brackets inside the inner border. */
+.corner {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-color: rgba(44, 62, 80, 0.45);
+    border-style: solid;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.corner-tl {
+    top: 30px;
+    left: 30px;
+    border-width: 2px 0 0 2px;
+}
+
+.corner-tr {
+    top: 30px;
+    right: 30px;
+    border-width: 2px 2px 0 0;
+}
+
+.corner-bl {
+    bottom: 30px;
+    left: 30px;
+    border-width: 0 0 2px 2px;
+}
+
+.corner-br {
+    bottom: 30px;
+    right: 30px;
+    border-width: 0 2px 2px 0;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.logo {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+}
+
+.header-text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #7f8c8d;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.title {
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    color: #d35400;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.motto {
+    font-size: 13px;
+    font-style: italic;
+    color: #2c3e50;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.certificate-title {
+    font-family: 'Cinzel', serif;
+    font-size: 34px;
+    color: #2c3e50;
+    margin: 22px 0 10px 0;
+    letter-spacing: 4px;
+}
+
+.presented-to {
+    font-size: 17px;
+    color: #34495e;
+    margin-bottom: 4px;
+}
+
+.student-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    color: #d35400;
+    margin: 4px auto 6px;
+    border-bottom: 2px solid #bdc3c7;
+    display: inline-block;
+    width: 70%;
+    padding-bottom: 4px;
+    line-height: 1.1;
+}
+
+.course-description {
+    font-size: 16px;
+    color: #34495e;
+    margin: 12px auto 0;
+    width: 82%;
+    line-height: 1.55;
+}
+
+.course-description strong {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+.course-box {
+    display: inline-block;
+    margin: 14px auto 0;
+    padding: 11px 30px;
+    border: 1px solid #e2d2b8;
+    border-radius: 8px;
+    background: rgba(211, 84, 0, 0.05);
+}
+
+.course-name {
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 21px;
+}
+
+.signatures {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+    padding: 0 40px;
+}
+
+.signature-block {
+    text-align: center;
+    width: 250px;
+}
+
+.signature-line {
+    border-bottom: 2px solid #2c3e50;
+    margin-bottom: 8px;
+    height: 54px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.signature-img {
+    max-height: 50px;
+    width: auto;
+}
+
+.signature-name {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 15px;
+    margin: 0;
+}
+
+.signature-title {
+    font-size: 11px;
+    color: #7f8c8d;
+    margin: 2px 0 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.issue-block {
+    text-align: center;
+    padding-bottom: 4px;
+}
+
+.issue-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.issue-box {
+    border: 1px solid #cdd5db;
+    border-radius: 6px;
+    padding: 6px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    display: inline-block;
+}
+
+.footer-strip {
+    margin-top: 22px;
+    padding-top: 12px;
+    border-top: 1px solid #e5e0d5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #8a8f98;
+    text-transform: uppercase;
+}
+
+.footer-mid {
+    font-weight: 600;
+    color: #5a6470;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #27ae60;
+    display: inline-block;
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 150px;
+    color: rgba(211, 84, 0, 0.035);
+    font-family: 'Cinzel', serif;
+    z-index: 0;
+    pointer-events: none;
+    white-space: nowrap;
+}

@@ -1,11 +1,22 @@
+"use client"
+
 import Link from "next/link"
-import { CalendarDays, BookOpen, Users, LogOut } from "lucide-react"
+import { usePathname } from "next/navigation"
+import { CalendarDays, BookOpen, Users, Award, LogOut } from "lucide-react"
 
 export default function AdminLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const pathname = usePathname() || ""
+
+    // The login screen (/admin) and the full-screen Certificate Studio
+    // (/admin/certificates) render without the management sidebar.
+    if (pathname === "/admin" || pathname.startsWith("/admin/certificates")) {
+        return <>{children}</>
+    }
+
     return (
         <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
             {/* Sidebar */}
@@ -16,6 +27,10 @@ export default function AdminLayout({
                 </div>
 
                 <nav className="flex-1 p-4 space-y-2">
+                    <Link href="/admin/certificates" className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-white/10 hover:text-white transition-colors">
+                        <Award className="h-5 w-5" />
+                        <span className="font-medium">Generate Certificate</span>
+                    </Link>
                     <Link href="/admin/courses" className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-white/10 hover:text-white transition-colors">
                         <BookOpen className="h-5 w-5" />
                         <span className="font-medium">Courses</span>
