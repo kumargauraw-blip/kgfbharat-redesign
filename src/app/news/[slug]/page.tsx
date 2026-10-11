@@ -8,7 +8,7 @@ function formatNewsDate(dateStr: string): string {
     if (!dateStr) return '';
     const date = new Date(dateStr);
     if (isNaN(date.getTime())) return dateStr;
-    return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+    return date.toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 export default async function NewsDetailPage({ params }: { params: Promise<{ slug: string }> }) {

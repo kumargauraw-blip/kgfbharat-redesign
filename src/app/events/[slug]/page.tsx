@@ -96,7 +96,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                                         <Calendar className="w-4 h-4" />
                                     </div>
                                     <span className="font-semibold">
-                                        {new Date(event.date).toLocaleDateString("en-IN", {
+                                        {new Date(event.date).toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata",
                                             weekday: "long",
                                             day: "numeric",
                                             month: "long",

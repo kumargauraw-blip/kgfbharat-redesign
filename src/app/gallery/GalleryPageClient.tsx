@@ -62,7 +62,7 @@ function Lightbox({ item, onClose }: { item: GalleryItem; onClose: () => void })
                         <p className="text-gray-400 mt-1">{item.description}</p>
                     )}
                     <p className="text-gray-500 text-sm mt-2">
-                        {new Date(item.date).toLocaleDateString("en-IN", {
+                        {new Date(item.date).toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata",
                             day: "numeric",
                             month: "long",
                             year: "numeric",

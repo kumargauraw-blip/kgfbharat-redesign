@@ -39,7 +39,7 @@ function formatNewsDate(dateStr: string): string {
     if (!dateStr) return '';
     const date = new Date(dateStr);
     if (isNaN(date.getTime())) return dateStr;
-    return date.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
+    return date.toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', month: 'short', year: 'numeric' });
 }
 
 export async function MediaSection() {
