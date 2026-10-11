@@ -33,10 +33,10 @@ export function Countdown({ target }: { target: string }) {
         <div className="flex items-end gap-5 sm:gap-8" role="timer" aria-label="आयोजन में शेष समय">
             {UNITS.map((u, i) => (
                 <div key={u.key} className="text-center">
-                    <div className="font-ay-serif text-3xl sm:text-4xl font-semibold tabular-nums text-ay-paper">
+                    <div className="font-ay-serif text-4xl sm:text-5xl font-bold tabular-nums text-ay-paper">
                         {values ? values[i] : "--"}
                     </div>
-                    <div className="mt-1 font-ay-sans text-xs sm:text-sm text-ay-gold-light/80">{u.label}</div>
+                    <div className="mt-1 font-ay-sans text-sm sm:text-base font-semibold text-ay-gold-light">{u.label}</div>
                 </div>
             ))}
         </div>
