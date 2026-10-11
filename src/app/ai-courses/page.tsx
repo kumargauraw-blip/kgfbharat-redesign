@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Clock, MessageCircle, HelpCircle, Sparkles, CalendarDays } from "lucide-react"
+import { Clock, HelpCircle, Sparkles, CalendarDays } from "lucide-react"
 import { getCourses, getBatches } from "@/lib/data-source"
 import { CustomBatchForm } from "@/components/ai-courses/CustomBatchForm"
 import type { Batch } from "@/lib/types"
@@ -197,21 +197,13 @@ export default async function CoursesPage() {
                             Not sure which course is right for you?
                         </h3>
                         <p className="text-blue-100 mb-8 leading-relaxed">
-                            Our AI Advisor can help you find the perfect course based on your
-                            background, goals, and experience level. Or reach out to our team
-                            directly for personalized guidance.
+                            Tell us your background, goals, and experience level — we will help you pick
+                            the right course, or design a private batch for your team.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
-                                href="/ai-advisor"
-                                className="inline-flex items-center justify-center gap-2 bg-white text-blue-700 font-semibold px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors"
-                            >
-                                <MessageCircle className="h-4 w-4" />
-                                Talk to AI Advisor
-                            </Link>
-                            <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center gap-2 border border-white/40 text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/10 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-blue-700 font-semibold px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors"
                             >
                                 Contact Us
                             </Link>

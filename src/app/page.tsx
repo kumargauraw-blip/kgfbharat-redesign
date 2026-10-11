@@ -3,7 +3,8 @@ import { Hero } from "@/components/home/Hero"
 import { CoursePreview } from "@/components/home/CoursePreview"
 import { ValuesSection } from "@/components/home/ValuesSection"
 import { MediaSection } from "@/components/home/MediaSection"
-import AIAdvisor from "@/components/common/AIAdvisor"
+
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: "KGF Bharat | Ancient Wisdom Meets Modern Intelligence",
@@ -23,7 +24,6 @@ export default async function Home() {
       <ValuesSection />
       <CoursePreview />
       <MediaSection />
-      <AIAdvisor />
     </main>
   )
 }

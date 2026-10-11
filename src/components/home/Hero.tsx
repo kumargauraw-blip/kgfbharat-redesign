@@ -1,11 +1,9 @@
-"use client"
-
 import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, BookOpen } from "lucide-react"
+import { EventSpotlight, SpotlightRibbon, isSpotlightLive } from "./EventSpotlight"
 
 export function Hero() {
+    const spotlight = isSpotlightLive()
+
     return (
         <section id="home" className="relative flex items-center pt-8 pb-12 overflow-hidden bg-white">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-orange/5 -skew-x-12 translate-x-12"></div>
@@ -14,6 +12,7 @@ export function Hero() {
             <div className="container-custom relative z-10">
                 <div className="grid lg:grid-cols-2 items-center gap-12">
                     <div className="space-y-8 text-center lg:text-left">
+                        {spotlight && <SpotlightRibbon />}
                         <div className="space-y-4">
                             <h2 className="text-[#111827]/50 text-2xl md:text-3xl font-serif italic font-semibold">
                                 धर्मक्षेत्रे कुरुक्षेत्रे...
@@ -38,19 +37,25 @@ export function Hero() {
                         </div>
                     </div>
 
-                    <div className="relative hidden lg:block">
-                        <div className="relative z-10 rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white animate-float transform rotate-2 h-[600px]">
-                            <img
-                                src="https://images.unsplash.com/photo-1542332213-31f87348057f?auto=format&fit=crop&q=80&w=1200"
-                                alt="Traditional Wisdom"
-                                className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-1000"
-                            />
+                    {spotlight ? (
+                        <div className="lg:pl-6">
+                            <EventSpotlight />
                         </div>
-                        <div className="absolute -top-10 -right-10 bg-white p-8 rounded-[2.5rem] shadow-2xl z-20 border border-gray-100 text-center animate-pulse">
-                            <p className="text-4xl font-black text-[#111827] leading-none mb-1">AI</p>
-                            <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Mastery</p>
+                    ) : (
+                        <div className="relative hidden lg:block">
+                            <div className="relative z-10 rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white animate-float transform rotate-2 h-[600px]">
+                                <img
+                                    src="https://images.unsplash.com/photo-1542332213-31f87348057f?auto=format&fit=crop&q=80&w=1200"
+                                    alt="Traditional Wisdom"
+                                    className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-1000"
+                                />
+                            </div>
+                            <div className="absolute -top-10 -right-10 bg-white p-8 rounded-[2.5rem] shadow-2xl z-20 border border-gray-100 text-center animate-pulse">
+                                <p className="text-4xl font-black text-[#111827] leading-none mb-1">AI</p>
+                                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Mastery</p>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </section>

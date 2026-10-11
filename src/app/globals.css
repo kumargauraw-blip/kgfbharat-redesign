@@ -211,3 +211,28 @@
     opacity: 0.7;
   }
 }
+
+@keyframes flagship-flash {
+  0%,
+  100% {
+    background-color: #dc2626;
+    box-shadow: 0 10px 24px -8px rgba(220, 38, 38, 0.9);
+  }
+
+  50% {
+    background-color: #ff1a1a;
+    box-shadow: 0 0 0 4px rgba(255, 26, 26, 0.35), 0 14px 32px -6px rgba(220, 38, 38, 1);
+  }
+}
+
+.flagship-ribbon {
+  clip-path: polygon(0 0, calc(100% - 0.85rem) 0, 100% 50%, calc(100% - 0.85rem) 100%, 0 100%, 0.55rem 50%);
+  padding-left: 1.35rem;
+  animation: flagship-flash 1.15s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flagship-ribbon {
+    animation: none;
+  }
+}

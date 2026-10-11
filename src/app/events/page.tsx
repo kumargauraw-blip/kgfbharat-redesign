@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { getEvents } from "@/lib/data-source"
-import { EventsPageClient } from "./EventsPageClient"
+import { EventsListing } from "./EventsListing"
+import { currentTime } from "./event-dates"
 
 export const dynamic = "force-dynamic"
 
@@ -12,5 +13,5 @@ export const metadata: Metadata = {
 export default async function EventsPage() {
     const events = await getEvents()
 
-    return <EventsPageClient events={events} />
+    return <EventsListing events={events} now={currentTime()} />
 }
