@@ -2,6 +2,7 @@ import Image from "next/image"
 import { CalendarDays, MapPin } from "lucide-react"
 import type { Ayodhya2026 } from "@/content/events/ayodhya-2026"
 import { Countdown } from "./Countdown"
+import { cn } from "@/lib/utils"
 import { btn } from "./ui"
 
 export function Hero({ event }: { event: Ayodhya2026 }) {
@@ -19,39 +20,41 @@ export function Hero({ event }: { event: Ayodhya2026 }) {
             <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-ay-night via-ay-night/60 to-transparent" />
 
             <div className="container-custom flex min-h-[calc(100svh-7rem)] flex-col justify-between gap-12 pt-16 pb-10 md:pt-24 lg:min-h-[44rem]">
-                <div className="max-w-2xl motion-safe:animate-[fade-in_700ms_cubic-bezier(0.22,1,0.36,1)_both]">
+                <div className="max-w-3xl motion-safe:animate-[fade-in_700ms_cubic-bezier(0.22,1,0.36,1)_both]">
                     <p className="font-ay-sans text-sm sm:text-base font-medium text-ay-gold-light">{event.presenter}</p>
                     <p className="mt-3 inline-block rounded-full border border-ay-gold/40 bg-ay-maroon-deep/60 px-4 py-1.5 font-ay-sans text-sm text-ay-paper/90 backdrop-blur-sm">
                         {event.occasion}
                     </p>
 
-                    <h1 className="mt-6 font-ay-display text-[3.4rem] sm:text-7xl lg:text-[5.75rem] font-normal leading-[1.15] tracking-normal [overflow-wrap:anywhere] bg-gradient-to-b from-ay-gold-light via-[#F7B65A] to-ay-saffron bg-clip-text text-transparent drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)]">
-                        {event.title}
-                    </h1>
-                    <p className="mt-2 font-ay-serif text-2xl sm:text-3xl font-semibold leading-snug text-ay-paper">
-                        {event.subtitle}
-                    </p>
+                    <div className="mt-6 w-fit whitespace-nowrap text-[min(6.25rem,calc((100vw-3.25rem)/6.64))]">
+                        <h1 className="font-ay-display text-[1em] font-normal leading-[1.15] tracking-normal bg-gradient-to-b from-ay-gold-light via-[#F7B65A] to-ay-saffron bg-clip-text text-transparent drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)]">
+                            {event.title}
+                        </h1>
+                        <p className="mt-1 font-ay-serif text-[0.482em] font-bold leading-snug text-ay-paper">
+                            {event.subtitle}
+                        </p>
+                    </div>
 
-                    <p className="mt-5 font-ay-sans text-[15px] tracking-wide text-ay-gold-light/90">
+                    <p className="mt-6 font-ay-sans text-base sm:text-lg font-semibold tracking-wide text-ay-gold-light">
                         {event.themes.join("  •  ")}
                     </p>
 
-                    <div className="mt-7 flex flex-col gap-3 font-ay-sans text-lg text-ay-paper sm:flex-row sm:gap-8">
-                        <span className="flex items-center gap-2.5">
-                            <CalendarDays className="h-5 w-5 text-ay-saffron-bright" aria-hidden="true" />
+                    <div className="mt-7 flex flex-col gap-3 font-ay-sans text-lg sm:text-xl font-semibold text-ay-paper sm:flex-row sm:gap-10">
+                        <span className="flex items-center gap-3">
+                            <CalendarDays className="h-6 w-6 shrink-0 text-ay-saffron-bright" aria-hidden="true" />
                             {event.dateLabel}
                         </span>
-                        <span className="flex items-center gap-2.5">
-                            <MapPin className="h-5 w-5 text-ay-saffron-bright" aria-hidden="true" />
+                        <span className="flex items-center gap-3">
+                            <MapPin className="h-6 w-6 shrink-0 text-ay-saffron-bright" aria-hidden="true" />
                             {event.venueLabel}
                         </span>
                     </div>
 
                     <div className="mt-9 flex flex-wrap gap-3 font-ay-sans">
-                        <a href="#passes" className={btn.primary}>
+                        <a href="#passes" className={cn(btn.primary, "px-7 py-3.5 text-base sm:px-8 sm:py-4 sm:text-lg font-bold")}>
                             {event.heroCta}
                         </a>
-                        <a href="#sponsorship" className={btn.goldOutline}>
+                        <a href="#sponsorship" className={cn(btn.goldOutline, "px-7 py-3.5 text-base sm:px-8 sm:py-4 sm:text-lg font-bold")}>
                             प्रायोजक बनें
                         </a>
                     </div>
@@ -59,10 +62,10 @@ export function Hero({ event }: { event: Ayodhya2026 }) {
 
                 <div className="flex flex-col gap-4 border-t border-ay-gold/25 pt-6 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                        <p className="mb-3 font-ay-sans text-sm text-ay-paper/70">संगोष्ठी आरंभ होने में</p>
+                        <p className="mb-3 font-ay-sans text-base font-semibold text-ay-paper/85">संगोष्ठी आरंभ होने में</p>
                         <Countdown target={event.startsAt} />
                     </div>
-                    <p className="max-w-sm font-ay-sans text-[15px] leading-relaxed text-ay-paper/70">
+                    <p className="max-w-md font-ay-sans text-base sm:text-lg font-medium leading-relaxed text-ay-paper/85">
                         {event.intro.days.map((d) => `${d.date} — ${d.theme}`).join(" • ")}
                     </p>
                 </div>
