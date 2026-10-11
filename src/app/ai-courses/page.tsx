@@ -39,10 +39,12 @@ function formatDate(dateStr: string): string {
 }
 
 export default async function CoursesPage() {
-    const [courses, batches] = await Promise.all([
+    const [allCourses, batches] = await Promise.all([
         getCourses(),
         getBatches(),
     ])
+
+    const courses = allCourses.filter((c) => c.courseCategory === "ai-tech")
 
     return (
         <div className="min-h-screen bg-white">

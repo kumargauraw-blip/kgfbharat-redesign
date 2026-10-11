@@ -127,7 +127,7 @@ export async function CoursePreview() {
         .filter((c) => c.courseCategory === "dharmic")
         .slice(0, 3)
     const aiCourses = courses
-        .filter((c) => c.courseCategory === "ai-tech" || !c.courseCategory)
+        .filter((c) => c.courseCategory === "ai-tech")
         .slice(0, 3)
 
     return (
