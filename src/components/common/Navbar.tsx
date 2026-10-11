@@ -154,31 +154,43 @@ export function Navbar() {
                     : "bg-gradient-to-r from-[#fff3e0] via-[#fffaf4] to-white border-b-2 border-orange/30 py-4"
             )}
         >
+            <style>{`
+                .nav-brand-sub {
+                    font-size: clamp(5.75px, 1.72vw, 8px);
+                    letter-spacing: 0.08em;
+                }
+                @media (min-width: 640px) {
+                    .nav-brand-sub {
+                        font-size: 8px;
+                        letter-spacing: 0.4em;
+                    }
+                }
+            `}</style>
             <div className="container-custom flex items-center justify-between">
                 {/* Logo */}
-                <div className="flex items-center gap-4">
-                    <Link href="/" className="group flex items-center gap-4">
+                <div className="flex min-w-0 items-center">
+                    <Link href="/" className="group flex min-w-0 items-center gap-2.5 sm:gap-4">
                         <div
                             className={cn(
                                 "transition-all duration-500 shrink-0",
-                                isScrolled ? "h-11 w-11" : "h-16 w-16"
+                                isScrolled ? "h-10 w-10 sm:h-11 sm:w-11" : "h-12 w-12 sm:h-16 sm:w-16"
                             )}
                         >
                             <img
                                 src="/kgf-logo.png"
-                                alt="KGF Logo"
+                                alt="KGF Bharat"
                                 className="w-full h-full object-contain rounded-full drop-shadow-md"
                             />
                         </div>
 
-                        <div className="hidden sm:block">
-                            <h1 className="text-xl md:text-2xl font-black tracking-tighter text-[#111827]">
+                        <div className="min-w-0">
+                            <span className="block text-base leading-none font-black tracking-tighter text-[#111827] sm:text-xl md:text-2xl">
                                 KGF{" "}
                                 <span className="text-orange">BHARAT</span>
-                            </h1>
-                            <p className="text-[8px] uppercase tracking-[0.4em] text-[#111827]/60 font-bold">
+                            </span>
+                            <span className="nav-brand-sub mt-0.5 block font-bold uppercase text-[#111827]/60 whitespace-nowrap">
                                 Kurukshetra Gurukulam Foundation
-                            </p>
+                            </span>
                         </div>
                     </Link>
                 </div>
