@@ -3,6 +3,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Calendar, MapPin, Clock, ArrowLeft, ExternalLink, CheckCircle, Camera, Users } from "lucide-react"
 import { getEventBySlug, getGalleryItems } from "@/lib/data-source"
+import { landingPages } from "@/components/events/landing-pages"
 
 export const dynamic = "force-dynamic"
 
@@ -12,6 +13,9 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { slug } = await params
+    const landing = landingPages[slug]
+    if (landing) return landing.metadata
+
     const event = await getEventBySlug(slug)
     if (!event) return { title: "Event Not Found | KGF Bharat" }
 
@@ -35,6 +39,9 @@ function getGalleryCategoryForEvent(slug: string): string | null {
 
 export default async function EventDetailPage({ params }: PageProps) {
     const { slug } = await params
+    const landing = landingPages[slug]
+    if (landing) return <landing.Page />
+
     const event = await getEventBySlug(slug)
 
     if (!event) {
@@ -96,7 +103,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                                         <Calendar className="w-4 h-4" />
                                     </div>
                                     <span className="font-semibold">
-                                        {new Date(event.date).toLocaleDateString("en-IN", {
+                                        {new Date(event.date).toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata",
                                             weekday: "long",
                                             day: "numeric",
                                             month: "long",

@@ -74,14 +74,12 @@ export function Footer() {
                     {/* KGF Bharat Branding */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                            <div className="bg-white p-1.5 rounded-xl">
-                                <div className="h-12 w-12 flex items-center justify-center">
-                                    <img
-                                        src="/kgf-logo.png"
-                                        alt="KGF Logo"
-                                        className="w-full h-full object-contain"
-                                    />
-                                </div>
+                            <div className="h-16 w-16 shrink-0">
+                                <img
+                                    src="/kgf-logo.png"
+                                    alt="KGF Logo"
+                                    className="w-full h-full object-contain rounded-full"
+                                />
                             </div>
                             <div>
                                 <h4 className="text-2xl font-black tracking-tighter">

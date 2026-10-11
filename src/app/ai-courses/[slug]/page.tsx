@@ -125,9 +125,9 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                                                 <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                                                     <span className="flex items-center gap-1.5">
                                                         <Calendar className="h-4 w-4 text-orange" />
-                                                        {new Date(batch.startDate).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                                                        {new Date(batch.startDate).toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", year: "numeric" })}
                                                         {" to "}
-                                                        {new Date(batch.endDate).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                                                        {new Date(batch.endDate).toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", year: "numeric" })}
                                                     </span>
                                                     <span className="flex items-center gap-1.5">
                                                         <Globe className="h-4 w-4 text-orange" />
@@ -241,7 +241,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center"><Calendar className="h-4 w-4 mr-2" /> Next Batch</div>
                                             <span className="font-medium">
-                                                {new Date(activeBatches[0].startDate).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}
+                                                {new Date(activeBatches[0].startDate).toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short" })}
                                             </span>
                                         </div>
                                     )}

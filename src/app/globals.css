@@ -42,6 +42,30 @@
   --color-accent-foreground: var(--color-orange);
 }
 
+/* ─── Event landing: Ayodhya 2026 (dusk over the Saryu) ─── */
+
+@theme {
+  --color-ay-night: #1A0C09;
+  --color-ay-maroon-deep: #2C0A07;
+  --color-ay-maroon: #5B150F;
+  --color-ay-saffron: #E06A17;
+  --color-ay-saffron-bright: #F59536;
+  --color-ay-gold: #CF9C45;
+  --color-ay-gold-light: #F0CF8A;
+  --color-ay-paper: #FBF5EA;
+  --color-ay-paper-2: #F3E6CF;
+  --color-ay-line: #E2CFAE;
+  --color-ay-ink: #2A170F;
+  --color-ay-ink-soft: #6B5343;
+  --color-ay-road: #1E2A44;
+}
+
+@theme inline {
+  --font-ay-display: var(--font-ay-rozha), "Noto Serif Devanagari", serif;
+  --font-ay-serif: var(--font-ay-noto-serif), "Noto Serif Devanagari", serif;
+  --font-ay-sans: var(--font-ay-mukta), "Mukta", ui-sans-serif, system-ui, sans-serif;
+}
+
 /* ─── Custom Utility Classes ─── */
 
 @utility container-custom {

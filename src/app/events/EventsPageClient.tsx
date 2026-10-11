@@ -53,13 +53,13 @@ function EventCard({ event, index }: { event: Event; index: number }) {
                         <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4 text-orange" />
                             <span>
-                                {new Date(event.date).toLocaleDateString("en-IN", {
+                                {new Date(event.date).toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata",
                                     day: "numeric",
                                     month: "long",
                                     year: "numeric",
                                 })}
                                 {event.endDate && (
-                                    <> to {new Date(event.endDate).toLocaleDateString("en-IN", {
+                                    <> to {new Date(event.endDate).toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata",
                                         day: "numeric",
                                         month: "long",
                                         year: "numeric",

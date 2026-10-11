@@ -30,7 +30,7 @@ function getNextBatchDate(courseId: string, batches: Batch[]): string | null {
 
 function formatDate(dateStr: string): string {
     const date = new Date(dateStr)
-    return date.toLocaleDateString("en-IN", {
+    return date.toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata",
         day: "numeric",
         month: "short",
         year: "numeric",

@@ -161,16 +161,14 @@ export function Navbar() {
                         <div
                             className={cn(
                                 "transition-all duration-500 shrink-0",
-                                isScrolled ? "h-10 w-10" : "h-14 w-14"
+                                isScrolled ? "h-11 w-11" : "h-16 w-16"
                             )}
                         >
-                            <div className="bg-white p-0.5 rounded-xl shadow-lg border-2 border-orange h-full w-full">
-                                <img
-                                    src="/kgf-logo.png"
-                                    alt="KGF Logo"
-                                    className="w-full h-full object-contain"
-                                />
-                            </div>
+                            <img
+                                src="/kgf-logo.png"
+                                alt="KGF Logo"
+                                className="w-full h-full object-contain rounded-full drop-shadow-md"
+                            />
                         </div>
 
                         <div className="hidden sm:block">
