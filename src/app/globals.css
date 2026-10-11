@@ -72,6 +72,14 @@
   @apply container mx-auto px-6 md:px-12 max-w-[1700px];
 }
 
+@utility hero-event-card {
+  order: -1;
+
+  @variant lg {
+    order: 0;
+  }
+}
+
 @utility glass-nav {
   @apply bg-white/95 backdrop-blur-md border-b-2 border-orange shadow-sm;
 }

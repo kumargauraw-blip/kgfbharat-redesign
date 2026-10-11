@@ -1,26 +1,26 @@
-import { BookOpen, Hammer, Award, ArrowRight } from "lucide-react"
+import { BookOpen, Hammer, Award } from "lucide-react"
 import Link from "next/link"
 
 export function ValuesSection() {
     return (
-        <section id="about" className="py-32 bg-[#F9FAFB] relative overflow-hidden">
+        <section id="about" className="relative overflow-hidden bg-[#F9FAFB] py-16 md:py-24">
             <div className="container-custom relative z-10">
-                <div className="grid lg:grid-cols-12 gap-16 items-start">
+                <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
 
                     {/* Left Content Column */}
-                    <div className="lg:col-span-5 space-y-8 sticky top-32">
+                    <div className="space-y-6 lg:col-span-5 lg:sticky lg:top-32 lg:space-y-8">
                         <div className="space-y-4">
                             <span className="text-orange font-black uppercase tracking-[0.3em] text-xs">Our Core Values</span>
-                            <h2 className="text-5xl md:text-6xl font-black text-[#111827] leading-[1.1] tracking-tighter">
+                            <h2 className="text-4xl md:text-6xl font-black text-[#111827] leading-[1.1] tracking-tighter">
                                 What are the Three <span className="text-orange italic">Aims</span> of KGF?
                             </h2>
                         </div>
 
-                        <p className="text-xl text-gray-600 font-medium leading-relaxed">
+                        <p className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed">
                             The Kurukshetra Gurukulam Foundation (KGF) is on a mission to fortify the Sanatana society through three foundational pillars that ensure we are rooted in the past and ready for the future.
                         </p>
 
-                        <div className="pt-6">
+                        <div className="hidden pt-4 lg:block">
                             <Link href="/about" className="group bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all shadow-2xl shadow-red-600/20 flex items-center gap-4 w-fit">
                                 Support Our Mission
                                 <span className="text-2xl group-hover:translate-x-2 transition-transform">&rarr;</span>
@@ -29,9 +29,9 @@ export function ValuesSection() {
                     </div>
 
                     {/* Right Pillars Column */}
-                    <div className="lg:col-span-7 grid gap-8">
+                    <div className="grid gap-6 lg:col-span-7 md:gap-8">
                         {/* Shiksha Card */}
-                        <div className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 hover:border-orange-200 transition-all group">
+                        <div className="bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] shadow-xl border border-gray-100 hover:border-orange-200 transition-all group">
                             <div className="flex gap-8 items-start flex-col sm:flex-row">
                                 <div className="w-20 h-20 shrink-0 bg-orange/10 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                     {/* Inline SVG from original or Lucide equivalent */}
@@ -47,7 +47,7 @@ export function ValuesSection() {
                         </div>
 
                         {/* Nirman Card */}
-                        <div className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 hover:border-amber-200 transition-all group">
+                        <div className="bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] shadow-xl border border-gray-100 hover:border-amber-200 transition-all group">
                             <div className="flex gap-8 items-start flex-col sm:flex-row">
                                 <div className="w-20 h-20 shrink-0 bg-amber-50 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                     <Hammer className="w-10 h-10 text-amber-700" strokeWidth={2.5} />
@@ -62,7 +62,7 @@ export function ValuesSection() {
                         </div>
 
                         {/* Samman Card */}
-                        <div className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 hover:border-yellow-200 transition-all group">
+                        <div className="bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] shadow-xl border border-gray-100 hover:border-yellow-200 transition-all group">
                             <div className="flex gap-8 items-start flex-col sm:flex-row">
                                 <div className="w-20 h-20 shrink-0 bg-yellow-50 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                     <Award className="w-10 h-10 text-yellow-600" strokeWidth={2.5} />
@@ -75,6 +75,13 @@ export function ValuesSection() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="lg:hidden">
+                        <Link href="/about" className="group bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all shadow-2xl shadow-red-600/20 inline-flex items-center gap-4">
+                            Support Our Mission
+                            <span className="text-2xl group-hover:translate-x-2 transition-transform">&rarr;</span>
+                        </Link>
                     </div>
                 </div>
             </div>

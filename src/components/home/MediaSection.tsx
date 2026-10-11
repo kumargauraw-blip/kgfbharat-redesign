@@ -53,9 +53,9 @@ export async function MediaSection() {
     const displayItems = newsItems.slice(0, 3);
 
     return (
-        <section id="media" className="py-24 bg-white relative">
+        <section id="media" className="relative bg-white py-16 md:py-24">
             <div className="container-custom">
-                <div className="text-center mb-20 relative">
+                <div className="relative mb-10 text-center md:mb-16">
                     <div className="inline-block relative">
                         <h2 className="text-5xl md:text-6xl font-black text-[#111827] relative z-10">
                             In The <span className="text-orange">Media</span>

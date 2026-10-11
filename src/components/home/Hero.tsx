@@ -5,13 +5,13 @@ export function Hero() {
     const spotlight = isSpotlightLive()
 
     return (
-        <section id="home" className="relative flex items-center pt-8 pb-12 overflow-hidden bg-white">
+        <section id="home" className="relative overflow-x-clip bg-white pt-6 pb-8 md:pt-8 md:pb-10">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-orange/5 -skew-x-12 translate-x-12"></div>
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-100/50 blur-[140px] rounded-full -z-10"></div>
 
             <div className="container-custom relative z-10">
-                <div className="grid lg:grid-cols-2 items-center gap-12">
-                    <div className="space-y-8 text-center lg:text-left">
+                <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12">
+                    <div className="space-y-6 text-center lg:space-y-8 lg:text-left">
                         {spotlight && <SpotlightRibbon />}
                         <div className="space-y-4">
                             <h2 className="text-[#111827]/50 text-2xl md:text-3xl font-serif italic font-semibold">
@@ -38,7 +38,7 @@ export function Hero() {
                     </div>
 
                     {spotlight ? (
-                        <div className="lg:pl-6">
+                        <div className="hero-event-card w-full min-w-0 lg:pl-6">
                             <EventSpotlight />
                         </div>
                     ) : (

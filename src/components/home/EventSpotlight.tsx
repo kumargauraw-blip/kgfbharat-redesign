@@ -27,7 +27,7 @@ export function SpotlightRibbon() {
 export function EventSpotlight() {
     return (
         <div className={`${ayodhyaFontVars} relative`}>
-            <div className="relative isolate overflow-hidden rounded-[2.5rem] bg-[#1a0f08] shadow-[0_40px_80px_-30px_rgba(122,46,0,0.55)] ring-1 ring-black/5">
+            <div className="relative isolate overflow-hidden rounded-[2rem] bg-[#1a0f08] shadow-[0_40px_80px_-30px_rgba(122,46,0,0.55)] ring-1 ring-black/5 sm:rounded-[2.5rem] lg:min-h-[36rem]">
                 <Image
                     src={event.assets.hero}
                     alt="सूर्यास्त के समय सरयू तट से दिखता अयोध्या का श्रीराम मंदिर"
@@ -39,7 +39,7 @@ export function EventSpotlight() {
                 <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#1a0f08] from-15% via-[#1a0f08]/55 to-transparent" />
                 <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1a0f08]/70 to-transparent" />
 
-                <div className="flex min-h-[34rem] flex-col justify-between gap-10 p-6 sm:p-9 lg:min-h-[38rem]">
+                <div className="relative flex flex-col justify-between gap-6 p-5 sm:gap-8 sm:p-9 lg:min-h-[36rem]">
                     <div className="flex flex-wrap items-center justify-between gap-3">
                         <span className="flagship-ribbon inline-flex items-center bg-red-600 px-5 py-2.5 text-sm sm:text-base font-black uppercase tracking-[0.22em] text-white shadow-[0_10px_24px_-8px_rgba(220,38,38,0.9)]">
                             Flagship Event

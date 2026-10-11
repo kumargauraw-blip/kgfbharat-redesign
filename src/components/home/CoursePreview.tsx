@@ -131,11 +131,11 @@ export async function CoursePreview() {
         .slice(0, 3)
 
     return (
-        <section id="courses" className="py-32 space-y-48 bg-white">
+        <section id="courses" className="space-y-16 bg-white py-16 md:space-y-24 md:py-24">
             {/* Dharmik Education Section */}
             {dharmikCourses.length > 0 && (
                 <div className="container-custom">
-                    <div className="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
+                    <div className="mb-10 flex flex-col items-center justify-between gap-6 md:mb-14 md:flex-row md:gap-8">
                         <div className="space-y-4 text-center md:text-left">
                             <h2 className="text-5xl md:text-7xl font-serif font-bold italic text-[#111827]">
                                 Dharmik{" "}
@@ -172,7 +172,7 @@ export async function CoursePreview() {
             {/* AI Tech Section */}
             {aiCourses.length > 0 && (
                 <div className="container-custom">
-                    <div className="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
+                    <div className="mb-10 flex flex-col items-center justify-between gap-6 md:mb-14 md:flex-row md:gap-8">
                         <div className="space-y-4 text-center md:text-left">
                             <h2 className="text-5xl md:text-7xl font-serif font-bold italic text-[#111827]">
                                 AI Tech{" "}
