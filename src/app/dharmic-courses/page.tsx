@@ -2,6 +2,9 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Clock, CalendarDays, Sparkles } from "lucide-react"
 import { getCourses, getBatches } from "@/lib/data-source"
+import { courseDetailPath, coursePlainExcerpt } from "@/lib/course-paths"
+import { resolveCourseSupport } from "@/lib/course-support"
+import { CourseSupportNote } from "@/components/courses/CourseSupport"
 import type { Batch } from "@/lib/types"
 
 export const metadata: Metadata = {
@@ -87,6 +90,8 @@ export default async function DharmicCoursesPage() {
                                 course.id,
                                 batches
                             )
+                            const viewHref = courseDetailPath(course)
+                            const support = resolveCourseSupport(course)
                             return (
                                 <div
                                     key={course.id}
@@ -138,7 +143,7 @@ export default async function DharmicCoursesPage() {
 
                                         {/* Tagline */}
                                         <p className="text-gray-500 text-sm mb-5 line-clamp-2">
-                                            {course.tagline || course.description}
+                                            {coursePlainExcerpt(course)}
                                         </p>
 
                                         {/* Details */}
@@ -171,9 +176,11 @@ export default async function DharmicCoursesPage() {
                                             </div>
                                         )}
 
+                                        {support && <CourseSupportNote support={support} />}
+
                                         {/* CTA */}
                                         <Link
-                                            href={`/dharmic-courses`}
+                                            href={viewHref}
                                             className="block w-full text-center bg-[#DC2626] hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                                         >
                                             View Details

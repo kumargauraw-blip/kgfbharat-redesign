@@ -13,6 +13,7 @@ WordPress plugin that provides Custom Post Types and REST API endpoints for the 
 1. Copy the `kgf-headless` directory to `wp-content/plugins/` on your WordPress installation.
 2. Activate the plugin from the WordPress admin Plugins page.
 3. The plugin automatically registers all Custom Post Types and REST API endpoints upon activation.
+4. From v1.3, public cms pages (everything except `/wp-admin`, `/wp-json`, uploads, and `form-handler.php`) redirect to `https://www.kgfbharat.org` when that path exists, or return 404. To enable this without waiting for a plugin update, copy `wordpress/mu-plugins/kgf-frontend-redirect.php` to `wp-content/mu-plugins/` on the cms server.
 
 ## Custom Post Types
 

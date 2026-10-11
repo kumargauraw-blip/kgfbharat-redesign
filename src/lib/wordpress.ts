@@ -1,4 +1,6 @@
-import type { Course, Batch, Event, GalleryItem, Testimonial, News, FAQ, CourseFormat, CourseStatus, TargetAudience } from './types';
+import type { Course, CourseSupportCause, Batch, Event, GalleryItem, Testimonial, News, FAQ, CourseFormat, CourseStatus, TargetAudience } from './types';
+import { normalizeHttpUrl } from './course-paths';
+import { stripHtml } from './wp-html';
 
 const WP_API_URL = process.env.WORDPRESS_API_URL || '';
 const REVALIDATE = parseInt(process.env.WORDPRESS_API_REVALIDATE || '300', 10);
@@ -17,11 +19,6 @@ interface WPPost {
   meta?: Record<string, any>;
 }
 
-// Helper to strip HTML tags from WP rendered content
-function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, '').trim();
-}
-
 // Helper to get a field value from ACF or meta
 function getField(post: WPPost, field: string, fallback: any = ''): any {
   if (post.acf && post.acf[field] !== undefined && post.acf[field] !== null) {
@@ -31,6 +28,42 @@ function getField(post: WPPost, field: string, fallback: any = ''): any {
     return post.meta[field];
   }
   return fallback;
+}
+
+function truthyFlag(value: unknown): boolean | undefined {
+  if (value === undefined || value === null || value === '') return undefined
+  if (value === true || value === 1 || value === '1' || value === 'true') return true
+  return false
+}
+
+function mapSupportCauseFromPost(wp: WPPost): CourseSupportCause | undefined {
+  const enabled = truthyFlag(getField(wp, 'kgf_support_enabled'))
+  const headline = getField(wp, 'kgf_support_headline') || ''
+  const message = getField(wp, 'kgf_support_message') || ''
+  const ctaUrl = getField(wp, 'kgf_support_cta_url') || ''
+  if (enabled === undefined && !headline && !message && !ctaUrl) return undefined
+  return {
+    enabled,
+    eyebrow: getField(wp, 'kgf_support_eyebrow') || undefined,
+    headline: headline || undefined,
+    message: message || undefined,
+    ctaLabel: getField(wp, 'kgf_support_cta_label') || undefined,
+    ctaUrl: ctaUrl || undefined,
+    secondaryLabel: getField(wp, 'kgf_support_secondary_label') || undefined,
+    secondaryUrl: getField(wp, 'kgf_support_secondary_url') || undefined,
+  }
+}
+
+function normalizeCourseStatus(value?: string | null): CourseStatus {
+  const raw = (value || "Active").trim()
+  const map: Record<string, CourseStatus> = {
+    active: "Active",
+    planned: "Planned",
+    upcoming: "Planned",
+    completed: "Completed",
+    "enrollment closed": "Enrollment Closed",
+  }
+  return map[raw.toLowerCase()] || (raw as CourseStatus)
 }
 
 // Normalize date strings: ACF may return "20251219" instead of "2025-12-19"
@@ -85,7 +118,7 @@ async function wpFetchStandard<T>(path: string): Promise<T> {
 // ---- Mappers ----
 
 function mapWPCourse(wp: WPPost): Course {
-  const description = stripHtml(wp.content?.rendered || '');
+  const description = wp.content?.rendered || '';
 
   return {
     id: String(wp.id),
@@ -96,11 +129,14 @@ function mapWPCourse(wp: WPPost): Course {
     targetAudience: safeJsonParse(getField(wp, 'kgf_target_audience', []), []) as TargetAudience[],
     status: (getField(wp, 'kgf_status', 'Active') || 'Active') as CourseStatus,
     price: getField(wp, 'kgf_price', ''),
+    startDate: normalizeDate(getField(wp, 'kgf_start_date', '')) || undefined,
     duration: getField(wp, 'kgf_duration', ''),
     format: (getField(wp, 'kgf_format', 'Online') || 'Online') as CourseFormat,
     courseCategory: getField(wp, 'kgf_course_category') || undefined,
+    skoolUrl: normalizeHttpUrl(getField(wp, 'kgf_skool_url')),
+    supportCause: mapSupportCauseFromPost(wp),
     thumbnailUrl: getField(wp, 'thumbnail_url') || undefined,
-    overview: getField(wp, 'overview', '') || description,
+    overview: getField(wp, 'overview', '') || stripHtml(description),
     curriculum: safeJsonParse(getField(wp, 'kgf_curriculum', []), []),
     learningOutcomes: safeJsonParse(getField(wp, 'kgf_learning_outcomes', []), []),
     instructorBio: getField(wp, 'kgf_instructor_bio') || undefined,
@@ -182,9 +218,12 @@ interface KGFCourseResponse {
   targetAudience: string[];
   status: string;
   price: string;
+  startDate?: string | null;
   duration: string;
   format: string;
   courseCategory: string;
+  skoolUrl?: string | null;
+  supportCause?: CourseSupportCause | null;
   thumbnailUrl: string | null;
   overview: string;
   curriculum: string[];
@@ -256,13 +295,16 @@ function mapKGFCourse(c: KGFCourseResponse): Course {
     slug: c.slug,
     title: c.title,
     tagline: c.tagline,
-    description: stripHtml(c.description),
+    description: c.description || '',
     targetAudience: (c.targetAudience || []) as TargetAudience[],
-    status: (c.status || 'active') as CourseStatus,
+    status: normalizeCourseStatus(c.status),
     price: c.price,
+    startDate: normalizeDate(c.startDate || '') || undefined,
     duration: c.duration,
     format: (c.format || 'Online') as CourseFormat,
     courseCategory: c.courseCategory || undefined,
+    skoolUrl: normalizeHttpUrl(c.skoolUrl),
+    supportCause: c.supportCause || undefined,
     thumbnailUrl: c.thumbnailUrl || undefined,
     overview: c.overview || stripHtml(c.description),
     curriculum: c.curriculum || [],

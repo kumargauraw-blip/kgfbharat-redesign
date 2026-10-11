@@ -22,14 +22,20 @@ export interface Course {
     slug: string
     title: string
     tagline: string
+    /** Full course body. May contain WordPress HTML (headings, lists, tables). */
     description: string
     targetAudience: TargetAudience[]
     status: CourseStatus
     price: string
+    startDate?: string
     duration: string
     format: CourseFormat
     thumbnailUrl?: string
     courseCategory?: "dharmic" | "ai-tech" | string
+    /** Optional Skool classroom / community URL. When set, enroll CTAs open this link. */
+    skoolUrl?: string
+    /** Optional “support a cause” campaign for token-fee / free courses. */
+    supportCause?: CourseSupportCause
 
     // Detailed Content
     overview: string
@@ -43,6 +49,17 @@ export interface Course {
     // Meta
     createdAt: string
     updatedAt: string
+}
+
+export interface CourseSupportCause {
+    enabled?: boolean
+    eyebrow?: string
+    headline?: string
+    message?: string
+    ctaLabel?: string
+    ctaUrl?: string
+    secondaryLabel?: string
+    secondaryUrl?: string
 }
 
 export interface Event {

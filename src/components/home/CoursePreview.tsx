@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { getCourses } from "@/lib/data-source"
+import { courseDetailPath, coursePlainExcerpt } from "@/lib/course-paths"
 import type { Course } from "@/lib/types"
 
 function StatusBadge({ status }: { status: string }) {
@@ -24,9 +25,7 @@ function CourseCard({
     course: Course
     isDharmik: boolean
 }) {
-    const href = isDharmik
-        ? `/dharmic-courses`
-        : `/ai-courses/${course.slug}`
+    const href = courseDetailPath(course)
 
     return (
         <Link
@@ -80,7 +79,7 @@ function CourseCard({
                     {course.title}
                 </h3>
                 <p className="text-gray-500 text-sm line-clamp-2 mb-8 leading-relaxed font-medium">
-                    {course.tagline || course.description}
+                    {coursePlainExcerpt(course)}
                 </p>
 
                 <div className="flex items-center justify-between mt-auto">

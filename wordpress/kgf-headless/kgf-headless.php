@@ -2,7 +2,7 @@
 /**
  * Plugin Name: KGF Bharat Headless CMS
  * Description: Custom Post Types and REST API endpoints for the KGF Bharat headless Next.js frontend.
- * Version: 1.2.0
+ * Version: 1.5.0
  * Author: KGF Bharat
  * Text Domain: kgf-headless
  */
@@ -11,8 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KGF_HEADLESS_VERSION', '1.2.0' );
-define( 'KGF_HEADLESS_DIR', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'KGF_HEADLESS_VERSION' ) ) {
+	define( 'KGF_HEADLESS_VERSION', '1.5.0' );
+}
+if ( ! defined( 'KGF_HEADLESS_DIR' ) ) {
+	define( 'KGF_HEADLESS_DIR', plugin_dir_path( __FILE__ ) );
+}
 
 /**
  * Register Custom Post Types.
@@ -171,10 +175,29 @@ function kgf_register_meta_fields() {
 		'kgf_duration',
 		'kgf_format',
 		'kgf_price',
+		'kgf_start_date',
 		'kgf_status',
 		'kgf_instructor_bio',
 		'kgf_course_category',
+		'kgf_support_enabled',
+		'kgf_support_eyebrow',
+		'kgf_support_headline',
+		'kgf_support_message',
+		'kgf_support_cta_label',
+		'kgf_support_cta_url',
+		'kgf_support_secondary_label',
+		'kgf_support_secondary_url',
 	);
+
+	register_post_meta( 'kgf_course', 'kgf_skool_url', array(
+		'type'              => 'string',
+		'single'            => true,
+		'show_in_rest'      => true,
+		'sanitize_callback' => 'esc_url_raw',
+		'auth_callback'     => function () {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
 
 	foreach ( $course_string_fields as $field ) {
 		register_post_meta( 'kgf_course', $field, array(
@@ -425,9 +448,13 @@ function kgf_format_course( $post ) {
 	$duration          = isset( $meta['kgf_duration'][0] ) ? $meta['kgf_duration'][0] : '';
 	$format            = isset( $meta['kgf_format'][0] ) ? $meta['kgf_format'][0] : '';
 	$price             = isset( $meta['kgf_price'][0] ) ? $meta['kgf_price'][0] : '';
+	$start_date        = isset( $meta['kgf_start_date'][0] ) ? $meta['kgf_start_date'][0] : '';
 	$status            = isset( $meta['kgf_status'][0] ) ? $meta['kgf_status'][0] : '';
 	$instructor_bio    = isset( $meta['kgf_instructor_bio'][0] ) ? $meta['kgf_instructor_bio'][0] : '';
 	$course_category   = isset( $meta['kgf_course_category'][0] ) ? $meta['kgf_course_category'][0] : '';
+	$skool_url         = isset( $meta['kgf_skool_url'][0] ) ? $meta['kgf_skool_url'][0] : '';
+	$support_raw       = isset( $meta['kgf_support_enabled'][0] ) ? $meta['kgf_support_enabled'][0] : '';
+	$support_enabled   = ( $support_raw === '' || $support_raw === null ) ? null : ! empty( $support_raw );
 	$target_audience   = kgf_decode_json_meta( isset( $meta['kgf_target_audience'][0] ) ? $meta['kgf_target_audience'][0] : '' );
 	$curriculum        = kgf_decode_json_meta( isset( $meta['kgf_curriculum'][0] ) ? $meta['kgf_curriculum'][0] : '' );
 	$learning_outcomes = kgf_decode_json_meta( isset( $meta['kgf_learning_outcomes'][0] ) ? $meta['kgf_learning_outcomes'][0] : '' );
@@ -442,9 +469,21 @@ function kgf_format_course( $post ) {
 		'targetAudience'   => $target_audience,
 		'status'           => $status,
 		'price'            => $price,
+		'startDate'        => $start_date,
 		'duration'         => $duration,
 		'format'           => $format,
 		'courseCategory'    => $course_category,
+		'skoolUrl'         => $skool_url,
+		'supportCause'     => array(
+			'enabled'         => $support_enabled,
+			'eyebrow'         => isset( $meta['kgf_support_eyebrow'][0] ) ? $meta['kgf_support_eyebrow'][0] : '',
+			'headline'        => isset( $meta['kgf_support_headline'][0] ) ? $meta['kgf_support_headline'][0] : '',
+			'message'         => isset( $meta['kgf_support_message'][0] ) ? $meta['kgf_support_message'][0] : '',
+			'ctaLabel'        => isset( $meta['kgf_support_cta_label'][0] ) ? $meta['kgf_support_cta_label'][0] : '',
+			'ctaUrl'          => isset( $meta['kgf_support_cta_url'][0] ) ? $meta['kgf_support_cta_url'][0] : '',
+			'secondaryLabel'  => isset( $meta['kgf_support_secondary_label'][0] ) ? $meta['kgf_support_secondary_label'][0] : '',
+			'secondaryUrl'    => isset( $meta['kgf_support_secondary_url'][0] ) ? $meta['kgf_support_secondary_url'][0] : '',
+		),
 		'thumbnailUrl'     => kgf_get_thumbnail_url( $post->ID ),
 		'overview'         => wp_trim_words( $post->post_content, 55 ),
 		'curriculum'       => $curriculum,
@@ -972,8 +1011,18 @@ function kgf_register_acf_field_groups() {
 			array( 'key' => 'field_kgf_slug', 'label' => 'Slug', 'name' => 'kgf_slug', 'type' => 'text', 'instructions' => 'URL-friendly slug (e.g. ai-fundamentals). Used in the frontend URL.', 'required' => 1 ),
 			array( 'key' => 'field_kgf_tagline', 'label' => 'Tagline', 'name' => 'kgf_tagline', 'type' => 'text', 'instructions' => 'Short tagline shown below the title.' ),
 			array( 'key' => 'field_kgf_course_category', 'label' => 'Course Category', 'name' => 'kgf_course_category', 'type' => 'select', 'choices' => array( 'dharmic' => 'Dharmic', 'ai-tech' => 'AI-Tech' ), 'default_value' => 'ai-tech', 'instructions' => 'Category for the course: Dharmic or AI-Tech.' ),
+			array( 'key' => 'field_kgf_skool_url', 'label' => 'Skool Classroom URL', 'name' => 'kgf_skool_url', 'type' => 'url', 'instructions' => 'Optional. When set, the course page shows “Join Us @KGF Pathshala” and opens this Skool classroom.' ),
+			array( 'key' => 'field_kgf_support_enabled', 'label' => 'Show support-a-cause ask', 'name' => 'kgf_support_enabled', 'type' => 'true_false', 'ui' => 1, 'instructions' => 'Turn on for token-fee or free courses where joining is an invitation to donate for a KGF cause (for example the Ayodhya event).' ),
+			array( 'key' => 'field_kgf_support_eyebrow', 'label' => 'Support eyebrow', 'name' => 'kgf_support_eyebrow', 'type' => 'text', 'instructions' => 'Short label, e.g. “A token fee. A larger seva.”' ),
+			array( 'key' => 'field_kgf_support_headline', 'label' => 'Support headline', 'name' => 'kgf_support_headline', 'type' => 'text', 'instructions' => 'e.g. “Support KGF Bharat’s Ayodhya gathering”' ),
+			array( 'key' => 'field_kgf_support_message', 'label' => 'Support message', 'name' => 'kgf_support_message', 'type' => 'textarea', 'rows' => 3 ),
+			array( 'key' => 'field_kgf_support_cta_label', 'label' => 'Donate button label', 'name' => 'kgf_support_cta_label', 'type' => 'text' ),
+			array( 'key' => 'field_kgf_support_cta_url', 'label' => 'Donate button URL', 'name' => 'kgf_support_cta_url', 'type' => 'url', 'instructions' => 'Razorpay / donate link for this cause.' ),
+			array( 'key' => 'field_kgf_support_secondary_label', 'label' => 'Secondary link label', 'name' => 'kgf_support_secondary_label', 'type' => 'text', 'instructions' => 'Optional, e.g. “Read about the event”' ),
+			array( 'key' => 'field_kgf_support_secondary_url', 'label' => 'Secondary link URL', 'name' => 'kgf_support_secondary_url', 'type' => 'text', 'instructions' => 'Event page path or full URL, e.g. /events/…' ),
 			array( 'key' => 'field_kgf_status', 'label' => 'Status', 'name' => 'kgf_status', 'type' => 'select', 'choices' => array( 'active' => 'Active', 'upcoming' => 'Upcoming', 'completed' => 'Completed', 'draft' => 'Draft' ), 'default_value' => 'active' ),
 			array( 'key' => 'field_kgf_price', 'label' => 'Price (INR)', 'name' => 'kgf_price', 'type' => 'text', 'instructions' => 'Price in INR without currency symbol (e.g. 10000).' ),
+			array( 'key' => 'field_kgf_start_date', 'label' => 'Course Start Date', 'name' => 'kgf_start_date', 'type' => 'date_picker', 'display_format' => 'd/m/Y', 'return_format' => 'Y-m-d', 'instructions' => 'Shown on the course detail page above Duration. If empty, the next batch start date is used.' ),
 			array( 'key' => 'field_kgf_duration', 'label' => 'Duration', 'name' => 'kgf_duration', 'type' => 'text', 'instructions' => 'e.g. "3 Months", "6 Weeks"' ),
 			array( 'key' => 'field_kgf_format', 'label' => 'Format', 'name' => 'kgf_format', 'type' => 'text', 'instructions' => 'e.g. "Live Online + Recorded Sessions"' ),
 			array( 'key' => 'field_kgf_instructor_bio', 'label' => 'Instructor Bio', 'name' => 'kgf_instructor_bio', 'type' => 'textarea', 'rows' => 3 ),
@@ -1090,6 +1139,11 @@ if ( is_admin() ) {
 	$sample_data_file = KGF_HEADLESS_DIR . 'includes/sample-data.php';
 	if ( file_exists( $sample_data_file ) ) {
 		require_once $sample_data_file;
+	}
+
+	$plugin_update_file = KGF_HEADLESS_DIR . 'includes/plugin-update.php';
+	if ( file_exists( $plugin_update_file ) ) {
+		require_once $plugin_update_file;
 	}
 }
 
