@@ -3,8 +3,8 @@ import { CheckCircle, Clock, Globe, ArrowLeft, Calendar, MapPin, Users, Star, Gr
 import { Button } from "@/components/ui/button"
 import FaqAccordion from "@/components/FaqAccordion"
 import { courseEnrollHref, courseHeroText, courseListingPath, courseSkoolHref, formatCourseDate, SKOOL_JOIN_LABEL, normalizeHttpUrl } from "@/lib/course-paths"
-import { resolveCourseSupport } from "@/lib/course-support"
-import { CourseSupportPanel } from "@/components/courses/CourseSupport"
+import { resolveCourseSupport, resolveStageAnnouncement } from "@/lib/course-support"
+import { CourseStageAnnouncement, CourseSupportPanel } from "@/components/courses/CourseSupport"
 import { formatWpHtml, looksLikeHtml } from "@/lib/wp-html"
 import type { Batch, Course, Testimonial } from "@/lib/types"
 
@@ -34,6 +34,7 @@ export function CourseDetail({
     const primaryEnrollHref = courseEnrollHref(course, activeBatches[0])
     const primaryEnrollLabel = skoolHref ? SKOOL_JOIN_LABEL : "Enroll Now"
     const support = resolveCourseSupport(course)
+    const stageAnnouncement = resolveStageAnnouncement(course)
     const startDateLabel = formatCourseDate(course.startDate) || formatCourseDate(activeBatches[0]?.startDate)
 
     return (
@@ -72,7 +73,13 @@ export function CourseDetail({
                 </div>
             )}
 
-            <div className={`container-custom grid grid-cols-1 lg:grid-cols-3 gap-12 ${course.thumbnailUrl ? "mt-10" : "mt-12"}`}>
+            {stageAnnouncement && (
+                <div className={`container-custom ${course.thumbnailUrl ? "mt-8" : "mt-10"}`}>
+                    <CourseStageAnnouncement text={stageAnnouncement} />
+                </div>
+            )}
+
+            <div className={`container-custom grid grid-cols-1 lg:grid-cols-3 gap-12 ${stageAnnouncement ? "mt-8" : course.thumbnailUrl ? "mt-10" : "mt-12"}`}>
                 <div className="lg:col-span-2 space-y-12">
                     <section>
                         <h2 className="text-2xl font-bold font-heading text-[#111827] mb-4">About this Course</h2>

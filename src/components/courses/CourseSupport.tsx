@@ -30,6 +30,21 @@ function SupportLink({
     )
 }
 
+/** Standalone promise, kept out of the long prospectus so it is read first. */
+export function CourseStageAnnouncement({ text }: { text: string }) {
+    const lead = "विशेष"
+    const hasLead = text.startsWith(lead)
+    return (
+        <aside className="rounded-xl border border-amber-400/80 bg-[#fff6e8] px-5 py-5 shadow-sm md:px-8 md:py-6">
+            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#c2410c]">अयोध्या के मंच से</p>
+            <p className="mt-2 font-heading text-base font-semibold leading-snug text-[#7f1d1d] md:text-xl">
+                {hasLead ? <strong className="font-bold">{lead}</strong> : null}
+                {hasLead ? text.slice(lead.length) : text}
+            </p>
+        </aside>
+    )
+}
+
 /** Compact note on course listing cards. */
 export function CourseSupportNote({ support }: { support: CourseSupport }) {
     return (

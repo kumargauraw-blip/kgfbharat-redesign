@@ -15,13 +15,21 @@ export type CourseSupport = {
 
 const AYODHYA_EVENT_PATH = `/events/${ayodhya2026.slug}`
 
+export const VALMIKI_STAGE_ANNOUNCEMENT =
+    "विशेष : इस कोर्स को करने वालों के नाम के साथ उनके सर्टिफिकेट की घोषणा हम अयोध्या के मंच से करेंगे ताकि उन्हें भी रामजी की कृपा मिले।"
+
+export function resolveStageAnnouncement(course: Pick<Course, "slug">): string | undefined {
+    if (course.slug === "valmiki-ramayan-social-science") return VALMIKI_STAGE_ANNOUNCEMENT
+    return undefined
+}
+
 const AYODHYA_SUPPORT: CourseSupport = {
-    eyebrow: "टोकन शुल्क · बड़ी सेवा",
-    headline: "अयोध्या आयोजन का समर्थन करें",
+    eyebrow: "निःशुल्क प्रवेश या ₹11,000",
+    headline: "अयोध्या में योगदान करें, कक्षा निःशुल्क पाएँ",
     message:
-        "यह पाठ्यक्रम जानबूझकर न्यूनतम शुल्क पर है, ताकि कोई भी जुड़ सके। जो दे सकते हैं, वे कृपया रामजन्मभूमि गाथा — अयोध्या, 26–27 दिसंबर 2026 — के लिए KGF Bharat को दान करें।",
+        "जो रामजन्मभूमि गाथा — अयोध्या, 26–27 दिसंबर 2026 — के लिए प्रायोजन करते हैं, दान देते हैं, या कोई भी योगदान करते हैं, उन्हें इस कक्षा में निःशुल्क प्रवेश मिलता है। शेष विद्यार्थी ₹11,000 शुल्क देकर स्वयं नामांकन कर सकते हैं।",
     messageEn:
-        "This course is priced so anyone can join. If you are able, please also donate — this offering is tied to the Ayodhya gathering on 26–27 December 2026.",
+        "Sponsor, donate, or contribute to the Ayodhya gathering — Ram Janmabhoomi Gatha, 26–27 December 2026 — and this class is free. Everyone else can enroll by paying ₹11,000.",
     ctaLabel: "अयोध्या आयोजन हेतु दान करें",
     ctaHref: ayodhya2026.links.donate,
     secondaryLabel: "आयोजन देखें",
