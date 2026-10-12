@@ -150,7 +150,7 @@ export function BusSponsorship({ bus }: { bus: Ayodhya2026["bus"] }) {
     const flag = bus.slots.find((s) => s.marker === 5)
 
     return (
-        <div className="mt-20 bg-ay-road py-16 md:mt-28 md:py-20">
+        <div id="bus-sponsorship" className="mt-20 scroll-mt-32 bg-ay-road py-16 md:mt-28 md:py-20">
             <div className="container-custom">
                 <p className="font-ay-sans text-sm font-semibold text-ay-gold-light">{bus.eyebrow}</p>
                 <h3 className="mt-3 font-ay-serif text-[1.75rem] md:text-4xl font-bold leading-[1.3] tracking-normal text-ay-paper">{bus.heading}</h3>

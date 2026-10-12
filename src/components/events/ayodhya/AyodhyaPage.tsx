@@ -1,4 +1,4 @@
-import { ayodhya2026 as event, formatINR, lowestPassPrice } from "@/content/events/ayodhya-2026"
+import { ayodhya2026 as event } from "@/content/events/ayodhya-2026"
 import { ayodhyaFontVars } from "./fonts"
 import { Hero } from "./Hero"
 import { EventSubnav } from "./EventSubnav"
@@ -73,7 +73,7 @@ export function AyodhyaPage() {
             <Venue event={event} />
             <Donate event={event} />
             <Faq event={event} />
-            <StickyPassBar fromPrice={formatINR(lowestPassPrice)} />
+            <StickyPassBar />
             <InquiryDialog
                 sponsorOptions={[event.sponsorship.title, ...event.sponsorship.tiers].map(({ name, price }) => ({ name, price }))}
                 busOptions={event.bus.slots.map(({ name, price }) => ({ name, price }))}
