@@ -378,16 +378,12 @@ export function DonatePageClient() {
                             <span className="text-sm font-medium">Secure Payment via Razorpay</span>
                         </div>
                         <div className="flex items-center gap-2 text-gray-500">
-                            <CheckCircle className="w-5 h-5 text-green-500" />
-                            <span className="text-sm font-medium">80G Tax Exemption Available</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-gray-500">
                             <Users className="w-5 h-5 text-green-500" />
                             <span className="text-sm font-medium">500+ Donors and Growing</span>
                         </div>
                     </div>
                     <p className="text-gray-400 text-sm max-w-2xl mx-auto">
-                        KGF Bharat is a registered charitable trust. All donations are eligible for tax exemption under Section 80G of the Income Tax Act, 1961. You will receive a tax receipt via email after your contribution.
+                        KGF Bharat is a registered charitable trust. You will receive a receipt via email after your contribution.
                     </p>
                 </motion.div>
             </div>

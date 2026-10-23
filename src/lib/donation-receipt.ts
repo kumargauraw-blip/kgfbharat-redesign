@@ -42,9 +42,8 @@ function receiptHtml(input: DonationReceiptInput, amountStr: string, dateStr: st
           <tr><td style="padding:8px 0;color:#6b7280;">Payment reference</td><td style="padding:8px 0;text-align:right;font-family:monospace;">${input.paymentId}</td></tr>
         </table>
         <p style="margin:0 0 16px;font-size:13px;line-height:1.6;color:#6b7280;">
-          KGF Bharat is a registered charitable trust. Your official 80G tax-exemption
-          receipt under Section 80G of the Income Tax Act, 1961 will follow by email.
-          Please retain this acknowledgement and payment reference for your records.
+          KGF Bharat is a registered charitable trust. Please retain this
+          acknowledgement and payment reference for your records.
         </p>
         <p style="margin:0;font-size:14px;line-height:1.6;">With gratitude,<br/><strong>Team KGF Bharat</strong></p>
       </div>
@@ -65,8 +64,8 @@ function receiptText(input: DonationReceiptInput, amountStr: string, dateStr: st
         `Date: ${dateStr}`,
         `Payment reference: ${input.paymentId}`,
         ``,
-        `KGF Bharat is a registered charitable trust. Your official 80G tax-exemption`,
-        `receipt will follow by email. Please retain this acknowledgement for your records.`,
+        `KGF Bharat is a registered charitable trust. Please retain this`,
+        `acknowledgement and payment reference for your records.`,
         ``,
         `With gratitude,`,
         `Team KGF Bharat`,
