@@ -222,17 +222,15 @@ export function Navbar() {
 
                 {/* Donate Button (Desktop) */}
                 <div className="hidden xl:flex items-center gap-4">
-                    <Link
-                        href="/donate"
-                        className={cn(
-                            "inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-7 py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl border-2 border-red-600",
-                            pathname === "/donate" &&
-                                "bg-white text-red-600 border-red-600"
-                        )}
+                    <a
+                        href="https://pages.razorpay.com/DonateINR"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-7 py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl border-2 border-red-600"
                     >
                         <Heart className="h-4 w-4" />
                         Donate
-                    </Link>
+                    </a>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -297,14 +295,16 @@ export function Navbar() {
                                 }}
                                 className="mt-4 px-4"
                             >
-                                <Link
-                                    href="/donate"
+                                <a
+                                    href="https://pages.razorpay.com/DonateINR"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-2 w-full bg-red-600 text-white font-black py-4 rounded-2xl text-sm uppercase tracking-widest hover:bg-red-700 transition-all"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     <Heart className="h-4 w-4" />
                                     Donate Now
-                                </Link>
+                                </a>
                             </motion.div>
                         </div>
                     </motion.div>

@@ -226,12 +226,14 @@ export default function AboutPage() {
                         >
                             Explore Courses
                         </Link>
-                        <Link
-                            href="/donate"
+                        <a
+                            href="https://pages.razorpay.com/DonateINR"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all border border-white/20"
                         >
                             Support Us
-                        </Link>
+                        </a>
                         <Link
                             href="/contact"
                             className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all border border-white/20"
